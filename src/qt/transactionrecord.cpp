@@ -31,7 +31,11 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
     uint256 hash = wtx.GetHash();
     std::map<std::string, std::string> mapValue = wtx.mapValue;
 
-    if (nNet > 0 || wtx.IsCoinBase())
+    if (wtx.IsCoinStake()) // ppcoin: coinstake transaction
+	{
+		parts.append(TransactionRecord(hash, nTime, TransactionRecord::StakeMint, "", -nDebit, wtx.GetValueOut()));
+	}
+	else if (nNet > 0 || wtx.IsCoinBase())
     {
         //
         // Credit
@@ -61,7 +65,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                     // Generated
                     sub.type = TransactionRecord::Generated;
                 }
-
+				
                 parts.append(sub);
             }
         }
@@ -80,9 +84,8 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
         {
             // Payment to self
             int64 nChange = wtx.GetChange();
-
-            parts.append(TransactionRecord(hash, nTime, TransactionRecord::SendToSelf, "",
-                            -(nDebit - nChange), nCredit - nChange));
+			parts.append(TransactionRecord(hash, nTime, TransactionRecord::SendToSelf, "",
+								-(nDebit - nChange), nCredit - nChange));
         }
         else if (fAllFromMe)
         {
@@ -113,9 +116,10 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                 }
                 else
                 {
-                    // Sent to IP, or other non-address transaction like OP_EVAL
-                    sub.type = TransactionRecord::SendToOther;
-                    sub.address = mapValue["to"];
+					// Sent to IP, or other non-address transaction like OP_EVAL
+					sub.type = TransactionRecord::SendToOther;
+					sub.address = mapValue["to"];
+					
                 }
 
                 int64 nValue = txout.nValue;
@@ -192,7 +196,7 @@ void TransactionRecord::updateStatus(const CWalletTx &wtx)
     }
 
     // For generated transactions, determine maturity
-    if(type == TransactionRecord::Generated)
+    if(type == TransactionRecord::Generated || type == TransactionRecord::StakeMint)
     {
         int64 nCredit = wtx.GetCredit(true);
         if (nCredit == 0)

@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="CACHeCoin" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/CACHeCoin" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/CACHeCoin" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="addrman.cpp" />
+		<Unit filename="addrman.h" />
+		<Unit filename="alert.cpp" />
+		<Unit filename="alert.h" />
+		<Unit filename="allocators.h" />
+		<Unit filename="base58.h" />
+		<Unit filename="bignum.h" />
+		<Unit filename="bitcoinrpc.cpp" />
+		<Unit filename="bitcoinrpc.h" />
+		<Unit filename="checkpoints.cpp" />
+		<Unit filename="checkpoints.h" />
+		<Unit filename="clientversion.h" />
+		<Unit filename="compat.h" />
+		<Unit filename="crypter.cpp" />
+		<Unit filename="crypter.h" />
+		<Unit filename="db.cpp" />
+		<Unit filename="db.h" />
+		<Unit filename="init.cpp" />
+		<Unit filename="init.h" />
+		<Unit filename="irc.cpp" />
+		<Unit filename="irc.h" />
+		<Unit filename="json/json_spirit.h" />
+		<Unit filename="json/json_spirit_error_position.h" />
+		<Unit filename="json/json_spirit_reader.cpp" />
+		<Unit filename="json/json_spirit_reader.h" />
+		<Unit filename="json/json_spirit_reader_template.h" />
+		<Unit filename="json/json_spirit_stream_reader.h" />
+		<Unit filename="json/json_spirit_utils.h" />
+		<Unit filename="json/json_spirit_value.cpp" />
+		<Unit filename="json/json_spirit_value.h" />
+		<Unit filename="json/json_spirit_writer.cpp" />
+		<Unit filename="json/json_spirit_writer.h" />
+		<Unit filename="json/json_spirit_writer_template.h" />
+		<Unit filename="kernel.cpp" />
+		<Unit filename="kernel.h" />
+		<Unit filename="key.cpp" />
+		<Unit filename="key.h" />
+		<Unit filename="keystore.cpp" />
+		<Unit filename="keystore.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="main.h" />
+		<Unit filename="mruset.h" />
+		<Unit filename="net.cpp" />
+		<Unit filename="net.h" />
+		<Unit filename="netbase.cpp" />
+		<Unit filename="netbase.h" />
+		<Unit filename="noui.cpp" />
+		<Unit filename="obj/build.h" />
+		<Unit filename="pbkdf2.cpp" />
+		<Unit filename="pbkdf2.h" />
+		<Unit filename="protocol.cpp" />
+		<Unit filename="protocol.h" />
+		<Unit filename="qt/aboutdialog.cpp" />
+		<Unit filename="qt/aboutdialog.h" />
+		<Unit filename="qt/addressbookpage.cpp" />
+		<Unit filename="qt/addressbookpage.h" />
+		<Unit filename="qt/addresstablemodel.cpp" />
+		<Unit filename="qt/addresstablemodel.h" />
+		<Unit filename="qt/askpassphrasedialog.cpp" />
+		<Unit filename="qt/askpassphrasedialog.h" />
+		<Unit filename="qt/bitcoin.cpp" />
+		<Unit filename="qt/bitcoinaddressvalidator.cpp" />
+		<Unit filename="qt/bitcoinaddressvalidator.h" />
+		<Unit filename="qt/bitcoinamountfield.cpp" />
+		<Unit filename="qt/bitcoinamountfield.h" />
+		<Unit filename="qt/bitcoingui.cpp" />
+		<Unit filename="qt/bitcoingui.h" />
+		<Unit filename="qt/bitcoinstrings.cpp" />
+		<Unit filename="qt/bitcoinunits.cpp" />
+		<Unit filename="qt/bitcoinunits.h" />
+		<Unit filename="qt/clientmodel.cpp" />
+		<Unit filename="qt/clientmodel.h" />
+		<Unit filename="qt/csvmodelwriter.cpp" />
+		<Unit filename="qt/csvmodelwriter.h" />
+		<Unit filename="qt/editaddressdialog.cpp" />
+		<Unit filename="qt/editaddressdialog.h" />
+		<Unit filename="qt/forms/aboutdialog.ui" />
+		<Unit filename="qt/forms/addressbookpage.ui" />
+		<Unit filename="qt/forms/askpassphrasedialog.ui" />
+		<Unit filename="qt/forms/editaddressdialog.ui" />
+		<Unit filename="qt/forms/optionsdialog.ui" />
+		<Unit filename="qt/forms/overviewpage.ui" />
+		<Unit filename="qt/forms/qrcodedialog.ui" />
+		<Unit filename="qt/forms/rpcconsole.ui" />
+		<Unit filename="qt/forms/sendcoinsdialog.ui" />
+		<Unit filename="qt/forms/sendcoinsentry.ui" />
+		<Unit filename="qt/forms/signverifymessagedialog.ui" />
+		<Unit filename="qt/forms/transactiondescdialog.ui" />
+		<Unit filename="qt/guiconstants.h" />
+		<Unit filename="qt/guiutil.cpp" />
+		<Unit filename="qt/guiutil.h" />
+		<Unit filename="qt/macdockiconhandler.h" />
+		<Unit filename="qt/monitoreddatamapper.cpp" />
+		<Unit filename="qt/monitoreddatamapper.h" />
+		<Unit filename="qt/notificator.cpp" />
+		<Unit filename="qt/notificator.h" />
+		<Unit filename="qt/optionsdialog.cpp" />
+		<Unit filename="qt/optionsdialog.h" />
+		<Unit filename="qt/optionsmodel.cpp" />
+		<Unit filename="qt/optionsmodel.h" />
+		<Unit filename="qt/overviewpage.cpp" />
+		<Unit filename="qt/overviewpage.h" />
+		<Unit filename="qt/qrcodedialog.cpp" />
+		<Unit filename="qt/qrcodedialog.h" />
+		<Unit filename="qt/qtipcserver.cpp" />
+		<Unit filename="qt/qtipcserver.h" />
+		<Unit filename="qt/qvalidatedlineedit.cpp" />
+		<Unit filename="qt/qvalidatedlineedit.h" />
+		<Unit filename="qt/qvaluecombobox.cpp" />
+		<Unit filename="qt/qvaluecombobox.h" />
+		<Unit filename="qt/rpcconsole.cpp" />
+		<Unit filename="qt/rpcconsole.h" />
+		<Unit filename="qt/sendcoinsdialog.cpp" />
+		<Unit filename="qt/sendcoinsdialog.h" />
+		<Unit filename="qt/sendcoinsentry.cpp" />
+		<Unit filename="qt/sendcoinsentry.h" />
+		<Unit filename="qt/signverifymessagedialog.cpp" />
+		<Unit filename="qt/signverifymessagedialog.h" />
+		<Unit filename="qt/test/test_main.cpp" />
+		<Unit filename="qt/test/uritests.cpp" />
+		<Unit filename="qt/test/uritests.h" />
+		<Unit filename="qt/transactiondesc.cpp" />
+		<Unit filename="qt/transactiondesc.h" />
+		<Unit filename="qt/transactiondescdialog.cpp" />
+		<Unit filename="qt/transactiondescdialog.h" />
+		<Unit filename="qt/transactionfilterproxy.cpp" />
+		<Unit filename="qt/transactionfilterproxy.h" />
+		<Unit filename="qt/transactionrecord.cpp" />
+		<Unit filename="qt/transactionrecord.h" />
+		<Unit filename="qt/transactiontablemodel.cpp" />
+		<Unit filename="qt/transactiontablemodel.h" />
+		<Unit filename="qt/transactionview.cpp" />
+		<Unit filename="qt/transactionview.h" />
+		<Unit filename="qt/walletmodel.cpp" />
+		<Unit filename="qt/walletmodel.h" />
+		<Unit filename="rpcblockchain.cpp" />
+		<Unit filename="rpcdump.cpp" />
+		<Unit filename="rpcmining.cpp" />
+		<Unit filename="rpcnet.cpp" />
+		<Unit filename="rpcrawtransaction.cpp" />
+		<Unit filename="rpcwallet.cpp" />
+		<Unit filename="script.cpp" />
+		<Unit filename="script.h" />
+		<Unit filename="scrypt-jane/code/scrypt-conf.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-chacha.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-hash.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-hash_blake256.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-hash_blake512.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-hash_keccak.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-hash_sha256.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-hash_sha512.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-hash_skein512.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-mix_chacha-avx.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-mix_chacha-sse2.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-mix_chacha-ssse3.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-mix_chacha.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-mix_salsa-avx.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-mix_salsa-sse2.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-mix_salsa.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-mix_salsa64-avx.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-mix_salsa64-sse2.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-mix_salsa64-ssse3.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-mix_salsa64.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-pbkdf2.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-portable-x86.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-portable.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-romix-basic.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-romix-template.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-romix.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-salsa.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-salsa64.h" />
+		<Unit filename="scrypt-jane/code/scrypt-jane-test-vectors.h" />
+		<Unit filename="scrypt-jane/scrypt-jane.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="scrypt-jane/scrypt-jane.h" />
+		<Unit filename="scrypt_mine.cpp" />
+		<Unit filename="scrypt_mine.h" />
+		<Unit filename="serialize.h" />
+		<Unit filename="strlcpy.h" />
+		<Unit filename="sync.cpp" />
+		<Unit filename="sync.h" />
+		<Unit filename="test/Checkpoints_tests.cpp" />
+		<Unit filename="test/DoS_tests.cpp" />
+		<Unit filename="test/accounting_tests.cpp" />
+		<Unit filename="test/allocator_tests.cpp" />
+		<Unit filename="test/base32_tests.cpp" />
+		<Unit filename="test/base58_tests.cpp" />
+		<Unit filename="test/base64_tests.cpp" />
+		<Unit filename="test/bignum_tests.cpp" />
+		<Unit filename="test/getarg_tests.cpp" />
+		<Unit filename="test/key_tests.cpp" />
+		<Unit filename="test/miner_tests.cpp" />
+		<Unit filename="test/mruset_tests.cpp" />
+		<Unit filename="test/multisig_tests.cpp" />
+		<Unit filename="test/netbase_tests.cpp" />
+		<Unit filename="test/rpc_tests.cpp" />
+		<Unit filename="test/script_P2SH_tests.cpp" />
+		<Unit filename="test/script_tests.cpp" />
+		<Unit filename="test/sigopcount_tests.cpp" />
+		<Unit filename="test/test_bitcoin.cpp" />
+		<Unit filename="test/transaction_tests.cpp" />
+		<Unit filename="test/uint160_tests.cpp" />
+		<Unit filename="test/uint256_tests.cpp" />
+		<Unit filename="test/util_tests.cpp" />
+		<Unit filename="test/wallet_tests.cpp" />
+		<Unit filename="ui_interface.h" />
+		<Unit filename="uint256.h" />
+		<Unit filename="util.cpp" />
+		<Unit filename="util.h" />
+		<Unit filename="version.cpp" />
+		<Unit filename="version.h" />
+		<Unit filename="wallet.cpp" />
+		<Unit filename="wallet.h" />
+		<Unit filename="walletdb.cpp" />
+		<Unit filename="walletdb.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

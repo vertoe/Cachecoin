@@ -1062,8 +1062,21 @@ const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex, bool fProofOfSta
 
 unsigned int static GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfStake)
 {
-    CBigNum bnTargetLimit = bnProofOfStakeHardLimit;
+    CBigNum bnTargetLimit = bnProofOfWorkLimit;
 
+     if(fProofOfStake)
+     {
+        // Proof-of-Stake blocks has own target limit since nVersion=3 supermajority on mainNet and always on testNet
+        if(fTestNet)
+            bnTargetLimit = bnProofOfStakeHardLimit;
+        else
+        {
+ /*            if(fTestNet || (pindexLast->nHeight + 1 > 15000))
+                bnTargetLimit = bnProofOfStakeLimit;
+            else if(pindexLast->nHeight + 1 > 14060)*/ // DIFF
+                bnTargetLimit = bnProofOfStakeHardLimit;
+        }
+    }
     if (pindexLast == NULL)
         return bnTargetLimit.GetCompact(); // genesis block
     const CBlockIndex* pindexPrev = GetLastBlockIndex(pindexLast, fProofOfStake);

@@ -29,6 +29,7 @@ namespace Checkpoints
         (  2000, uint256("0x0000000108db5a2414d595b54727e35d667236f472274edaf05f81827054ff54"))
         (  3000, uint256("0x000000000531bb39ba1edb7d528f98807fd276f0418a5e77ab2a149bd31eeade"))
         (  4118, uint256("0x000000000d281cd28f4e74c6f97b6cef455792d7511ae255139c8bdcd42e4980"))
+        (  5000, uint256("0x0000000000d3801915483b1e1618743c9b10ffdc3df95e6b9da14b09e596e269"))
         //( 15000, uint256("0x00000082cab82d04354692fac3b83d19cbe3c3ab4b73610d0e73397545eb012e"))
         ;
 
@@ -190,11 +191,11 @@ namespace Checkpoints
         return false;
     }
 
-    // Automatically select a suitable sync-checkpoint 
+    // Automatically select a suitable sync-checkpoint
     uint256 AutoSelectSyncCheckpoint()
     {
         // Proof-of-work blocks are immediately checkpointed
-        // to defend against 51% attack which rejects other miners block 
+        // to defend against 51% attack which rejects other miners block
 
         // Select the last proof-of-work block
         const CBlockIndex *pindex = GetLastBlockIndex(pindexBest, false);
@@ -239,7 +240,7 @@ namespace Checkpoints
             return false;
         if (hashBlock == hashPendingCheckpoint)
             return true;
-        if (mapOrphanBlocks.count(hashPendingCheckpoint) 
+        if (mapOrphanBlocks.count(hashPendingCheckpoint)
             && hashBlock == WantedByOrphan(mapOrphanBlocks[hashPendingCheckpoint]))
             return true;
         return false;

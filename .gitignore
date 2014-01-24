@@ -21,3 +21,4 @@ build
 README.md
 cachecoin-qt
 src/cachecoind
+*cscope*

@@ -1092,7 +1092,12 @@ unsigned int static GetNextTargetRequired(const CBlockIndex* pindexLast, bool fP
     // ppcoin: retarget with exponential moving toward target spacing
     CBigNum bnNew;
     bnNew.SetCompact(pindexPrev->nBits);
-    int64 nTargetSpacing = fProofOfStake? nStakeTargetSpacing : min(nTargetSpacingWorkMax, (int64) nStakeTargetSpacing * (1 + pindexLast->nHeight - pindexPrev->nHeight));
+    int64 nTargetSpacing;
+    if(pindexPrev->GetBlockTime() < 1391046000)
+        nTargetSpacing = fProofOfStake? nStakeTargetSpacing : min(nTargetSpacingWorkMax, (int64) nStakeTargetSpacing * (1 + pindexLast->nHeight - pindexPrev->nHeight));
+    else
+        nTargetSpacing = fProofOfStake? nStakeTargetSpacing : min((int64) nStakeTargetSpacing*2, (int64) nStakeTargetSpacing * (1 + pindexLast->nHeight - pindexPrev->nHeight));
+
     int64 nInterval = nTargetTimespan / nTargetSpacing;
     bnNew *= ((nInterval - 1) * nTargetSpacing + nActualSpacing + nActualSpacing);
     bnNew /= ((nInterval + 1) * nTargetSpacing);
@@ -2876,6 +2881,8 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
         }
 
         int64 nTime;
+        bool badVersion = false;
+        int64 currentTimestamp = GetTime();
         CAddress addrMe;
         CAddress addrFrom;
         uint64 nNonce = 1;
@@ -2888,7 +2895,21 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
             pfrom->fDisconnect = true;
             return false;
         }
+        // Start disconnecting older client versions from Thu Jan 30 05:40:00 MSK 2014
+        if(currentTimestamp >= 1391046000)
+        {
+         if(pfrom->nVersion < 70000)
+         {
+             badVersion = true;
+         }
+        }
 
+        if(badVersion)
+        {
+         printf("partner %s using obsolete version %i; disconnecting\n", pfrom->addr.ToString().c_str(), pfrom->nVersion);
+         pfrom->fDisconnect = true;
+         return false;
+        }
         if (pfrom->nVersion == 10300)
             pfrom->nVersion = 300;
         if (!vRecv.empty())
@@ -2955,14 +2976,29 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
 
         // Ask the first connected node for block updates
         static int nAskedForBlocks = 0;
-        if (!pfrom->fClient && !pfrom->fOneShot &&
-            (pfrom->nStartingHeight > (nBestHeight - 144)) &&
-            (pfrom->nVersion < NOBLKS_VERSION_START ||
-             pfrom->nVersion >= NOBLKS_VERSION_END) &&
-             (nAskedForBlocks < 1 || vNodes.size() <= 1))
+        if(currentTimestamp < 1391046000)
         {
-            nAskedForBlocks++;
-            pfrom->PushGetBlocks(pindexBest, uint256(0));
+            if (!pfrom->fClient && !pfrom->fOneShot &&
+                (pfrom->nStartingHeight > (nBestHeight - 144)) &&
+                (pfrom->nVersion < NOBLKS_VERSION_START ||
+                 pfrom->nVersion >= NOBLKS_VERSION_END) &&
+                (nAskedForBlocks < 1 || vNodes.size() <= 1))
+            {
+                nAskedForBlocks++;
+                pfrom->PushGetBlocks(pindexBest, uint256(0));
+            }
+        }
+        else
+        {
+            if (!pfrom->fClient && !pfrom->fOneShot &&
+                (pfrom->nStartingHeight > (nBestHeight - 144)) &&
+                (pfrom->nVersion < NOBLKS_VERSION_START ||
+                 pfrom->nVersion >= NOBLKS2014_VERSION_END) &&
+                (nAskedForBlocks < 1 || vNodes.size() <= 1))
+             {
+                 nAskedForBlocks++;
+                 pfrom->PushGetBlocks(pindexBest, uint256(0));
+             }
         }
 
         // Relay alerts

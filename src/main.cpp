@@ -995,7 +995,7 @@ int64 GetProofOfWorkReward(unsigned int nBits)
     //
     // Human readable form:
     //
-    // nSubsidy = 100 / (diff ^ 1/6)
+    // nSubsidy = 25 / (diff ^ 1/6)
     CBigNum bnLowerBound = CENT;
     CBigNum bnUpperBound = bnSubsidyLimit;
     while (bnLowerBound + CENT <= bnUpperBound)

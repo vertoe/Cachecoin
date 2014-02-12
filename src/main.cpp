@@ -1067,8 +1067,6 @@ const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex, bool fProofOfSta
 unsigned int static GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfStake)
 {
     CBigNum bnTargetLimit = bnProofOfWorkLimit;
-    if(fTestNet)
-        nStakeMinAge = 60;
      if(fProofOfStake)
      {
         // Proof-of-Stake blocks has own target limit since nVersion=3 supermajority on mainNet and always on testNet
@@ -2509,7 +2507,7 @@ bool LoadBlockIndex(bool fAllowNew)
 
 
         hashGenesisBlock = hashGenesisBlockTestNet;
-        nStakeMinAge = 60 * 60 * 24; // test net min age is 1 day
+        nStakeMinAge = 60;//one minute ;-P * 60 * 24; // test net min age is 1 day
         nCoinbaseMaturity = 60;
     }
 
@@ -2560,7 +2558,13 @@ bool LoadBlockIndex(bool fAllowNew)
 
         block.print();
 
+        //if(!fTestNet)
+        printf("block.GetHash() == %s\n", block.GetHash().ToString().c_str());
+        printf("hashGenesisBlock == %s\n", hashGenesisBlock.ToString().c_str());
         assert(block.GetHash() == hashGenesisBlock);
+        //else
+        //    assert(block.GetHash() == hashGenesisBlockTestNet);
+
         assert(block.CheckBlock());
 
         // Start new block file

@@ -46,7 +46,7 @@ static const int fHaveUPnP = false;
 #endif
 
 static const uint256 hashGenesisBlockOfficial("0x000003e3294d4353a2696ca1f97464de2f141a760bae5a79acb71b3d91446855");
-static const uint256 hashGenesisBlockTestNet("0x00000d21ac4679a204fdeaad04e49d29eeb9f83f8f16eca7644d8e367146659d");
+static const uint256 hashGenesisBlockTestNet("0x000003e3294d4353a2696ca1f97464de2f141a760bae5a79acb71b3d91446855");
 
 static const int64 nMaxClockDrift = 2 * 60 * 60;        // two hours
 
@@ -1141,7 +1141,7 @@ public:
     int64 nMoneySupply;
 
     unsigned int nFlags;  // ppcoin: block index flags
-    enum  
+    enum
     {
         BLOCK_PROOF_OF_STAKE = (1 << 0), // is proof-of-stake block
         BLOCK_STAKE_ENTROPY  = (1 << 1), // entropy bit for stake modifier
@@ -1346,7 +1346,7 @@ public:
             pprev, pnext, nFile, nBlockPos, nHeight,
             FormatMoney(nMint).c_str(), FormatMoney(nMoneySupply).c_str(),
             GeneratedStakeModifier() ? "MOD" : "-", GetStakeEntropyBit(), IsProofOfStake()? "PoS" : "PoW",
-            nStakeModifier, nStakeModifierChecksum, 
+            nStakeModifier, nStakeModifierChecksum,
             hashProofOfStake.ToString().c_str(),
             prevoutStake.ToString().c_str(), nStakeTime,
             hashMerkleRoot.ToString().substr(0,10).c_str(),

@@ -1021,7 +1021,11 @@ int64 GetProofOfWorkReward(unsigned int nBits)
 int64 GetProofOfStakeReward(int64 nCoinAge)
 {
     static int64 nRewardCoinYear = 5 * CENT;  // creation amount per coin-year
-    int64 nSubsidy = nCoinAge * 33 / (365 * 33 + 8) * nRewardCoinYear;
+    int64 nSubsidy;
+    if(fTestNet)
+        nSubsidy = nCoinAge * 33 * nRewardCoinYear / (365 * 33 + 8);
+    else
+        nSubsidy = nCoinAge * 33 / (365 * 33 + 8) * nRewardCoinYear;
     if (fDebug && GetBoolArg("-printcreation"))
         printf("GetProofOfStakeReward(): create=%s nCoinAge=%"PRI64d"\n", FormatMoney(nSubsidy).c_str(), nCoinAge);
     return nSubsidy;
@@ -1063,7 +1067,8 @@ const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex, bool fProofOfSta
 unsigned int static GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfStake)
 {
     CBigNum bnTargetLimit = bnProofOfWorkLimit;
-
+    if(fTestNet)
+        nStakeMinAge = 60;
      if(fProofOfStake)
      {
         // Proof-of-Stake blocks has own target limit since nVersion=3 supermajority on mainNet and always on testNet

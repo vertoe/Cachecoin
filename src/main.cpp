@@ -957,7 +957,7 @@ const unsigned char maxNfactor = 30;
 unsigned char GetNfactor(int64 nTimestamp) {
     int l = 0;
 
-    if (nTimestamp <= nChainStartTime)
+    if (nTimestamp <= nChainStartTime || fTestNet)
         return 4;
 
     int64 s = nTimestamp - nChainStartTime;

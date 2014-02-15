@@ -1896,8 +1896,6 @@ bool CTransaction::GetCoinAge(CTxDB& txdb, uint64& nCoinAge) const
 {
     CBigNum bnCentSecond = 0;  // coin age in the unit of cent-seconds
     nCoinAge = 0;
-    if(fDebug)
-        printf("min stake age: %d",nStakeMinAge);
     if (IsCoinBase())
         return true;
 

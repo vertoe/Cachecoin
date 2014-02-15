@@ -12,8 +12,6 @@
 using namespace json_spirit;
 using namespace std;
 
-
-
 //
 // uint64_t GetNetworkHashPS( int lookup )
 //
@@ -28,22 +26,25 @@ uint64_t GetNetworkHashPS( int lookup )
 {
     if( !pindexBest )
         return 0;
-        
+
     if( lookup < 0 )
         lookup = 0;
-    
+
     // If lookup is larger than chain, then set it to chain length.
     if( lookup > pindexBest->nHeight )
         lookup = pindexBest->nHeight;
-        
+
     CBlockIndex *pindexPrev = pindexBest;
-    
-    for( int i = 0; i < lookup; ++i )
+
+    for( int i = 0; i < lookup; ++i){
+        while(pindexPrev->pprev && pindexPrev->pprev->IsProofOfStake())
+            pindexPrev = pindexPrev->pprev;
         pindexPrev = pindexPrev->pprev;
-        
+    }
+
     double timeDiff = pindexBest->GetBlockTime() - pindexPrev->GetBlockTime();
     double timePerBlock = timeDiff / lookup;
-    
+
     return (uint64_t)(((double)GetDifficulty() * pow(2.0, 32)) / timePerBlock);
 }
 
@@ -125,13 +126,13 @@ Value getmininginfo(const Array& params, bool fHelp)
     // WM - Tweaks to report current Nfactor and N.
     Nfactor = GetNfactor( nBestHeightTime );
     N = 1 << ( Nfactor + 1 );
-    
+
     obj.push_back( Pair( "Nfactor", Nfactor ) );
     obj.push_back( Pair( "N", N ) );
-    
+
     // WM - Report current Proof-of-Work block reward.
     obj.push_back( Pair( "powreward", (double)GetProofOfWorkReward(GetLastBlockIndex(pindexBest, false)->nBits) / 1000000.0 ) );
-    
+
     return obj;
 }
 
@@ -144,7 +145,7 @@ Value getnetworkhashps(const Array& params, bool fHelp)
             "getnetworkhashps\n"
             "Returns an estimate of the CACHeCoin network hash rate.");
 
-    return GetNetworkHashPS(params.size() > 0 ? params[0].get_int() : 120);
+    return GetNetworkHashPS(params.size() > 0 ? params[0].get_int() : 20);
 }
 
 

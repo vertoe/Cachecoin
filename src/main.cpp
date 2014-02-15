@@ -1896,7 +1896,8 @@ bool CTransaction::GetCoinAge(CTxDB& txdb, uint64& nCoinAge) const
 {
     CBigNum bnCentSecond = 0;  // coin age in the unit of cent-seconds
     nCoinAge = 0;
-
+    if(fDebug)
+        printf("min stake age: %d",nStakeMinAge);
     if (IsCoinBase())
         return true;
 
@@ -1919,7 +1920,6 @@ bool CTransaction::GetCoinAge(CTxDB& txdb, uint64& nCoinAge) const
 
         int64 nValueIn = txPrev.vout[txin.prevout.n].nValue;
         bnCentSecond += CBigNum(nValueIn) * (nTime-txPrev.nTime) / CENT;
-
         if (fDebug && GetBoolArg("-printcoinage"))
             printf("coin age nValueIn=%"PRI64d" nTimeDiff=%d bnCentSecond=%s\n", nValueIn, nTime - txPrev.nTime, bnCentSecond.ToString().c_str());
     }

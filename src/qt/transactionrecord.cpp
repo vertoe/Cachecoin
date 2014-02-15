@@ -7,7 +7,7 @@
  */
 bool TransactionRecord::showTransaction(const CWalletTx &wtx)
 {
-    if (wtx.IsCoinBase())
+    if (wtx.IsCoinBase() || wtx.IsCoinStake())
     {
         // Ensures we show generated coins / mined transactions at depth 1
         if (!wtx.IsInMainChain())
@@ -65,7 +65,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                     // Generated
                     sub.type = TransactionRecord::Generated;
                 }
-				
+
                 parts.append(sub);
             }
         }
@@ -119,7 +119,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
 					// Sent to IP, or other non-address transaction like OP_EVAL
 					sub.type = TransactionRecord::SendToOther;
 					sub.address = mapValue["to"];
-					
+
                 }
 
                 int64 nValue = txout.nValue;

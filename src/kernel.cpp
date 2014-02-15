@@ -46,6 +46,8 @@ static int64 GetStakeModifierSelectionIntervalSection(int nSection)
 // Get stake modifier selection interval (in seconds)
 static int64 GetStakeModifierSelectionInterval()
 {
+    if(fTestNet)
+        return nStakeMinAge;
     int64 nSelectionInterval = 0;
     for (int nSection=0; nSection<64; nSection++)
         nSelectionInterval += GetStakeModifierSelectionIntervalSection(nSection);
@@ -213,8 +215,6 @@ static bool GetKernelStakeModifier(uint256 hashBlockFrom, uint64& nStakeModifier
     nStakeModifierHeight = pindexFrom->nHeight;
     nStakeModifierTime = pindexFrom->GetBlockTime();
     int64 nStakeModifierSelectionInterval = GetStakeModifierSelectionInterval();
-    if(fTestNet)
-        nStakeModifierSelectionInterval = nStakeMinAge;
     const CBlockIndex* pindex = pindexFrom;
     // loop to find the stake modifier later by a selection interval
     while (nStakeModifierTime < pindexFrom->GetBlockTime() + nStakeModifierSelectionInterval)

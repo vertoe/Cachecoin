@@ -2507,6 +2507,7 @@ bool LoadBlockIndex(bool fAllowNew)
         hashGenesisBlock = hashGenesisBlockTestNet;
         nStakeMinAge = 60 * 60 * 24; // test net min age is 1 day
         nCoinbaseMaturity = 60;
+        nStakeTargetSpacing = 60;
     }
 
     //

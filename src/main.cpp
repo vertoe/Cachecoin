@@ -1025,7 +1025,11 @@ int64 GetProofOfStakeReward(int64 nCoinAge)
     if(fTestNet)
         nSubsidy = nCoinAge * 33 * nRewardCoinYear / (365 * 33 + 8);
     else
-        nSubsidy = nCoinAge * 33 / (365 * 33 + 8) * nRewardCoinYear;
+        if(pindexBest->GetBlockTime() >= 1393140000)
+            nSubsidy = nCoinAge * 33 * nRewardCoinYear / (365 * 33 + 8);
+        else
+            nSubsidy = nCoinAge * 33 / (365 * 33 + 8) * nRewardCoinYear;
+
     if (fDebug && GetBoolArg("-printcreation"))
         printf("GetProofOfStakeReward(): create=%s nCoinAge=%"PRI64d"\n", FormatMoney(nSubsidy).c_str(), nCoinAge);
     return nSubsidy;
@@ -2906,11 +2910,13 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
         // Start disconnecting older client versions from Thu Jan 30 05:40:00 MSK 2014
         if(currentTimestamp >= 1391046000)
         {
-         if(pfrom->nVersion < 70000)
-         {
+         if(pfrom->nVersion < NOBLKS2014_VERSION_END)
              badVersion = true;
-         }
         }
+        else if(currentTimestamp >= 1393140000)
+            if(pfrom->nVersion < NOBLKS2014_2_VERSION_END)
+                badVersion = true;
+
 
         if(badVersion)
         {
@@ -2996,12 +3002,22 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
                 pfrom->PushGetBlocks(pindexBest, uint256(0));
             }
         }
-        else
+        else if(currentTimestamp < 1393140000)
         {
             if (!pfrom->fClient && !pfrom->fOneShot &&
                 (pfrom->nStartingHeight > (nBestHeight - 144)) &&
                 (pfrom->nVersion < NOBLKS_VERSION_START ||
                  pfrom->nVersion >= NOBLKS2014_VERSION_END) &&
+                (nAskedForBlocks < 1 || vNodes.size() <= 1))
+             {
+                 nAskedForBlocks++;
+                 pfrom->PushGetBlocks(pindexBest, uint256(0));
+             }
+        }else{
+            if (!pfrom->fClient && !pfrom->fOneShot &&
+                (pfrom->nStartingHeight > (nBestHeight - 144)) &&
+                (pfrom->nVersion < NOBLKS_VERSION_START ||
+                 pfrom->nVersion >= NOBLKS2014_2_VERSION_END) &&
                 (nAskedForBlocks < 1 || vNodes.size() <= 1))
              {
                  nAskedForBlocks++;

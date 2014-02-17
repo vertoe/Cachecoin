@@ -25,7 +25,7 @@ extern const std::string CLIENT_DATE;
 // network protocol versioning
 //
 
-static const int PROTOCOL_VERSION = 70000;
+static const int PROTOCOL_VERSION = 80000;
 
 // earlier versions not supported as of Feb 2012, and are disconnected
 static const int MIN_PROTO_VERSION = 209;
@@ -39,6 +39,7 @@ static const int NOBLKS_VERSION_START = 60002;
 static const int NOBLKS_VERSION_END = 60004;
 // From Thu Jan 30 05:40:00 MSK 2014, disallow blocks from older versions.
 static const int NOBLKS2014_VERSION_END = 70000;
+static const int NOBLKS2014_2_VERSION_END = 80000;
 
 // BIP 0031, pong message, is enabled for all versions AFTER this one
 static const int BIP0031_VERSION = 60000;
@@ -47,8 +48,8 @@ static const int BIP0031_VERSION = 60000;
 static const int MEMPOOL_GD_VERSION = 60002;
 
 #define DISPLAY_VERSION_MAJOR       0
-#define DISPLAY_VERSION_MINOR       4
-#define DISPLAY_VERSION_REVISION    6
-#define DISPLAY_VERSION_BUILD       1
+#define DISPLAY_VERSION_MINOR       5
+#define DISPLAY_VERSION_REVISION    0
+#define DISPLAY_VERSION_BUILD       0
 
 #endif

@@ -7,11 +7,12 @@
  */
 bool TransactionRecord::showTransaction(const CWalletTx &wtx)
 {
-    if (wtx.IsCoinBase() || wtx.IsCoinStake())
+    if (wtx.IsCoinBase())
     {
         // Ensures we show generated coins / mined transactions at depth 1
-        if (wtx.GetDepthInMainChain() < 2)
+        if (!wtx.IsInMainChain())
         {
+            //OutputDebugStringF("not showing %s with depth %d\n",wtx.GetHash().ToString().c_str(),wtx.GetDepthInMainChain());
             return false;
         }
     }
@@ -33,7 +34,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
 
     if (wtx.IsCoinStake()) // ppcoin: coinstake transaction
 	{
-		parts.append(TransactionRecord(hash, nTime, TransactionRecord::StakeMint, "", -nDebit, wtx.GetValueOut()));
+	    parts.append(TransactionRecord(hash, nTime, TransactionRecord::StakeMint, "", -nDebit, wtx.GetValueOut()));
 	}
 	else if (nNet > 0 || wtx.IsCoinBase())
     {

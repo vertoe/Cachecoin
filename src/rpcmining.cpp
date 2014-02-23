@@ -145,7 +145,7 @@ Value getnetworkhashps(const Array& params, bool fHelp)
             "getnetworkhashps\n"
             "Returns an estimate of the CACHeCoin network hash rate.");
 
-    return GetNetworkHashPS(params.size() > 0 ? params[0].get_int() : 20);
+    return GetNetworkHashPS(params.size() > 0 ? params[0].get_int() : 10);
 }
 
 

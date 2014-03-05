@@ -369,9 +369,8 @@ string FormatMoney(int64 n, bool fPlus)
     // Note: not using straight sprintf here because we do NOT want
     // localized number formatting.
     int64 n_abs = (n > 0 ? n : -n);
-    int64 quotient = n_abs/COIN;
-    int64 remainder = n_abs%COIN;
-    string str = strprintf("%"PRI64d".%08"PRI64d, quotient, remainder);
+
+    string str = strprintf("%.08f",(double)n_abs/COIN);
 
     // Right-trim excess zeros before the decimal point:
     int nTrim = 0;

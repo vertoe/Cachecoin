@@ -10,7 +10,6 @@ using namespace json_spirit;
 using namespace std;
 
 extern void TxToJSON(const CTransaction& tx, const uint256 hashBlock, json_spirit::Object& entry);
-
 double GetDifficulty(const CBlockIndex* blockindex)
 {
     // Floating point number that is a multiple of the minimum difficulty,
@@ -22,11 +21,12 @@ double GetDifficulty(const CBlockIndex* blockindex)
         else
             blockindex = GetLastBlockIndex(pindexBest, false);
     }
-
-    int nShift = (blockindex->nBits >> 24) & 0xff;
+    unsigned int nBlockBits = blockindex->nBits;
+    nBlockBits = GetNextTargetRequired(blockindex,blockindex->IsProofOfStake());
+    int nShift = (nBlockBits >> 24) & 0xff;
 
     double dDiff =
-        (double)0x0000ffff / (double)(blockindex->nBits & 0x00ffffff);
+        (double)0x0000ffff / (double)(nBlockBits & 0x00ffffff);
 
     while (nShift < 29)
     {
@@ -222,7 +222,7 @@ Value getcheckpoint(const Array& params, bool fHelp)
     CBlockIndex* pindexCheckpoint;
 
     result.push_back(Pair("synccheckpoint", Checkpoints::hashSyncCheckpoint.ToString().c_str()));
-    pindexCheckpoint = mapBlockIndex[Checkpoints::hashSyncCheckpoint];        
+    pindexCheckpoint = mapBlockIndex[Checkpoints::hashSyncCheckpoint];
     result.push_back(Pair("height", pindexCheckpoint->nHeight));
     result.push_back(Pair("timestamp", DateTimeStrFormat(pindexCheckpoint->GetBlockTime()).c_str()));
     if (mapArgs.count("-checkpointkey"))

@@ -1375,6 +1375,10 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
         return false;
     if (setCoins.empty())
         return false;
+
+    if (!fTORenabled)
+        return error("CreateCoinStake: not staking due to disabled TOR");
+
     int64 nCredit = 0;
     CScript scriptPubKeyKernel;
     BOOST_FOREACH(PAIRTYPE(const CWalletTx*, unsigned int) pcoin, setCoins)

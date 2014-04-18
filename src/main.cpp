@@ -1107,8 +1107,11 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     else if(pindexPrev->GetBlockTime() < POWFIX_DATE)
         nTargetSpacing = fProofOfStake? nStakeTargetSpacing : min((int64) nStakeTargetSpacing*2, (int64) nStakeTargetSpacing * (1 + pindexLast->nHeight - pindexPrev->nHeight));
     else
-        if(nActualSpacing > nStakeTargetSpacing*2){
-            bnNew /=  (nActualSpacing / nStakeTargetSpacing);
+        if(nActualSpacing > nStakeTargetSpacing*6){
+            int factor = (nActualSpacing / nStakeTargetSpacing);
+            factor /= 3;
+            factor--;
+            bnNew /=  factor;
             return bnNew.GetCompact();
         }else{
             nTargetSpacing = fProofOfStake? nStakeTargetSpacing : min(nTargetSpacingWorkMax, (int64) nStakeTargetSpacing * (1 + pindexLast->nHeight - pindexPrev->nHeight));

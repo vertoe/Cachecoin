@@ -15,6 +15,8 @@
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 
+#define POWFIX_DATE 1398027600
+
 using namespace std;
 using namespace boost;
 
@@ -1102,8 +1104,15 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     int64 nTargetSpacing;
     if(pindexPrev->GetBlockTime() < 1391046000)
         nTargetSpacing = fProofOfStake? nStakeTargetSpacing : min(nTargetSpacingWorkMax, (int64) nStakeTargetSpacing * (1 + pindexLast->nHeight - pindexPrev->nHeight));
-    else
+    else if(pindexPrev->GetBlockTime() < POWFIX_DATE)
         nTargetSpacing = fProofOfStake? nStakeTargetSpacing : min((int64) nStakeTargetSpacing*2, (int64) nStakeTargetSpacing * (1 + pindexLast->nHeight - pindexPrev->nHeight));
+    else
+        if(nActualSpacing > nStakeTargetSpacing*2){
+            bnNew /=  (nActualSpacing / nStakeTargetSpacing);
+            return bnNew.GetCompact();
+        }else{
+            nTargetSpacing = fProofOfStake? nStakeTargetSpacing : min(nTargetSpacingWorkMax, (int64) nStakeTargetSpacing * (1 + pindexLast->nHeight - pindexPrev->nHeight));
+        }
 
     int64 nInterval = nTargetTimespan / nTargetSpacing;
     bnNew *= ((nInterval - 1) * nTargetSpacing + nActualSpacing + nActualSpacing);
@@ -2913,10 +2922,13 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
          if(pfrom->nVersion < NOBLKS2014_VERSION_END)
              badVersion = true;
         }
-        else if(currentTimestamp >= 1393140000)
+        else if(currentTimestamp >= 1393140000){
             if(pfrom->nVersion < NOBLKS2014_2_VERSION_END)
                 badVersion = true;
-
+        }else if(currentTimestamp >= POWFIX_DATE){
+            if(pfrom->nVersion < NOBLKS2014_3_VERSION_END)
+                badVersion = true;
+        }
 
         if(badVersion)
         {
@@ -3013,11 +3025,21 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
                  nAskedForBlocks++;
                  pfrom->PushGetBlocks(pindexBest, uint256(0));
              }
-        }else{
+        }else if(currentTimestamp < POWFIX_DATE){
             if (!pfrom->fClient && !pfrom->fOneShot &&
                 (pfrom->nStartingHeight > (nBestHeight - 144)) &&
                 (pfrom->nVersion < NOBLKS_VERSION_START ||
                  pfrom->nVersion >= NOBLKS2014_2_VERSION_END) &&
+                (nAskedForBlocks < 1 || vNodes.size() <= 1))
+             {
+                 nAskedForBlocks++;
+                 pfrom->PushGetBlocks(pindexBest, uint256(0));
+             }
+        }else{
+            if (!pfrom->fClient && !pfrom->fOneShot &&
+                (pfrom->nStartingHeight > (nBestHeight - 144)) &&
+                (pfrom->nVersion < NOBLKS_VERSION_START ||
+                 pfrom->nVersion >= NOBLKS2014_3_VERSION_END) &&
                 (nAskedForBlocks < 1 || vNodes.size() <= 1))
              {
                  nAskedForBlocks++;

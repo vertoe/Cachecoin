@@ -1111,7 +1111,10 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
             int factor = (nActualSpacing / nStakeTargetSpacing);
             factor /= 3;
             factor--;
-            bnNew /=  factor;
+            bnNew /= factor;
+            bnNew *= factor;
+            if (bnNew > bnTargetLimit)
+                bnNew = bnTargetLimit;
             return bnNew.GetCompact();
         }else{
             nTargetSpacing = fProofOfStake? nStakeTargetSpacing : min(nTargetSpacingWorkMax, (int64) nStakeTargetSpacing * (1 + pindexLast->nHeight - pindexPrev->nHeight));

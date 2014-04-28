@@ -1,27 +1,11 @@
-
-CACHoin very-unofficial development tree
+CACHoin official development tree
 ---------------------------------------
-
-Maintained by bitcointalk.org user WindMaster
-
-This is not the official CACHoin client repository, but rather a fork I
-created to continue development and promotion of CACHoin after the original
-developer, GitHub user pocopoco, stopped actively participating in the
-community immediately after launch of the coin.  The official CACHoin
-repository is located at:
 
 https://github.com/kalgecin/CACHeCoin
 
 
-CACHoin - a hybrid scrypt PoW + PoS based cryptocurrency forked from NovaCoin
-by GitHub user pocopoco.
-
-
-NOTE: All of the information below is as cloned from pocopoco's
-repository.  Much of it is known to not be correct for CACHoin, and
-is simply a copy of what NovaCoin's README file contained, as
-pocopoco didn't bother changing anything.  These will be corrected
-and updated as correct information is determined:
+CACHeCoin - a hybrid scrypt PoW + PoS based cryptocurrency forked from NovaCoin
+by GitHub user kalgecin.
 
 
 * Uses the scrypt + chacha20/8 (N,1,1) hashing algorithm.

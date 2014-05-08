@@ -21,5 +21,6 @@ build
 README.md
 cachecoin-qt
 src/cachecoind
+src/nbproject/
 *cscope*
 src/nbproject/

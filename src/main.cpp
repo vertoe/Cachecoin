@@ -15,7 +15,7 @@
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 
-#define POWFIX_DATE 1598027600
+#define POWFIX_DATE 1401530000
 
 using namespace std;
 using namespace boost;

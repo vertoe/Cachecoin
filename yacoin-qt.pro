@@ -2,7 +2,7 @@ TEMPLATE = app
 TARGET = cachecoin-qt
 VERSION = 0.7.2
 INCLUDEPATH += src src/json src/qt
-DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE SCRYPT_CHACHA SCRYPT_KECCAK512
+DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE BOOST_THREAD_PROVIDES_GENERIC_SHARED_MUTEX_ON_WIN __NO_SYSTEM_INCLUDES
 CONFIG += no_include_pwd
 CONFIG += thread
 
@@ -15,7 +15,22 @@ CONFIG += thread
 # Dependency library locations can be customized with:
 #    BOOST_INCLUDE_PATH, BOOST_LIB_PATH, BDB_INCLUDE_PATH,
 #    BDB_LIB_PATH, OPENSSL_INCLUDE_PATH and OPENSSL_LIB_PATH respectively
-
+windows:LIBS += -lshlwapi
+LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
+LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX
+windows:LIBS += -lws2_32 -lole32 -loleaut32 -luuid -lgdi32
+LIBS += -lboost_system-mgw46-mt-sd-1_54 -lboost_filesystem-mgw46-mt-sd-1_54 -lboost_program_options-mgw46-mt-sd-1_54 -lboost_thread-mgw46-mt-sd-1_54
+BOOST_LIB_SUFFIX=-mgw46-mt-sd-1_54
+BOOST_INCLUDE_PATH=C:/deps/boost
+BOOST_LIB_PATH=C:/deps/boost/stage/lib
+BDB_INCLUDE_PATH=c:/deps/db/build_unix
+BDB_LIB_PATH=c:/deps/db/build_unix
+QRENCODE_INCLUDE_PATH=C:/deps/libqrencode/
+QRENCODE_LIB_PATH=C:/deps/libqrencode/.libs
+MINIUPNPC_INCLUDE_PATH=C:/deps/
+MINIUPNPC_LIB_PATH=C:/deps/miniupnpc
+OPENSSL_INCLUDE_PATH=c:/deps/ssl/include
+OPENSSL_LIB_PATH=c:/deps/ssl
 OBJECTS_DIR = build
 MOC_DIR = build
 UI_DIR = build

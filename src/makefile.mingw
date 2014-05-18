@@ -14,7 +14,7 @@ INCLUDEPATHS= \
  -I"$(CURDIR)/scrypt-jane" \
  -I"c:/deps/boost" \
  -I"c:/deps/db/build_unix" \
- -I"c:/deps/ssl"	
+ -I"c:/deps/openssl"	
 
 LIBPATHS= \
  -L"c:/deps/boost/stage/lib" \

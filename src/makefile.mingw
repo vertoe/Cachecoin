@@ -7,19 +7,19 @@ CXX ?= g++
 USE_UPNP:=-
 USE_IPV6:=1
 
-BOOST_SUFFIX?=-mgw46-mt-sd-1_54
+BOOST_SUFFIX?=-mgw48-mt-s-1_55
 
 INCLUDEPATHS= \
  -I"$(CURDIR)" \
  -I"$(CURDIR)/scrypt-jane" \
- -I"c:/deps/boost_1_54_0" \
- -I"c:/deps/db-4.8.30.NC/build_unix" \
- -I"c:/deps/openssl-1.0.1e"	
+ -I"c:/deps/boost" \
+ -I"c:/deps/db/build_unix" \
+ -I"c:/deps/openssl"	
 
 LIBPATHS= \
- -L"c:/deps/boost_1_54_0/stage/lib" \
- -L"c:/deps/db-4.8.30.NC/build_unix" \
- -L"c:/deps/openssl-1.0.1e"
+ -L"c:/deps/boost/stage/lib" \
+ -L"c:/deps/db/build_unix" \
+ -L"c:/deps/openssl"
 
 LIBS= \
  -l boost_system$(BOOST_SUFFIX) \
@@ -39,7 +39,7 @@ DEFS= \
 	-DSCRYPT_CHACHA \
 	-DSCRYPT_KECCAK512 \
 	-DSCRYPT_CHOOSE_COMPILETIME \
-	-DO2
+	-DO2 -D__NO_SYSTEM_INCLUDES
 
 DEBUGFLAGS=-g
 
@@ -64,8 +64,8 @@ ifndef USE_UPNP
 	override USE_UPNP = -
 endif
 ifneq (${USE_UPNP}, -)
- INCLUDEPATHS += -I"c:/deps/miniupnpc-1.8"
- LIBPATHS += -L"c:/deps/miniupnpc-1.8"
+ INCLUDEPATHS += -I"c:/deps/miniupnpc"
+ LIBPATHS += -L"c:/deps/miniupnpc"
  LIBS += -l miniupnpc -l iphlpapi
  DEFS += -DSTATICLIB -DUSE_UPNP=$(USE_UPNP)
 endif
@@ -134,7 +134,7 @@ all: cachecoind.exe
 test check: test_cachecoin.exe FORCE
 	test_cachecoin.exe
 
-DEFS += $(addprefix -I,c:/deps/openssl-1.0.1e/include)
+DEFS += $(addprefix -I,c:/deps/openssl/include)
 
 obj/scrypt-jane.o: scrypt-jane/scrypt-jane.c 
 	g++ -c -frandom-seed=$@ $(CFLAGS) -MMD -o $@ $<
@@ -154,7 +154,7 @@ obj-test/%.o: test/%.cpp $(HEADERS)
 	g++ -c $(TESTDEFS) $(CFLAGS) -o $@ $<
 
 test_cachecoin.exe: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
-	g++ $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ -lboost_unit_test_framework $(LIBS)
+	g++ $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ -lboost_unit_test_framework$(BOOST_SUFFIX) $(LIBS)
 
 clean:
 	-del /Q cachecoind test_cachecoin

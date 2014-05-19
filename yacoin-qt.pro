@@ -18,7 +18,7 @@ CONFIG += thread
 windows:LIBS += -lshlwapi
 LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
 LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX -L/c/deps/qrencode/.libs
-windows:LIBS += -lws2_32 -lole32 -loleaut32 -luuid -lgdi32
+windows:{LIBS += -lws2_32 -lole32 -loleaut32 -luuid -lgdi32
 LIBS += -lboost_system-mgw48-mt-s-1_55 -lboost_filesystem-mgw48-mt-s-1_55 -lboost_program_options-mgw48-mt-s-1_55 -lboost_thread-mgw48-mt-s-1_55
 BOOST_LIB_SUFFIX=-mgw48-mt-s-1_55
 BOOST_INCLUDE_PATH=/c/deps/boost
@@ -31,6 +31,7 @@ MINIUPNPC_INCLUDE_PATH=/c/deps/
 MINIUPNPC_LIB_PATH=/c/deps/miniupnpc
 OPENSSL_INCLUDE_PATH=/c/deps/openssl/include
 OPENSSL_LIB_PATH=/c/deps/openssl
+}
 OBJECTS_DIR = build
 MOC_DIR = build
 UI_DIR = build

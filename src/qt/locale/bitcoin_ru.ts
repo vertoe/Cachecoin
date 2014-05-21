@@ -1406,8 +1406,8 @@ Address: %4
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to send the payment to  (e.g. Y9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</source>
-        <translation>Адрес получателя платежа (например Y9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</translation>
+        <source>The address to send the payment to  (e.g. C9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</source>
+        <translation>Адрес получателя платежа (например C9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1436,8 +1436,8 @@ Address: %4
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a CACHeCoin address (e.g. Y9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</source>
-        <translation>Введите CACHeCoin-адрес (например Y9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</translation>
+        <source>Enter a CACHeCoin address (e.g. C9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</source>
+        <translation>Введите CACHeCoin-адрес (например C9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</translation>
     </message>
 </context>
 <context>
@@ -1460,8 +1460,8 @@ Address: %4
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to sign the message with (e.g. Y9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</source>
-        <translation>Адрес, которым вы хотите подписать сообщение  (напр. Y9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</translation>
+        <source>The address to sign the message with (e.g. C9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</source>
+        <translation>Адрес, которым вы хотите подписать сообщение  (напр. C9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1524,8 +1524,8 @@ Address: %4
     </message>
     <message>
         <location line="+21"/>
-        <source>The address the message was signed with (e.g. Y9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</source>
-        <translation>Адрес, которым было подписано сообщение (напр. Y9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</translation>
+        <source>The address the message was signed with (e.g. C9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</source>
+        <translation>Адрес, которым было подписано сообщение (напр. C9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</translation>
     </message>
     <message>
         <location line="+40"/>
@@ -1540,8 +1540,8 @@ Address: %4
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a CACHeCoin address (e.g. Y9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</source>
-        <translation>Введите адрес CACHeCoin (напр. Y9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</translation>
+        <source>Enter a CACHeCoin address (e.g. C9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</source>
+        <translation>Введите адрес CACHeCoin (напр. C9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</translation>
     </message>
     <message>
         <location line="-2"/>

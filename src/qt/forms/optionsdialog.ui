@@ -343,7 +343,7 @@
          </item>
         </layout>
        </item>
-       <item>
+        <item>
         <widget class="QCheckBox" name="displayAddresses">
          <property name="toolTip">
           <string>Whether to show CACHeCoin addresses in the transaction list or not.</string>
@@ -352,6 +352,16 @@
           <string>&amp;Display addresses in transaction list</string>
          </property>
         </widget>
+       </item>
+       <item>
+		<widget class="QCheckBox" name="coinControlFeatures">
+			<property name="toolTip">
+				<string>Whether to show coin control features or not.</string>
+			</property>
+			<property name="text">
+				<string>Display coin &amp;control features (experts only!)</string>
+			</property>
+		</widget>
        </item>
        <item>
         <spacer name="verticalSpacer_Display">

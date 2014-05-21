@@ -31,6 +31,7 @@ public:
         DetachDatabases,   // bool
         CPUMining,         // bool
         Language,          // QString
+        CoinControlFeatures, // bool
         OptionIDRowCount,
     };
 
@@ -49,6 +50,7 @@ public:
     bool getMinimizeOnClose();
     int getDisplayUnit();
     bool getDisplayAddresses();
+    bool getCoinControlFeatures();
     QString getLanguage() { return language; }
 
 private:
@@ -56,10 +58,13 @@ private:
     bool bDisplayAddresses;
     bool fMinimizeToTray;
     bool fMinimizeOnClose;
+    bool fCoinControlFeatures;
     QString language;
 
 signals:
     void displayUnitChanged(int unit);
+    void transactionFeeChanged(qint64);
+    void coinControlFeaturesChanged(bool);
 };
 
 #endif // OPTIONSMODEL_H

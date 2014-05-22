@@ -13,6 +13,7 @@ src/build.h
 Makefile
 Makefile.*
 release/
+debug/
 *.Debug
 *.Release
 #resources cpp

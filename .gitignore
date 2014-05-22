@@ -11,6 +11,10 @@ src/build.h
 #compilation and Qt preprocessor part
 *.qm
 Makefile
+Makefile.*
+release/
+*.Debug
+*.Release
 #resources cpp
 qrc_*.cpp
 #qt creator

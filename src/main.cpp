@@ -2923,15 +2923,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
             return false;
         }
         // Start disconnecting older client versions from Thu Jan 30 05:40:00 MSK 2014
-        if(currentTimestamp >= 1391046000)
-        {
-         if(pfrom->nVersion < NOBLKS2014_VERSION_END)
-             badVersion = true;
-        }
-        else if(currentTimestamp >= 1393140000){
-            if(pfrom->nVersion < NOBLKS2014_2_VERSION_END)
-                badVersion = true;
-        }else if(currentTimestamp >= POWFIX_DATE){
+        if(currentTimestamp >= POWFIX_DATE){
             if(pfrom->nVersion < NOBLKS2014_3_VERSION_END)
                 badVersion = true;
         }
@@ -3357,7 +3349,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
                 pindex = pindex->pnext;
         }
 
-        vector<CBlockHeader> vHeaders;
+        vector<CBlock> vHeaders;
         int nLimit = 2000;
         printf("getheaders %d to %s\n", (pindex ? pindex->nHeight : -1), hashStop.ToString().substr(0,20).c_str());
         for (; pindex; pindex = pindex->pnext)

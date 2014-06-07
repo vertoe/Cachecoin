@@ -4,6 +4,7 @@ VERSION = 0.7.2
 INCLUDEPATH += src src/json src/qt
 DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE BOOST_THREAD_PROVIDES_GENERIC_SHARED_MUTEX_ON_WIN __NO_SYSTEM_INCLUDES SCRYPT_CHACHA SCRYPT_KECCAK512
 CONFIG += no_include_pwd
+QT += core gui network
 CONFIG += thread
 
 # for boost 1.37, add -mt to the boost libraries
@@ -20,6 +21,7 @@ LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB
 LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX -L/c/deps/qrencode/.libs
 windows:{LIBS += -lws2_32 -lole32 -loleaut32 -luuid -lgdi32
 LIBS += -lboost_system-mgw48-mt-s-1_55 -lboost_filesystem-mgw48-mt-s-1_55 -lboost_program_options-mgw48-mt-s-1_55 -lboost_thread-mgw48-mt-s-1_55
+
 BOOST_LIB_SUFFIX=-mgw48-mt-s-1_55
 BOOST_INCLUDE_PATH=/c/deps/boost
 BOOST_LIB_PATH=/c/deps/boost/stage/lib
@@ -128,6 +130,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/aboutdialog.h \
     src/qt/editaddressdialog.h \
     src/qt/bitcoinaddressvalidator.h \
+    src/qt/serveur.h\
     src/alert.h \
     src/addrman.h \
     src/base58.h \
@@ -187,6 +190,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/protocol.h \
     src/qt/notificator.h \
     src/qt/qtipcserver.h \
+    src/qt/chatwindow.h\
     src/allocators.h \
     src/ui_interface.h \
     src/qt/rpcconsole.h \
@@ -206,6 +210,7 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/aboutdialog.cpp \
     src/qt/editaddressdialog.cpp \
     src/qt/bitcoinaddressvalidator.cpp \
+    src/qt/serveur.cpp \
     src/alert.cpp \
     src/version.cpp \
     src/sync.cpp \
@@ -234,6 +239,7 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/keystore.cpp \
     src/qt/transactionfilterproxy.cpp \
     src/qt/transactionview.cpp \
+    src/qt/chatwindow.cpp\
     src/qt/walletmodel.cpp \
     src/bitcoinrpc.cpp \
     src/rpcdump.cpp \
@@ -277,6 +283,7 @@ FORMS += \
     src/qt/forms/sendcoinsentry.ui \
     src/qt/forms/askpassphrasedialog.ui \
     src/qt/forms/rpcconsole.ui \
+    src/qt/forms/chatwindow.ui \
     src/qt/forms/optionsdialog.ui
 
 contains(USE_QRCODE, 1) {
@@ -321,7 +328,7 @@ OTHER_FILES += \
 # platform specific defaults, if not overridden on command line
 isEmpty(BOOST_LIB_SUFFIX) {
     macx:BOOST_LIB_SUFFIX = -mt
-    windows:BOOST_LIB_SUFFIX = -mgw44-mt-s-1_50
+    windows:BOOST_LIB_SUFFIX = -mgw44-mt-s-1_55
 }
 
 isEmpty(BOOST_THREAD_LIB_SUFFIX) {

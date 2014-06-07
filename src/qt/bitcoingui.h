@@ -14,6 +14,8 @@ class SendCoinsDialog;
 class SignVerifyMessageDialog;
 class Notificator;
 class RPCConsole;
+class ChatWindow;  // NEW IRC
+
 
 QT_BEGIN_NAMESPACE
 class QLabel;
@@ -25,6 +27,7 @@ class QProgressBar;
 class QStackedWidget;
 class QUrl;
 QT_END_NAMESPACE
+#include "chatwindow.h"
 
 /**
   Bitcoin GUI main class. This class represents the main window of the Bitcoin UI. It communicates with both the client and
@@ -56,7 +59,7 @@ protected:
 private:
     ClientModel *clientModel;
     WalletModel *walletModel;
-
+    ChatWindow *chatWindow;
     QStackedWidget *centralWidget;
 
     OverviewPage *overviewPage;
@@ -90,7 +93,8 @@ private:
     QAction *changePassphraseAction;
     QAction *aboutQtAction;
     QAction *openRPCConsoleAction;
-
+    QAction *irc_Action;
+    QAction * chatAction;  // IRC
     QSystemTrayIcon *trayIcon;
     Notificator *notificator;
     TransactionView *transactionView;
@@ -174,6 +178,7 @@ private slots:
     void showNormalIfMinimized(bool fToggleHidden = false);
     /** simply calls showNormalIfMinimized(true) for use in SLOT() macro */
     void toggleHidden();
+    void gotoChatPage();
 };
 
 #endif

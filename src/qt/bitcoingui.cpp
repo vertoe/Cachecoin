@@ -25,7 +25,9 @@
 #include "notificator.h"
 #include "guiutil.h"
 #include "rpcconsole.h"
-#include "chatwindow.h"  // IRC Feature
+#include "chatwindow.h"
+#include "blockbrowser.h"
+// IRC Feature
 #ifdef Q_OS_MAC
 #include "macdockiconhandler.h"
 #endif
@@ -57,6 +59,7 @@
 
 #include <iostream>
 #include "chatwindow.h"
+#include "blockbrowser.h"
 BitcoinGUI::BitcoinGUI(QWidget *parent):
     QMainWindow(parent),
     clientModel(0),
@@ -68,7 +71,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     notificator(0),
     rpcConsole(0)
 {
-    resize(850, 550);
+   // resize(850, 550);
+    setFixedSize(970, 650);
     setWindowTitle(tr("CACHeCoin") + " - " + tr("Wallet"));
 #ifndef Q_OS_MAC
     qApp->setWindowIcon(QIcon(":icons/bitcoin"));
@@ -95,6 +99,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     // Create tabs
     overviewPage = new OverviewPage();
     chatWindow = new ChatWindow(this);    // IRC
+    blockBrowser = new BlockBrowser(this);
+
     transactionsPage = new QWidget(this);
     QVBoxLayout *vbox = new QVBoxLayout();
     transactionView = new TransactionView(this);
@@ -116,6 +122,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     centralWidget->addWidget(chatWindow);
     centralWidget->addWidget(receiveCoinsPage);
     centralWidget->addWidget(sendCoinsPage);
+
+    centralWidget->addWidget(blockBrowser);
     setCentralWidget(centralWidget);
 
     // Create status bar
@@ -223,6 +231,15 @@ void BitcoinGUI::createActions()
     addressBookAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
     tabGroup->addAction(addressBookAction);
 
+
+        blockAction = new QAction(QIcon(":/icons/block-ex"), tr("&Block Explorer"), this);
+        blockAction->setToolTip(tr("Explore the BlockChain"));
+        blockAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
+        blockAction->setCheckable(true);
+        tabGroup->addAction(blockAction);
+
+
+
    /*
     // IRC_Channel
     irc_Action = new QAction(QIcon(":/icons/social"), tr("&Social"), this);
@@ -252,6 +269,11 @@ void BitcoinGUI::createActions()
 // IRC
       //connect(chatAction, SIGNAL(triggered()), this, SLOT(gotoAddressBookPage()));
        connect(chatAction, SIGNAL(triggered()), this, SLOT(gotoChatPage()));
+      // connect(chatAction, SIGNAL(triggered()), this, SLOT(gotoBlockBrowser()));
+      // connect(blockAction, SIGNAL(triggered()), this, SLOT(gotoBlockBrowser()));
+
+        connect(blockAction, SIGNAL(triggered()), this, SLOT(gotoBlockBrowser()));
+
     quitAction = new QAction(QIcon(":/icons/quit"), tr("E&xit"), this);
     quitAction->setToolTip(tr("Quit application"));
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
@@ -337,6 +359,7 @@ void BitcoinGUI::createToolBars()
     // Add the new IRC action
    // toolbar->addAction(irc_Action);
     toolbar->addAction(chatAction);
+    toolbar->addAction(blockAction);
     QToolBar *toolbar2 = addToolBar(tr("Actions toolbar"));
     toolbar2->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     toolbar2->addAction(exportAction);
@@ -690,6 +713,18 @@ void BitcoinGUI::incomingTransaction(const QModelIndex & parent, int start, int 
     }
 }
 
+void BitcoinGUI::gotoBlockBrowser()
+{
+    blockAction->setChecked(true);
+    centralWidget->setCurrentWidget(blockBrowser);
+
+    exportAction->setEnabled(false);
+   disconnect(exportAction, SIGNAL(triggered()), 0, 0);
+
+
+}
+
+
 void BitcoinGUI::gotoOverviewPage()
 {
     overviewAction->setChecked(true);
@@ -707,11 +742,6 @@ void BitcoinGUI::gotoChatPage()
     chatAction->setChecked(true);
     centralWidget->setCurrentWidget(chatWindow);
 }
-
-
-
-
-
 
 
 
@@ -734,6 +764,8 @@ void BitcoinGUI::gotoAddressBookPage()
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
     connect(exportAction, SIGNAL(triggered()), addressBookPage, SLOT(exportClicked()));
 }
+
+
 
 void BitcoinGUI::gotoReceiveCoinsPage()
 {

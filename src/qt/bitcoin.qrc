@@ -41,6 +41,7 @@
         <file alias="qrcode">res/icons/qrcode.png</file>
         <file alias="debugwindow">res/icons/debugwindow.png</file>
         <file alias="social">res/icons/social.png</file>
+        <file alias="block-ex">res/icons/block-ex.png</file>
     </qresource>
     <qresource prefix="/images">
         <file alias="about">res/images/about.png</file>

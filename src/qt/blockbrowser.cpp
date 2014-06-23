@@ -34,10 +34,11 @@ double getBlockHardness(int height)
 
 int getBlockHashrate(int height)
 {
-    int lookup = height;
-
-    double timeDiff = getBlockTime(height) - getBlockTime(1);
-    double timePerBlock = timeDiff / lookup;
+    int tHeight = height - 10;
+    tHeight = tHeight > 0 ? tHeight : 1;
+    
+    double timeDiff = getBlockTime(height) - getBlockTime(tHeight);
+    double timePerBlock = timeDiff / (height - tHeight);
 
     return (boost::int64_t)(((double)getBlockHardness(height) * pow(2.0, 32)) / timePerBlock);
 }

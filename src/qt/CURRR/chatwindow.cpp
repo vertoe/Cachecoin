@@ -36,7 +36,7 @@ ui->lineEdit->setDisabled(true);
 
 
 
-        connect(ui->disconnect, SIGNAL(clicked()), this, SLOT(disconnectFromServer()));
+    connect(ui->disconnect, SIGNAL(clicked()), this, SLOT(disconnectFromServer()));
         connect(ui->tab, SIGNAL(currentChanged(int)), this, SLOT(tabChanged(int)) );
         connect(ui->tab, SIGNAL(tabCloseRequested(int)), this, SLOT(tabClosing(int)) );
 
@@ -46,8 +46,8 @@ ui->lineEdit->setDisabled(true);
 
 void ChatWindow::tabChanged(int index)
 {
-      if(index!=0 && joining == false)
-       currentTab()->updateUsersList(ui->tab->tabText(index));
+	if(index!=0 && joining == false)
+		currentTab()->updateUsersList(ui->tab->tabText(index));
 }
 
 void ChatWindow::tabClosing(int index)
@@ -62,6 +62,12 @@ void ChatWindow::tabClosing(int index)
 
 
 }
+/*
+void ChatWindow::tabRemoved(int index)
+{
+	currentTab()->leave(ui->tab->tabText(index));
+}
+*/
 
 void ChatWindow::disconnectFromServer() {
 
@@ -144,7 +150,8 @@ void ChatWindow::tabJoining()
 	joining=false;
          ui->lineEdit->setEnabled(true);
         ui->tab->setTabsClosable(true);
-
+        // ui->tab->tabCloseRequested(1);
+        // ui->tab->
 
 
 }
@@ -174,7 +181,7 @@ void ChatWindow::connecte()
     serveur->port=6667;
     serveur->affichage=textEdit;
     serveur->tab=ui->tab;
-    serveur->userList=ui->userView;
+	serveur->userList=ui->userView;
 	serveur->parent=this;
 
 	textEdit->setReadOnly(true);
@@ -182,10 +189,7 @@ void ChatWindow::connecte()
 	connect(serveur, SIGNAL(joinTab()),this, SLOT(tabJoined() ));
 	connect(serveur, SIGNAL(tabJoined()),this, SLOT(tabJoining() ));
 
-   // serveur->connectToHost("irc.freenode.net",6667);
-
-        serveur->connectToHost("irc.freenode.net",6667);
-        //333
+    serveur->connectToHost("irc.freenode.net",6667);
 
 	ui->tab->setCurrentIndex(ui->tab->count()-1);
 

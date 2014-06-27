@@ -34,11 +34,10 @@ double getBlockHardness(int height)
 
 int getBlockHashrate(int height)
 {
-    int tHeight = height - 10;
-    tHeight = tHeight > 0 ? tHeight : 1;
-    
-    double timeDiff = getBlockTime(height) - getBlockTime(tHeight);
-    double timePerBlock = timeDiff / (height - tHeight);
+    int lookup = height;
+
+    double timeDiff = getBlockTime(height) - getBlockTime(1);
+    double timePerBlock = timeDiff / lookup;
 
     return (boost::int64_t)(((double)getBlockHardness(height) * pow(2.0, 32)) / timePerBlock);
 }
@@ -89,7 +88,7 @@ std::string getBlockMerkle(int Height)
 
     CBlock block;
     CBlockIndex* pblockindex = mapBlockIndex[hash];
-    return pblockindex->hashMerkleRoot.ToString().substr(0,10).c_str();
+    return pblockindex->hashMerkleRoot.ToString();//.substr(0,10).c_str();
 }
 
 int getBlocknBits(int Height)
@@ -211,7 +210,7 @@ std::string getOutputs(std::string txid)
         str.append(lol7);
         str.append(": ");
         str.append(amount);
-        str.append(" SC");
+        str.append(" CACH");
         str.append("\n");
     }
 
@@ -255,7 +254,7 @@ std::string getInputs(std::string txid)
         str.append(lol6);
         str.append(": ");
         str.append(amount);
-        str.append("SC");
+        str.append("CACH");
         str.append("\n");
     }
 
@@ -301,6 +300,7 @@ double getTxFees(std::string txid)
 
     double value0 = 0;
     double buffer0 = 0;
+    double swp=0;
     for (unsigned int i = 0; i < tx.vin.size(); i++)
     {
         uint256 hash0;
@@ -313,6 +313,7 @@ double getTxFees(std::string txid)
         CDataStream ssTx(SER_NETWORK, PROTOCOL_VERSION);
         ssTx << wtxPrev;
         const CScript target = wtxPrev.vout[vin.prevout.n].scriptPubKey;
+        swp =convertCoins(getInputValue(wtxPrev, target));
         buffer0 = value0 + convertCoins(getInputValue(wtxPrev, target));
         value0 = buffer0;
     }

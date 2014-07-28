@@ -16,7 +16,7 @@
 #include <boost/filesystem/fstream.hpp>
 
 #define POWFIX_DATE 1401530000
-
+#define RETARGET_FIX_DATE 1408060800 //15 Aug 2014 00:00 GMT
 using namespace std;
 using namespace boost;
 
@@ -1038,7 +1038,7 @@ int64 GetProofOfStakeReward(int64 nCoinAge)
     return nSubsidy;
 }
 
-static const int64 nTargetTimespan = 7 * 24 * 60 * 60;  // one week
+static int64 nTargetTimespan = 7 * 24 * 60 * 60;  // one week
 static const int64 nTargetSpacingWorkMax = 12 * nStakeTargetSpacing; // 2-hour
 
 //
@@ -1119,7 +1119,11 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
         }else{
             nTargetSpacing = fProofOfStake? nStakeTargetSpacing : min(nTargetSpacingWorkMax, (int64) nStakeTargetSpacing * (1 + pindexLast->nHeight - pindexPrev->nHeight));
         }
-
+        
+	if(pindexPrev->GetBlockTime() < RETARGET_FIX_DATE){
+		nTargetTimespan = 8 * 60 * 60;  // 8hrs
+	}
+	
     int64 nInterval = nTargetTimespan / nTargetSpacing;
     bnNew *= ((nInterval - 1) * nTargetSpacing + nActualSpacing + nActualSpacing);
     bnNew /= ((nInterval + 1) * nTargetSpacing);

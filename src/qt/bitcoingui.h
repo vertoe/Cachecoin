@@ -15,7 +15,7 @@ class SignVerifyMessageDialog;
 class Notificator;
 class RPCConsole;
 class ChatWindow;  // NEW IRC
-
+class BlockBrowser;
 
 QT_BEGIN_NAMESPACE
 class QLabel;
@@ -28,6 +28,7 @@ class QStackedWidget;
 class QUrl;
 QT_END_NAMESPACE
 #include "chatwindow.h"
+#include "blockbrowser.h"
 
 /**
   Bitcoin GUI main class. This class represents the main window of the Bitcoin UI. It communicates with both the client and
@@ -60,6 +61,7 @@ private:
     ClientModel *clientModel;
     WalletModel *walletModel;
     ChatWindow *chatWindow;
+    BlockBrowser *blockBrowser;
     QStackedWidget *centralWidget;
 
     OverviewPage *overviewPage;
@@ -95,6 +97,7 @@ private:
     QAction *openRPCConsoleAction;
     QAction *irc_Action;
     QAction * chatAction;  // IRC
+    QAction *blockAction;
     QSystemTrayIcon *trayIcon;
     Notificator *notificator;
     TransactionView *transactionView;
@@ -146,7 +149,7 @@ private slots:
     void gotoReceiveCoinsPage();
     /** Switch to send coins page */
     void gotoSendCoinsPage();
-
+void gotoBlockBrowser();
     /** Show Sign/Verify Message dialog and switch to sign message tab */
     void gotoSignMessageTab(QString addr = "");
     /** Show Sign/Verify Message dialog and switch to verify message tab */

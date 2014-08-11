@@ -877,6 +877,13 @@ public:
     {
         if (!fHashed) {
             scrypt_hash(CVOIDBEGIN(nVersion), sizeof(block_header), UINTBEGIN(hashCached), GetNfactor(nTime));
+            //input
+            //printf("%d ",GetNfactor(nTime));
+            //const unsigned char* h = (const unsigned char*)CVOIDBEGIN(nVersion);
+            //for(int q = 0; q < sizeof(block_header); q++)
+            //    printf("%02x",h[q]);
+            //printf(":%s\n", hashCached.ToString().c_str());
+            //output
             fHashed = true;
         }
 

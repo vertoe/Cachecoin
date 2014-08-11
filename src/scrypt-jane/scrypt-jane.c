@@ -166,6 +166,7 @@ scrypt(const uint8_t *password, size_t password_len, const uint8_t *salt, size_t
 	p = (1 << pfactor);
 
 	chunk_bytes = SCRYPT_BLOCK_BYTES * r * 2;
+    
 	V = scrypt_alloc((uint64_t)N * chunk_bytes);
 	YX = scrypt_alloc((p + 1) * chunk_bytes);
 

@@ -23,12 +23,11 @@ ChatWindow::ChatWindow(QWidget *parent)
     ui->setupUi(this);
     setFixedSize(750,600);
     ui->splitter->hide();
-ui->lineEdit->setDisabled(true);
 
 	connect(ui->buttonConnect, SIGNAL(clicked()), this, SLOT(connecte()));
 
 	connect(ui->actionQuit, SIGNAL(triggered()), this, SLOT(close()));
-        //connect(ui->actionCloseTab, SIGNAL(triggered()), this, SLOT(closeTab()));
+	connect(ui->actionCloseTab, SIGNAL(triggered()), this, SLOT(closeTab()));
 
 	connect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(sendCommande()));
 
@@ -36,9 +35,9 @@ ui->lineEdit->setDisabled(true);
 
 
 
-        connect(ui->disconnect, SIGNAL(clicked()), this, SLOT(disconnectFromServer()));
-        connect(ui->tab, SIGNAL(currentChanged(int)), this, SLOT(tabChanged(int)) );
-        connect(ui->tab, SIGNAL(tabCloseRequested(int)), this, SLOT(tabClosing(int)) );
+    connect(ui->disconnect, SIGNAL(clicked()), this, SLOT(disconnectFromServer()));
+	connect(ui->tab, SIGNAL(currentChanged(int)), this, SLOT(tabChanged(int)) );
+	connect(ui->tab, SIGNAL(tabCloseRequested(int)), this, SLOT(tabClosing(int)) );
 
 }
 
@@ -46,22 +45,18 @@ ui->lineEdit->setDisabled(true);
 
 void ChatWindow::tabChanged(int index)
 {
-      if(index!=0 && joining == false)
-       currentTab()->updateUsersList(ui->tab->tabText(index));
+	if(index!=0 && joining == false)
+		currentTab()->updateUsersList(ui->tab->tabText(index));
 }
 
 void ChatWindow::tabClosing(int index)
 {
-    if (index==0)
-    {
-    disconnectFromServer();
-    }
-    else {
-    currentTab()->leave(ui->tab->tabText(index));
-    }
-
-
+	currentTab()->leave(ui->tab->tabText(index));
 }
+/*void ChatWindow::tabRemoved(int index)
+{
+	currentTab()->leave(ui->tab->tabText(index));
+}*/
 
 void ChatWindow::disconnectFromServer() {
 
@@ -129,7 +124,7 @@ void ChatWindow::sendCommande()
 	}
 	else
 	{
-        currentTab()->sendData(currentTab()->parseCommande(ui->lineEdit->text()) );
+		currentTab()->sendData(currentTab()->parseCommande(ui->lineEdit->text()) );
 	}
 	ui->lineEdit->clear();
 	ui->lineEdit->setFocus();
@@ -142,16 +137,10 @@ void ChatWindow::tabJoined()
 void ChatWindow::tabJoining()
 {
 	joining=false;
-         ui->lineEdit->setEnabled(true);
-        ui->tab->setTabsClosable(true);
-
-
-
 }
 
 void ChatWindow::connecte()
 {
-
 
     ui->splitter->show();
 	Serveur *serveur=new Serveur;
@@ -159,8 +148,6 @@ void ChatWindow::connecte()
     ui->hide3->hide();
 
     ui->tab->addTab(textEdit,"Console/PM");
-
-
     ui->tab->setTabToolTip(ui->tab->count()-1,"irc.freenode.net");
     // current tab is now the last, therefore remove all but the last
     for (int i = ui->tab->count(); i > 1; --i) {
@@ -172,9 +159,9 @@ void ChatWindow::connecte()
 	serveur->pseudo=ui->editPseudo->text();
     serveur->serveur="irc.freenode.net";
     serveur->port=6667;
-    serveur->affichage=textEdit;
+	serveur->affichage=textEdit;
     serveur->tab=ui->tab;
-    serveur->userList=ui->userView;
+	serveur->userList=ui->userView;
 	serveur->parent=this;
 
 	textEdit->setReadOnly(true);
@@ -182,14 +169,9 @@ void ChatWindow::connecte()
 	connect(serveur, SIGNAL(joinTab()),this, SLOT(tabJoined() ));
 	connect(serveur, SIGNAL(tabJoined()),this, SLOT(tabJoining() ));
 
-   // serveur->connectToHost("irc.freenode.net",6667);
-
-        serveur->connectToHost("irc.freenode.net",6667);
-        //333
+    serveur->connectToHost("irc.freenode.net",6667);
 
 	ui->tab->setCurrentIndex(ui->tab->count()-1);
-
-
 }
 
 void ChatWindow::closeEvent(QCloseEvent *event)

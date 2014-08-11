@@ -18,15 +18,16 @@
 #include "chatwindow.h"
         QStringList users;
         bool delist = true;
-        ChatWindow *ch;
 Serveur::Serveur()
 {
 	connect(this, SIGNAL(readyRead()), this, SLOT(readServeur()));
 	connect(this, SIGNAL(connected()), this, SLOT(connected()));
     connect(this, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(errorSocket(QAbstractSocket::SocketError)));
 
-        updateUsers=false;
+	updateUsers=false;
 }
+
+
 
 
 void Serveur::errorSocket(QAbstractSocket::SocketError error)
@@ -59,15 +60,15 @@ void Serveur::connected()
 
 void Serveur::joins()
 {
-
-        join("#cach");
+    join("#silkcoin");
         //join("#cachecoin");
-
 }
 
 void Serveur::readServeur()
 {
         QString message=QString::fromUtf8(this->readAll());
+
+
 	QString currentChan=tab->tabText(tab->currentIndex());
 
 	if(message.startsWith("PING :"))
@@ -88,32 +89,29 @@ void Serveur::readServeur()
 	{
 		updateUsersList("",message);
 	}
+
     QStringList list=message.split("\r\n");
-
-
         foreach(QString msg,list)
         {
             if(msg.contains(QRegExp(":([a-zA-Z0-9]+)\\![~a-zA-Z0-9]+@[a-zA-Z0-9\\/\\.-]+ PRIVMSG ([a-zA-Z0-9\\#]+) :(.+)")))
             {
                 QRegExp reg(":([a-zA-Z0-9]+)\\![~a-zA-Z0-9]+@[a-zA-Z0-9\\/\\.-]+ PRIVMSG ([a-zA-Z0-9\\#]+) :(.+)");
                 QString msg2=msg;
-                ecrire(msg.replace(reg,"\\2 <b>&lt;\\1&gt;</b> \\3"),"",msg2.replace(reg,"\\2 <\\1> \\3"));
+                    ecrire(msg.replace(reg,"\\2 <b>&lt;\\1&gt;</b> \\3"),"",msg2.replace(reg,"\\2 <\\1> \\3"));
             }
             else if(msg.contains(QRegExp(":([a-zA-Z0-9]+)\\![~a-zA-Z0-9]+@[a-zA-Z0-9\\/\\.-]+ JOIN ([a-zA-Z0-9\\#]+)")))
             {
                 QRegExp reg(":([a-zA-Z0-9]+)\\![~a-zA-Z0-9]+@[a-zA-Z0-9\\/\\.-]+ JOIN ([a-zA-Z0-9\\#]+)");
                 QString msg2=msg;
                 ecrire(msg.replace(reg,"\\2 <i>-> \\1 join \\2</i><br />"),"",msg2.replace(reg,"-> \\1 join \\2"));
-                updateUsersList(msg.replace(reg,"\\2")); // TAIM
-
-
+                updateUsersList(msg.replace(reg,"\\2"));
             }
-           else if(msg.contains(QRegExp(":([a-zA-Z0-9]+)\\![~a-zA-Z0-9]+@[a-zA-Z0-9\\/\\.-]+ PART ([a-zA-Z0-9\\#]+)")))
+            else if(msg.contains(QRegExp(":([a-zA-Z0-9]+)\\![~a-zA-Z0-9]+@[a-zA-Z0-9\\/\\.-]+ PART ([a-zA-Z0-9\\#]+)")))
             {
                 QRegExp reg(":([a-zA-Z0-9]+)\\![~a-zA-Z0-9]+@[a-zA-Z0-9\\/\\.-]+ PART ([a-zA-Z0-9\\#]+) :(.+)");
                 QString msg2=msg;
                 ecrire(msg.replace(reg,"\\2 <i>-> \\1 quit \\2 (\\3)</i><br />"),"",msg2.replace(reg,"-> \\1 quit \\2"));
-               updateUsersList(msg.replace(reg,"\\2"));
+                updateUsersList(msg.replace(reg,"\\2"));
             }
             else if(msg.contains(QRegExp(":([a-zA-Z0-9]+)\\![~a-zA-Z0-9]+@[a-zA-Z0-9\\/\\.-]+ QUIT (.+)")))
             {
@@ -121,22 +119,20 @@ void Serveur::readServeur()
                 QString msg2=msg;
                 ecrire(msg.replace(reg,"\\2 <i>-> \\1 quit this server (\\2)</i><br />"),"",msg2.replace(reg,"-> \\1 left"));
                 updateUsersList(msg.replace(reg,"\\2"));
-
             }
             else if(msg.contains(QRegExp(":([a-zA-Z0-9]+)\\![~a-zA-Z0-9]+@[a-zA-Z0-9\\/\\.-]+ NICK :(.+)")))
             {
                 QRegExp reg(":([a-zA-Z0-9]+)\\![~a-zA-Z0-9]+@[a-zA-Z0-9\\/\\.-]+ NICK :(.+)");
                 QString msg2=msg;
                 ecrire(msg.replace(reg,"<i>\\1 is now called \\2</i><br />"),"",msg2.replace(reg,"-> \\1 is now called \\2"));
-
+                updateUsersList(currentChan);
             }
             else if(msg.contains(QRegExp(":([a-zA-Z0-9]+)\\![a-zA-Z0-9]+@[a-zA-Z0-9\\/\\.-]+ KICK ([a-zA-Z0-9\\#]+) ([a-zA-Z0-9]+) :(.+)")))
             { 
                 QRegExp reg(":([a-zA-Z0-9]+)\\!~[a-zA-Z0-9]+@[a-zA-Z0-9\\/\\.-]+ KICK ([a-zA-Z0-9\\#]+) ([a-zA-Z0-9]+) :(.+)");
                 QString msg2=msg;
                 ecrire(msg.replace(reg,"\\2 <i>-> \\1 kicked \\3 (\\4)</i><br />"),"",msg2.replace(reg,"-> \\1 quit \\3"));
-               updateUsersList(msg.replace(reg,"\\2"));
-
+                updateUsersList(msg.replace(reg,"\\2"));
             }
             else if(msg.contains(QRegExp(":([a-zA-Z0-9]+)\\![a-zA-Z0-9]+@[a-zA-Z0-9\\/\\.-]+ NOTICE ([a-zA-Z0-9]+) :(.+)")))
             {
@@ -144,20 +140,15 @@ void Serveur::readServeur()
                 {
                     QRegExp reg(":([a-zA-Z0-9]+)\\![~a-zA-Z0-9]+@[a-zA-Z0-9\\/\\.-]+ NOTICE [a-zA-Z0-9]+ :(.+)");
                     ecrire(msg.replace(reg,"<b>[NOTICE] <i>\\1</i> : \\2 <br />"),currentChan);
-
                 }
                 else if(currentChan==serveur)
                 {
                     QRegExp reg(":([a-zA-Z0-9]+)\\![~a-zA-Z0-9]+@[a-zA-Z0-9\\/\\.-]+ NOTICE [a-zA-Z0-9]+ :(.+)");
                     ecrire(msg.replace(reg,"<b>[NOTICE] <i>\\1</i> : \\2 <br />"));
-
                 }
             }
-
-
             else if(msg.contains("/MOTD command."))
             {
-
              joins();
 
 
@@ -165,10 +156,9 @@ void Serveur::readServeur()
 
 
 
-
-
         }
 
+        //}
 }
 
 void Serveur::sendData(QString txt)
@@ -285,29 +275,25 @@ QString Serveur::parseCommande(QString comm,bool serveur)
 void Serveur::join(QString chan)
 {
     affichage->append("Joining "+ chan +" channel");
-      // emit joinTab();
-        QTextEdit *textEdit=new QTextEdit;
-        int index=tab->insertTab(tab->currentIndex()+1,textEdit,chan);
-        tab->setTabToolTip(index,serveur);
-        tab->setCurrentIndex(index);
+	emit joinTab();
+	QTextEdit *textEdit=new QTextEdit;
+	int index=tab->insertTab(tab->currentIndex()+1,textEdit,chan);
+	tab->setTabToolTip(index,serveur);
+	tab->setCurrentIndex(index);
 
-        textEdit->setReadOnly(true);
+	textEdit->setReadOnly(true);
 
-        conversations.insert(chan,textEdit);
+	conversations.insert(chan,textEdit);
 
         sendData("JOIN "+chan);
 
-
-        emit tabJoined();
-
-
-
-
+	emit tabJoined();
 }
 void Serveur::leave(QString chan)
 {
     sendData(parseCommande("/part "+chan+ " "+msgQuit));
 }
+
 void Serveur::ecrire(QString txt,QString destChan,QString msgTray)
 {
 	if(destChan!="")
@@ -335,6 +321,7 @@ void Serveur::ecrire(QString txt,QString destChan,QString msgTray)
 
 
 }
+
 void Serveur::updateUsersList(QString chan,QString message)
 {
     message = message.replace("\r\n","");
@@ -345,20 +332,16 @@ void Serveur::updateUsersList(QString chan,QString message)
     {
         QString liste2=message.replace(":","");
         QStringList liste=liste2.split(" ");
-        if (delist == true)
-            users.clear();
+
+        if (delist == true) users.clear();
 
         for(int i=5; i < liste.count(); i++)
         {
             users.append(liste.at(i));
-
         }
         updateUsers=false;
-
-        if (liste.count() < 53)
-            delist = true;
+        if (liste.count() < 53) delist = true;
         else delist = false;
-
 		QStringListModel *model = new QStringListModel(users);
 		userList->setModel(model);
 		userList->update();
@@ -368,7 +351,6 @@ void Serveur::updateUsersList(QString chan,QString message)
         updateUsers=true;
         sendData("NAMES "+chan);
 	}
-
     }
     else
     {
@@ -376,9 +358,5 @@ void Serveur::updateUsersList(QString chan,QString message)
         userList->setModel(&model);
         userList->update();
     }
-
-
-
 }
-
 

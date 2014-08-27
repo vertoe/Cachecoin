@@ -1218,7 +1218,7 @@ void MapPort()
 // The first name is used as information source for addrman.
 // The second name should resolve to a list of seed addresses.
 static const char *strDNSSeed[][2] = {
-    //{"cachecoin.org", "seed.novacoin.su"},    // WM - Umm...  FIXME
+    {"pool.cachecoin.org", "pool.cachecoin.org"},    // WM - Umm...  FIXME
 };
 
 void ThreadDNSAddressSeed(void* parg)
@@ -1925,9 +1925,9 @@ void StartNode(void* parg)
             printf("Error: NewThread(ThreadDNSAddressSeed) failed\n");
 */
 
-    if (!GetBoolArg("-dnsseed", false))
+    if (!GetBoolArg("-dnsseed", true))
         printf("DNS seeding disabled\n");
-    if (GetBoolArg("-dnsseed", false))
+    if (GetBoolArg("-dnsseed", true))
         printf("DNS seeding NYI\n");
 
     // Map ports with UPnP

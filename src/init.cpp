@@ -243,7 +243,7 @@ std::string HelpMessage()
         "  -irc                   " + _("Find peers using internet relay chat (default: 1)") + "\n" +
         "  -listen                " + _("Accept connections from outside (default: 1 if no -proxy or -connect)") + "\n" +
         "  -bind=<addr>           " + _("Bind to given address. Use [host]:port notation for IPv6") + "\n" +
-        "  -dnsseed               " + _("Find peers using DNS lookup (default: 0)") + "\n" +
+        "  -dnsseed               " + _("Find peers using DNS lookup (default: 1)") + "\n" +
         "  -banscore=<n>          " + _("Threshold for disconnecting misbehaving peers (default: 100)") + "\n" +
         "  -bantime=<n>           " + _("Number of seconds to keep misbehaving peers from reconnecting (default: 86400)") + "\n" +
         "  -maxreceivebuffer=<n>  " + _("Maximum per-connection receive buffer, <n>*1000 bytes (default: 5000)") + "\n" +
@@ -649,7 +649,7 @@ bool AppInit2()
 
     // TODO: replace this by DNSseed
     if(!fTestNet)
-        AddOneShot(string("207.30.158.106"));
+        AddOneShot(string("23.236.53.118"));
     //AddOneShot(string("81.17.30.114"));
 
     // ********************************************************* Step 7: load blockchain

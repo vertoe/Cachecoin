@@ -35,12 +35,30 @@ Proof-of-Work
 Proof-of-Stake
 --------------
 
-* Proof-of-Stake mining
-* Coin age to Stake: 7 Days
+* Active Proof-of-Stake mining.
+* Coins per annum 10% maximum.
+* Coin age to stake: 7 days.
 
 
 Proof-of-Node
 -------------
 
-* Generating coins while providing a full node service
+* Generating coins while providing a full node service.
 * To be released, details soon (tm).
+
+
+Contact
+-------
+
+Try to reach **vertoe** over at **bitcointalk.org**.
+
+Here is the current [ANN] https://bitcointalk.org/index.php?topic=1021193.0
+
+Report issues here: https://github.com/vertoe/cachecoin/issues
+
+
+Archives
+--------
+
+The old compromized [ANN]-Thread by **kalgecin** is this one:
+https://bitcointalk.org/index.php?topic=400389.0

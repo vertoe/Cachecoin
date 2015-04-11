@@ -10,10 +10,10 @@
 // target servers or GUI users specifically.
 
 // WM - const std::string CLIENT_NAME("Satoshi");
-const std::string CLIENT_NAME("CACHecoin-WM");
+const std::string CLIENT_NAME("Kalgecin");
 
 // Client version number
-#define CLIENT_VERSION_SUFFIX   "-cach-wm-alpha"
+#define CLIENT_VERSION_SUFFIX   "-toe-alpha"
 
 
 // The following part of the code determines the CLIENT_BUILD variable.
@@ -35,7 +35,7 @@ const std::string CLIENT_NAME("CACHecoin-WM");
 #    include "build.h"
 #endif
 
-// git will put "#define GIT_ARCHIVE 1" on the next line inside archives. 
+// git will put "#define GIT_ARCHIVE 1" on the next line inside archives.
 #define GIT_ARCHIVE 1
 #ifdef GIT_ARCHIVE
 #    define GIT_COMMIT_ID "32a928e"

@@ -177,6 +177,10 @@ int main(int argc, char* argv[])
 {
     bool fRet = false;
 
+    //start tor
+    //if(fTORenabled)
+        //tor_init(0,NULL);
+
     // Connect cachecoind signal handlers
     noui_connect();
 
@@ -391,7 +395,7 @@ bool AppInit2()
     // ********************************************************* Step 3: parameter-to-internal-flags
 
     fDebug = GetBoolArg("-debug");
-
+    fTORenabled = GetBoolArg("-enabletor",true);
     // -debug implies fDebug*
     if (fDebug)
         fDebugNet = true;
@@ -574,6 +578,7 @@ bool AppInit2()
 
     // -tor can override normal proxy, -notor disables tor entirely
     if (!(mapArgs.count("-tor") && mapArgs["-tor"] == "0") && (fProxy || mapArgs.count("-tor"))) {
+        printf("Setting proxy\n");
         CService addrOnion;
         if (!mapArgs.count("-tor"))
             addrOnion = addrProxy;
@@ -582,6 +587,33 @@ bool AppInit2()
         if (!addrOnion.IsValid())
             return InitError(strprintf(_("Invalid -tor address: '%s'"), mapArgs["-tor"].c_str()));
         SetProxy(NET_TOR, addrOnion, 5);
+        SetReachable(NET_TOR);
+    }
+
+    if(fTORenabled) {
+        printf("Enabling beloved TOR\n");
+        CService addrOnion;
+
+        addrProxy = CService("127.0.0.1",9050);
+        if (!addrProxy.IsValid())
+            return InitError(strprintf(_("Invalid -proxy address: '%s'"), mapArgs["-proxy"].c_str()));
+
+        if (!IsLimited(NET_IPV4))
+            SetProxy(NET_IPV4, addrProxy, nSocksVersion);
+
+        if (nSocksVersion > 4) {
+#ifdef USE_IPV6
+            if (!IsLimited(NET_IPV6))
+                SetProxy(NET_IPV6, addrProxy, nSocksVersion);
+#endif
+            SetNameProxy(addrProxy, nSocksVersion);
+        }
+        fProxy = true;
+
+        addrOnion = CService("127.0.0.1",9050);
+        if (!addrOnion.IsValid())
+            return InitError(strprintf(_("Invalid -tor address: '%s'"), "127.0.0.1"));
+        SetProxy(NET_TOR,addrOnion,5);
         SetReachable(NET_TOR);
     }
 

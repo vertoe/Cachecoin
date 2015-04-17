@@ -237,6 +237,222 @@
 		<Unit filename="test/uint256_tests.cpp" />
 		<Unit filename="test/util_tests.cpp" />
 		<Unit filename="test/wallet_tests.cpp" />
+		<Unit filename="tor/addressmap.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/addressmap.h" />
+		<Unit filename="tor/buffers.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/buffers.h" />
+		<Unit filename="tor/channel.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/channel.h" />
+		<Unit filename="tor/channeltls.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/channeltls.h" />
+		<Unit filename="tor/circuitbuild.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/circuitbuild.h" />
+		<Unit filename="tor/circuitlist.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/circuitlist.h" />
+		<Unit filename="tor/circuitmux.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/circuitmux.h" />
+		<Unit filename="tor/circuitmux_ewma.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/circuitmux_ewma.h" />
+		<Unit filename="tor/circuitstats.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/circuitstats.h" />
+		<Unit filename="tor/circuituse.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/circuituse.h" />
+		<Unit filename="tor/command.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/command.h" />
+		<Unit filename="tor/config.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/config.h" />
+		<Unit filename="tor/config_codedigest.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/confparse.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/confparse.h" />
+		<Unit filename="tor/connection.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/connection.h" />
+		<Unit filename="tor/connection_edge.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/connection_edge.h" />
+		<Unit filename="tor/connection_or.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/connection_or.h" />
+		<Unit filename="tor/control.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/control.h" />
+		<Unit filename="tor/cpuworker.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/cpuworker.h" />
+		<Unit filename="tor/directory.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/directory.h" />
+		<Unit filename="tor/dirserv.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/dirserv.h" />
+		<Unit filename="tor/dirvote.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/dirvote.h" />
+		<Unit filename="tor/dns.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/dns.h" />
+		<Unit filename="tor/dnsserv.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/dnsserv.h" />
+		<Unit filename="tor/entrynodes.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/entrynodes.h" />
+		<Unit filename="tor/eventdns_tor.h" />
+		<Unit filename="tor/fp_pair.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/fp_pair.h" />
+		<Unit filename="tor/geoip.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/geoip.h" />
+		<Unit filename="tor/hibernate.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/hibernate.h" />
+		<Unit filename="tor/main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/main.h" />
+		<Unit filename="tor/microdesc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/microdesc.h" />
+		<Unit filename="tor/networkstatus.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/networkstatus.h" />
+		<Unit filename="tor/nodelist.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/nodelist.h" />
+		<Unit filename="tor/ntmain.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/ntmain.h" />
+		<Unit filename="tor/onion.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/onion.h" />
+		<Unit filename="tor/onion_fast.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/onion_fast.h" />
+		<Unit filename="tor/onion_ntor.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/onion_ntor.h" />
+		<Unit filename="tor/onion_tap.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/onion_tap.h" />
+		<Unit filename="tor/or.h" />
+		<Unit filename="tor/policies.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/policies.h" />
+		<Unit filename="tor/reasons.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/reasons.h" />
+		<Unit filename="tor/relay.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/relay.h" />
+		<Unit filename="tor/rendclient.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/rendclient.h" />
+		<Unit filename="tor/rendcommon.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/rendcommon.h" />
+		<Unit filename="tor/rendmid.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/rendmid.h" />
+		<Unit filename="tor/rendservice.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/rendservice.h" />
+		<Unit filename="tor/rephist.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/rephist.h" />
+		<Unit filename="tor/replaycache.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/replaycache.h" />
+		<Unit filename="tor/router.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/router.h" />
+		<Unit filename="tor/routerlist.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/routerlist.h" />
+		<Unit filename="tor/routerparse.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/routerparse.h" />
+		<Unit filename="tor/routerset.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/routerset.h" />
+		<Unit filename="tor/statefile.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/statefile.h" />
+		<Unit filename="tor/status.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/status.h" />
+		<Unit filename="tor/tor_main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/transports.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tor/transports.h" />
 		<Unit filename="ui_interface.h" />
 		<Unit filename="uint256.h" />
 		<Unit filename="util.cpp" />
@@ -250,6 +466,7 @@
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

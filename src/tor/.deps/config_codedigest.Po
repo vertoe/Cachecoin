@@ -1,0 +1,9 @@
+src/or/config_codedigest.o: src/or/config_codedigest.c \
+ /usr/include/stdc-predef.h /usr/include/x86_64-linux-gnu/bits/predefs.h \
+ src/or/or_sha1.i
+
+/usr/include/stdc-predef.h:
+
+/usr/include/x86_64-linux-gnu/bits/predefs.h:
+
+src/or/or_sha1.i:

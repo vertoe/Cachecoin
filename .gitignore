@@ -2,11 +2,17 @@
 
 *.exe
 src/bitcoin
+src/cachecoin
 src/bitcoind
+src/cachecoind
 src/bitcoin-cli
+src/cachecoin-cli
 src/bitcoin-tx
+src/cachecoin-tx
 src/test/test_bitcoin
+src/test/test_cachecoin
 src/qt/test/test_bitcoin-qt
+src/qt/test/test_cachecoin-qt
 
 # autoreconf
 Makefile.in
@@ -30,7 +36,9 @@ config.status
 configure
 libtool
 src/config/bitcoin-config.h
+src/config/cachecoin-config.h
 src/config/bitcoin-config.h.in
+src/config/cachecoin-config.h.in
 src/config/stamp-h1
 share/setup.nsi
 share/qt/Info.plist
@@ -56,6 +64,7 @@ src/qt/test/moc*.cpp
 *.o-*
 *.patch
 .bitcoin
+.cachecoin
 *.a
 *.pb.cc
 *.pb.h
@@ -75,11 +84,14 @@ src/qt/test/moc*.cpp
 *.qm
 Makefile
 bitcoin-qt
+cachecoin-qt
 Bitcoin-Qt.app
+Cachecoin-Qt.app
 
 # Unit-tests
 Makefile.test
 bitcoin-qt_test
+cachecoin-qt_test
 src/test/buildenv.py
 
 # Resources cpp
@@ -96,6 +108,7 @@ build
 *.gcno
 /*.info
 test_bitcoin.coverage/
+test_cachecoin.coverage/
 total.coverage/
 coverage_percent.txt
 
@@ -104,6 +117,7 @@ linux-coverage-build
 linux-build
 win32-build
 qa/pull-tester/run-bitcoind-for-test.sh
+qa/pull-tester/run-cachecoind-for-test.sh
 qa/pull-tester/tests-config.sh
 qa/pull-tester/cache/*
 qa/pull-tester/test.*/*

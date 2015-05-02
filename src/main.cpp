@@ -1014,8 +1014,6 @@ int64 GetProofOfWorkReward(unsigned int nBits)
 
     int64 nSubsidy = bnUpperBound.getuint64();
     nSubsidy = (nSubsidy / CENT) * CENT;
-    if (fDebug && GetBoolArg("-printcreation"))
-        printf("GetProofOfWorkReward() : create=%s nBits=0x%08x nSubsidy=%"PRI64d"\n", FormatMoney(nSubsidy).c_str(), nBits, nSubsidy);
 
     // PoW ends at block 100k
     int nSubsidyLimit = 100000;
@@ -1030,6 +1028,10 @@ int64 GetProofOfWorkReward(unsigned int nBits)
         if (nSubsidy < 2)
             nSubsidy = 1;
     }
+
+    if (fDebug && GetBoolArg("-printcreation"))
+        printf("GetProofOfWorkReward() : create=%s nBits=0x%08x nSubsidy=%"PRI64d"\n", FormatMoney(nSubsidy).c_str(), nBits, nSubsidy);
+
     return nSubsidy;
 }
 
@@ -1046,13 +1048,8 @@ int64 GetProofOfStakeReward(int64 nCoinAge)
         else
             nSubsidy = nCoinAge * 33 / (365 * 33 + 8) * nRewardCoinYear;
 
-    if (fDebug && GetBoolArg("-printcreation"))
-        printf("GetProofOfStakeReward(): create=%s nCoinAge=%"PRI64d"\n", FormatMoney(nSubsidy).c_str(), nCoinAge);
-
     // PoS ends at block 200k
     int nSubsidyLimit = 200000;
-    nSubsidy = min(nSubsidy, MAX_MINT_PROOF_OF_WORK);
-
     if (fTestNet)
         nSubsidyLimit = 20000;
 
@@ -1062,6 +1059,10 @@ int64 GetProofOfStakeReward(int64 nCoinAge)
         if (nSubsidy < 2)
             nSubsidy = 1;
     }
+
+    if (fDebug && GetBoolArg("-printcreation"))
+        printf("GetProofOfStakeReward(): create=%s nCoinAge=%"PRI64d"\n", FormatMoney(nSubsidy).c_str(), nCoinAge);
+
     return nSubsidy;
 }
 

@@ -1017,7 +1017,20 @@ int64 GetProofOfWorkReward(unsigned int nBits)
     if (fDebug && GetBoolArg("-printcreation"))
         printf("GetProofOfWorkReward() : create=%s nBits=0x%08x nSubsidy=%"PRI64d"\n", FormatMoney(nSubsidy).c_str(), nBits, nSubsidy);
 
-    return min(nSubsidy, MAX_MINT_PROOF_OF_WORK);
+    // PoS ends at block 100k
+    unsigned int nSubsidyLimit = 100000;
+    nSubsidy = min(nSubsidy, MAX_MINT_PROOF_OF_WORK);
+
+    if (fTestNet)
+        nSubsidyLimit = 10000;
+
+    if (nBestHeight > nSubsidyLimit)
+    {
+        nSubsidy /= 1000000;
+        if (nSubsidy < 2)
+            nSubsidy = 1;
+    }
+    return nSubsidy;
 }
 
 // ppcoin: miner's coin stake is rewarded based on coin age spent (coin-days)
@@ -1035,6 +1048,20 @@ int64 GetProofOfStakeReward(int64 nCoinAge)
 
     if (fDebug && GetBoolArg("-printcreation"))
         printf("GetProofOfStakeReward(): create=%s nCoinAge=%"PRI64d"\n", FormatMoney(nSubsidy).c_str(), nCoinAge);
+
+    // PoS ends at block 200k
+    unsigned int nSubsidyLimit = 200000;
+    nSubsidy = min(nSubsidy, MAX_MINT_PROOF_OF_WORK);
+
+    if (fTestNet)
+        nSubsidyLimit = 20000;
+
+    if (nBestHeight > nSubsidyLimit)
+    {
+        nSubsidy /= 1000000;
+        if (nSubsidy < 2)
+            nSubsidy = 1;
+    }
     return nSubsidy;
 }
 
@@ -1981,7 +2008,7 @@ bool CBlock::AddToBlockIndex(unsigned int nFile, unsigned int nBlockPos)
     CBlockIndex* pindexNew = new CBlockIndex(nFile, nBlockPos, *this);
     if (!pindexNew)
         return error("AddToBlockIndex() : new CBlockIndex failed");
-    
+
     map<uint256, CBlockIndex*>::iterator miPrev = mapBlockIndex.find(hashPrevBlock);
     if (miPrev != mapBlockIndex.end())
     {
@@ -2018,7 +2045,7 @@ bool CBlock::AddToBlockIndex(unsigned int nFile, unsigned int nBlockPos)
     map<uint256, CBlockIndex*>::iterator mi = mapBlockIndex.insert(make_pair(hash, pindexNew)).first;
     if (pindexNew->IsProofOfStake())
         setStakeSeen.insert(make_pair(pindexNew->prevoutStake, pindexNew->nStakeTime));
-    
+
 
     // Write to disk block index
     CTxDB txdb;

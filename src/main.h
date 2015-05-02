@@ -966,7 +966,7 @@ public:
         vMerkleTree.clear();
         nDoS = 0;
     }
-    
+
     void SetHash(uint256 h) const
     {
         if (!fHashed) {
@@ -1257,7 +1257,7 @@ public:
             prevoutStake.SetNull();
             nStakeTime = 0;
         }
-        
+
     }
 
     const CBlockHeader & GetBlockHeader() const

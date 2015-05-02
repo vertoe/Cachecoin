@@ -89,7 +89,7 @@ LIBS+= \
 #
 
 
-DEBUGFLAGS=#-g -pg
+DEBUGFLAGS=-g
 
 # CXXFLAGS can be specified on the make command line, so we use xCXXFLAGS that only
 # adds some defaults in front. Unfortunately, CXXFLAGS=... $(CXXFLAGS) does not work.

@@ -30,6 +30,5 @@ qrc_*.cpp
 build
 cachecoin-qt
 src/cachecoind
-src/nbproject/
 *cscope*
 src/nbproject/

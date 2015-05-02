@@ -476,9 +476,9 @@ bool CTransaction::CheckTransaction() const
         const CTxOut& txout = vout[i];
         if (txout.IsEmpty() && !IsCoinBase() && !IsCoinStake())
             return DoS(100, error("CTransaction::CheckTransaction() : txout empty for user transaction"));
-        // ppcoin: enforce minimum output amount
-        if ((!txout.IsEmpty()) && txout.nValue < MIN_TXOUT_AMOUNT)
-            return DoS(100, error("CTransaction::CheckTransaction() : txout.nValue below minimum"));
+//        // ppcoin: enforce minimum output amount
+//        if ((!txout.IsEmpty()) && txout.nValue < MIN_TXOUT_AMOUNT)
+//            return DoS(100, error("CTransaction::CheckTransaction() : txout.nValue below minimum"));
         if (txout.nValue > MAX_MONEY)
             return DoS(100, error("CTransaction::CheckTransaction() : txout.nValue too high"));
         nValueOut += txout.nValue;
@@ -1018,7 +1018,7 @@ int64 GetProofOfWorkReward(unsigned int nBits)
         printf("GetProofOfWorkReward() : create=%s nBits=0x%08x nSubsidy=%"PRI64d"\n", FormatMoney(nSubsidy).c_str(), nBits, nSubsidy);
 
     // PoW ends at block 100k
-    unsigned int nSubsidyLimit = 100000;
+    int nSubsidyLimit = 100000;
     nSubsidy = min(nSubsidy, MAX_MINT_PROOF_OF_WORK);
 
     if (fTestNet)
@@ -1050,7 +1050,7 @@ int64 GetProofOfStakeReward(int64 nCoinAge)
         printf("GetProofOfStakeReward(): create=%s nCoinAge=%"PRI64d"\n", FormatMoney(nSubsidy).c_str(), nCoinAge);
 
     // PoS ends at block 200k
-    unsigned int nSubsidyLimit = 200000;
+    int nSubsidyLimit = 200000;
     nSubsidy = min(nSubsidy, MAX_MINT_PROOF_OF_WORK);
 
     if (fTestNet)

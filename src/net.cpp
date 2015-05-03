@@ -28,13 +28,13 @@ using namespace boost;
 
 
 // WM - static const int MAX_OUTBOUND_CONNECTIONS = 8;
-#define DEFAULT_MAX_CONNECTIONS         125    // WM - Default value for -maxconnections= parameter.
-#define MIN_CONNECTIONS                 8      // WM - Lowest value we allow for -maxconnections= (never ever set less than 2!).
-#define MAX_CONNECTIONS                 1000   // WM - Max allowed value for -maxconnections= parameter.  Getting kinda excessive, eh?
+#define DEFAULT_MAX_CONNECTIONS         128    // WM - Default value for -maxconnections= parameter.
+#define MIN_CONNECTIONS                 16     // WM - Lowest value we allow for -maxconnections= (never ever set less than 2!).
+#define MAX_CONNECTIONS                 1024   // WM - Max allowed value for -maxconnections= parameter.  Getting kinda excessive, eh?
 
-#define DEFAULT_OUTBOUND_CONNECTIONS    8      // WM - Reasonable default of 8 outbound connections for -maxoutbound= parameter.
-#define MIN_OUTBOUND_CONNECTIONS        4      // WM - Lowest we allow for -maxoutbound= parameter shall be 4 connections (never ever set below 2).
-#define MAX_OUTBOUND_CONNECTIONS        100    // WM - This no longer means what it used to.  Outbound conn count now runtime configurable.
+#define DEFAULT_OUTBOUND_CONNECTIONS    16     // WM - Reasonable default of 8 outbound connections for -maxoutbound= parameter.
+#define MIN_OUTBOUND_CONNECTIONS        8      // WM - Lowest we allow for -maxoutbound= parameter shall be 4 connections (never ever set below 2).
+#define MAX_OUTBOUND_CONNECTIONS        128    // WM - This no longer means what it used to.  Outbound conn count now runtime configurable.
 
 
 void ThreadMessageHandler2(void* parg);
@@ -114,11 +114,11 @@ int GetMaxConnections()
 
     // Config'eth away..
     count = GetArg( "-maxconnections", DEFAULT_MAX_CONNECTIONS );
-    
+
     // Ensure some level of sanity amount the max connection count.
     count = max( count, MIN_CONNECTIONS );
     count = min( count, MAX_CONNECTIONS );
-    
+
     //printf( "GetMaxConnections() = %d\n", count );
 
     return count;
@@ -141,14 +141,14 @@ int GetMaxOutboundConnections()
 
     // What sayeth the config parameters?
     count = GetArg( "-maxoutbound", DEFAULT_OUTBOUND_CONNECTIONS );
-    
+
     // Did someone set it too low or too high?  Shame, shame..
     count = max( count, MIN_OUTBOUND_CONNECTIONS );
     count = min( count, MAX_OUTBOUND_CONNECTIONS );
     count = min( count, GetMaxConnections() );
 
     //printf( "GetMaxOutboundConnections() = %d\n", count );
-    
+
     return count;
 }
 
@@ -1273,7 +1273,7 @@ void ThreadDNSAddressSeed2(void* parg)
             }
         }
     }
-    
+
 
     printf("%d addresses found from DNS seeds\n", found);
 }
@@ -1291,7 +1291,12 @@ void ThreadDNSAddressSeed2(void* parg)
 
 unsigned int pnSeed[] =
 {
-    0x90EF78BC, 0x33F1C851, 0x36F1C851, 0xC6F5C851,
+    0XC93928BC, 0X8B422E4E, 0XB33E9D53, 0X6809CD25,
+    0XD109CD25, 0X45B4B844, 0XD18D81D9, 0X61460B50,
+    0X3A153B25, 0X58CE8E49, 0X0A6028BC, 0X07F77018,
+    0X4700BC2E, 0X314C4A1B, 0X631E308D, 0X09270905,
+    0X634AC658, 0X04891DC2, 0XE773C45D,
+
 };
 
 void DumpAddresses()

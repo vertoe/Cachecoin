@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Cachecoin
+Comment=Cachecoin P2P Cryptocurrency
+Comment[fr]=Cachecoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Cachecoin, eşten eşe kriptografik sanal para birimi
+Exec=cachecoin-qt %u
+Terminal=false
+Type=Application
+Icon=cachecoin128
+MimeType=x-scheme-handler/cachecoin;
+Categories=Office;Finance;

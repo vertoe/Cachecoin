@@ -1,11 +1,11 @@
 ---
-name: "bitcoin-linux-0.10"
+name: "cachecoin-linux-0.7.5"
 enable_cache: true
 suites:
 - "precise"
 architectures:
 - "amd64"
-packages: 
+packages:
 - "g++-multilib"
 - "git-core"
 - "pkg-config"
@@ -18,8 +18,8 @@ packages:
 - "libstdc++6-4.6-pic"
 reference_datetime: "2013-06-01 00:00:00"
 remotes:
-- "url": "https://github.com/bitcoin/bitcoin.git"
-  "dir": "bitcoin"
+- "url": "https://github.com/vertoe/cachecoin.git"
+  "dir": "cachecoin"
 files: []
 script: |
   WRAP_DIR=$HOME/wrapped
@@ -63,7 +63,7 @@ script: |
   done
   export PATH=${WRAP_DIR}:${PATH}
 
-  cd bitcoin
+  cd cachecoin
   BASEPREFIX=`pwd`/depends
   # Build dependencies for each host
   for i in $HOSTS; do
@@ -82,13 +82,13 @@ script: |
   ./autogen.sh
   ./configure --prefix=${BASEPREFIX}/`echo "${HOSTS}" | awk '{print $1;}'`
   make dist
-  SOURCEDIST=`echo bitcoin-*.tar.gz`
+  SOURCEDIST=`echo cachecoin-*.tar.gz`
   DISTNAME=`echo ${SOURCEDIST} | sed 's/.tar.*//'`
   # Correct tar file order
   mkdir -p temp
   pushd temp
   tar xf ../$SOURCEDIST
-  find bitcoin-* | sort | tar --no-recursion --mode='u+rw,go+r-w,a+X' --owner=0 --group=0 -c -T - | gzip -9n > ../$SOURCEDIST
+  find cachecoin-* | sort | tar --no-recursion --mode='u+rw,go+r-w,a+X' --owner=0 --group=0 -c -T - | gzip -9n > ../$SOURCEDIST
   popd
 
   ORIGPATH="$PATH"

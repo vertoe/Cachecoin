@@ -82,7 +82,7 @@ Once you've got the right hardware and software:
     mv ./build/out/qt-win* ./inputs/
 
     # Build Windows release:
-    @TODO
+    ./bin/gbuild --commit cachecoin=${VERSION} ../cachecoin/contrib/gitian-descriptors/windows/gitian-win-cachecoin.yml
 
 gitian-builder now also supports building using LXC. See
   https://help.ubuntu.com/12.04/serverguide/lxc.html

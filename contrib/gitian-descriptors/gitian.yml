@@ -1,7 +1,7 @@
 ---
 name: "cachecoin"
 suites:
-- "precise"
+- "lucid"
 architectures:
 - "i386"
 - "amd64"
@@ -23,19 +23,19 @@ remotes:
 - "url": "https://github.com/vertoe/cachecoin.git"
   "dir": "cachecoin"
 files:
-- "miniupnpc-1.6.tar.gz"
-- "qrencode-3.2.0.tar.bz2"
+- "miniupnpc-1.9.tar.gz"
+- "qrencode-3.4.4.tar.bz2"
 script: |
   INSTDIR="$HOME/install"
   export LIBRARY_PATH="$INSTDIR/lib"
   #
-  tar xzf miniupnpc-1.6.tar.gz
-  cd miniupnpc-1.6
+  tar xzf miniupnpc-1.9.tar.gz
+  cd miniupnpc-1.9
   INSTALLPREFIX=$INSTDIR make $MAKEOPTS install
   cd ..
   #
-  tar xjf qrencode-3.2.0.tar.bz2
-  cd qrencode-3.2.0
+  tar xjf qrencode-3.4.4.tar.bz2
+  cd qrencode-3.4.4
   ./configure --prefix=$INSTDIR --enable-static --disable-shared
   make $MAKEOPTS install
   cd ..
@@ -43,7 +43,7 @@ script: |
   cd cachecoin
   mkdir -p $OUTDIR/src
   git archive HEAD | tar -x -C $OUTDIR/src
-  cp $OUTDIR/src/doc/README.md $OUTDIR
+  cp $OUTDIR/src/README.md $OUTDIR
   cp $OUTDIR/src/COPYING $OUTDIR
   cd src
   make -f makefile.unix STATIC=1 OPENSSL_INCLUDE_PATH="$INSTDIR/include" OPENSSL_LIB_PATH="$INSTDIR/lib" $MAKEOPTS cachecoind USE_UPNP=0 DEBUGFLAGS=

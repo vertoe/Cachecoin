@@ -15,14 +15,14 @@ remotes:
 - "url": "https://github.com/vertoe/cachecoin.git"
   "dir": "cachecoin"
 files:
-- "qt-win32-4.8.3-gitian-r1.zip"
+- "qt-win32-4.8.6-gitian-r1.zip"
 - "boost-win32-1.50.0-gitian2.zip"
 - "cachecoin-deps-0.0.5.zip"
 script: |
   #
   mkdir $HOME/qt
   cd $HOME/qt
-  unzip ../build/qt-win32-4.8.3-gitian-r1.zip
+  unzip ../build/qt-win32-4.8.6-gitian-r1.zip
   cd $HOME/build/
   export PATH=$HOME/qt/bin/:$PATH
   #

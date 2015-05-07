@@ -17,7 +17,7 @@ remotes:
 files:
 - "qt-win32-4.8.6-gitian-r1.zip"
 - "boost-win32-1.50.0-gitian2.zip"
-- "cachecoin-deps-0.0.5.zip"
+- "cachecoin-deps-0.0.6.zip"
 script: |
   #
   mkdir $HOME/qt
@@ -39,7 +39,7 @@ script: |
   mv include/boost .
   cd ..
   #
-  unzip cachecoin-deps-0.0.5.zip
+  unzip cachecoin-deps-0.0.6.zip
   #
   find -type f | xargs touch --date="$REFERENCE_DATETIME"
   #

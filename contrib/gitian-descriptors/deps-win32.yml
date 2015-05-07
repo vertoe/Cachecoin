@@ -48,13 +48,17 @@ script: |
   #
   tar xzf zlib-1.2.8.tar.gz
   cd zlib-1.2.8
-  make -f win32/Makefile.gcc PREFIX=i586-mingw32msvc- $MAKEOPTS
+  ### make -f win32/Makefile.gcc PREFIX=i586-mingw32msvc- $MAKEOPTS
+  CROSS_PREFIX=i586-mingw32msvc- ./configure --static
+  make PREFIX=i586-mingw32msvc- $MAKEOPTS ### -f win32/Makefile.gcc
+  make install
   cd ..
   #
   tar xzf libpng-1.6.17.tar.gz
   cd libpng-1.6.17
-  ./configure -disable-shared CC=i586-mingw32msvc-cc AR=i586-mingw32msvc-ar STRIP=i586-mingw32msvc-strip RANLIB=i586-mingw32msvc-ranlib OBJDUMP=i586-mingw32msvc-objdump LD=i586-mingw32msvc-ld LDFLAGS="-L../zlib-1.2.8/" CFLAGS="-I../zlib-1.2.8/"
+  ./configure --disable-shared --host=i586-mingw32msvc CC=i586-mingw32msvc-cc AR=i586-mingw32msvc-ar STRIP=i586-mingw32msvc-strip RANLIB=i586-mingw32msvc-ranlib OBJDUMP=i586-mingw32msvc-objdump LD=i586-mingw32msvc-ld LDFLAGS="-L../zlib-1.2.8/" CPPFLAGS="-I../zlib-1.2.8/"
   make $MAKEOPTS
+  make install
   cd ..
   #
   tar xjf qrencode-3.4.4.tar.bz2

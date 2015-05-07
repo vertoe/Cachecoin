@@ -72,11 +72,11 @@ script: |
     local: *;
   };' > $LINKER_SCRIPT
   function do_configure {
-      ./configure "$@" --enable-upnp-default --prefix=$STAGING --with-protoc-bindir=$STAGING/host/bin --with-qt-bindir=$STAGING/bin --with-boost=$STAGING --disable-maintainer-mode --disable-dependency-tracking PKG_CONFIG_PATH="$STAGING/lib/pkgconfig" CPPFLAGS="-I$STAGING/include ${OPTFLAGS}" LDFLAGS="-L$STAGING/lib -Wl,--version-script=$LINKER_SCRIPT ${OPTFLAGS}" CXXFLAGS="-frandom-seed=cachecoin ${OPTFLAGS}" BOOST_CHRONO_EXTRALIBS="-lrt" --enable-glibc-back-compat
+      ./configure "$@" --enable-upnp-default --prefix=$STAGING --with-protoc-bindir=$STAGING/host/bin --with-qt-bindir=$STAGING/bin --with-boost=$STAGING --disable-maintainer-mode --disable-dependency-tracking PKG_CONFIG_PATH="$STAGING/lib/pkgconfig" CPPFLAGS="-I$STAGING/include ${OPTFLAGS}" LDFLAGS="-L$STAGING/lib -lrt -Wl,--version-script=$LINKER_SCRIPT ${OPTFLAGS}" CXXFLAGS="-frandom-seed=cachecoin ${OPTFLAGS}" BOOST_CHRONO_EXTRALIBS="-lrt" --enable-glibc-back-compat
   }
   #
   cd $HOME/build/cachecoin
-  VERSION_TAG=`git describe --tags --exact-match --always | cut -c 2-`
+  VERSION_TAG=`git describe --tags --always`
   git archive HEAD --format=tar.gz --prefix=cachecoin-$VERSION_TAG/ > cachecoin-$VERSION_TAG.tar.gz
   DISTNAME=`echo cachecoin-*.tar.gz`
 
@@ -86,12 +86,12 @@ script: |
   cd distsrc
   tar --strip-components=1 -xf ../$DISTNAME
   cd src
-  make -f makefile.unix STATIC=1 OPENSSL_INCLUDE_PATH="$STAGING/include" OPENSSL_LIB_PATH="$STAGING/lib" $MAKEOPTS cachecoind USE_UPNP=0 DEBUGFLAGS= USE_SSE2=1 BOOST_LIB_SUFFIX=-mt
+  make -f makefile.unix STATIC=1 OPENSSL_INCLUDE_PATH="$STAGING/include" OPENSSL_LIB_PATH="$STAGING/lib" $MAKEOPTS LDFLAGS="-lrt" cachecoind USE_UPNP=0 DEBUGFLAGS= USE_SSE2=1 BOOST_LIB_SUFFIX=-mt
   mkdir -p $OUTDIR/bin/$GBUILD_BITS
   install -s cachecoind $OUTDIR/bin/$GBUILD_BITS
   cd ..
-  qmake MINIUPNPC_LIB_PATH=$STAGING/lib MINIUPNPC_INCLUDE_PATH=$STAGING/include BDB_LIB_PATH=$STAGING/lib BDB_INCLUDE_PATH=$STAGING/include BOOST_LIB_PATH=$STAGING/lib BOOST_INCLUDE_PATH=$STAGING/include BOOST_LIB_SUFFIX=-mt OPENSSL_LIB_PATH=$STAGING/lib OPENSSL_INCLUDE_PATH=$STAGING/include QRENCODE_LIB_PATH=$STAGING/lib QRENCODE_INCLUDE_PATH=$STAGING/include USE_QRCODE=1 INCLUDEPATH=$STAGING/include DEFINES=BOOST_THREAD_USE_LIB QMAKE_LRELEASE=lrelease USE_BUILD_INFO=1 USE_SSE2=1 USE_UPNP=1 RELEASE=1
-  make $MAKEOPTS
+  qmake MINIUPNPC_LIB_PATH=$STAGING/lib MINIUPNPC_INCLUDE_PATH=$STAGING/include BDB_LIB_PATH=$STAGING/lib BDB_INCLUDE_PATH=$STAGING/include BOOST_LIB_PATH=$STAGING/lib BOOST_INCLUDE_PATH=$STAGING/include BOOST_LIB_SUFFIX=-mt OPENSSL_LIB_PATH=$STAGING/lib OPENSSL_INCLUDE_PATH=$STAGING/include QRENCODE_LIB_PATH=$STAGING/lib QRENCODE_INCLUDE_PATH=$STAGING/include USE_QRCODE=1 INCLUDEPATH=$STAGING/include DEFINES=BOOST_THREAD_USE_LIB QMAKE_LRELEASE=lrelease USE_BUILD_INFO=1 USE_SSE2=1 USE_UPNP=1 RELEASE=1 LDFLAGS="-lrt"
+  make $MAKEOPTS LDFLAGS="-lrt"
   install cachecoin-qt $OUTDIR/bin/$GBUILD_BITS
 
   # sort distribution tar file and normalize user/group/mtime information for deterministic output

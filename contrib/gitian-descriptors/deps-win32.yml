@@ -11,6 +11,7 @@ packages:
 - "faketime"
 - "wine"
 - "psmisc"
+- "libc6"
 reference_datetime: "2011-01-30 00:00:00"
 remotes: []
 files:
@@ -48,22 +49,19 @@ script: |
   #
   tar xzf zlib-1.2.8.tar.gz
   cd zlib-1.2.8
-  ### make -f win32/Makefile.gcc PREFIX=i586-mingw32msvc- $MAKEOPTS
   CROSS_PREFIX=i586-mingw32msvc- ./configure --static
-  make PREFIX=i586-mingw32msvc- $MAKEOPTS ### -f win32/Makefile.gcc
-  make install
+  make PREFIX=i586-mingw32msvc- $MAKEOPTS
   cd ..
   #
   tar xzf libpng-1.6.17.tar.gz
   cd libpng-1.6.17
   ./configure --disable-shared --host=i586-mingw32msvc CC=i586-mingw32msvc-cc AR=i586-mingw32msvc-ar STRIP=i586-mingw32msvc-strip RANLIB=i586-mingw32msvc-ranlib OBJDUMP=i586-mingw32msvc-objdump LD=i586-mingw32msvc-ld LDFLAGS="-L../zlib-1.2.8/" CPPFLAGS="-I../zlib-1.2.8/"
   make $MAKEOPTS
-  make install
   cd ..
   #
   tar xjf qrencode-3.4.4.tar.bz2
   cd qrencode-3.4.4
-  ./configure CC=i586-mingw32msvc-cc AR=i586-mingw32msvc-ar STRIP=i586-mingw32msvc-strip RANLIB=i586-mingw32msvc-ranlib OBJDUMP=i586-mingw32msvc-objdump LD=i586-mingw32msvc-ld png_LIBS="../libpng-1.6.17/.libs/libpng16.a ../zlib-1.2.8/libz.a" png_CFLAGS="-I../libpng-1.6.17"
+  ./configure png_LIBS="../libpng-1.6.17/.libs/libpng16.a ../zlib-1.2.8/libz.a" png_CFLAGS="-I../libpng-1.6.17" --host=i586-mingw32msvc
   make $MAKEOPTS
   cd ..
   #

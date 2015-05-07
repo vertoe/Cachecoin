@@ -4,7 +4,7 @@ suites:
 - "precise"
 architectures:
 - "amd64"
-packages: 
+packages:
 - "mingw-w64"
 - "g++-mingw-w64"
 - "zip"
@@ -14,8 +14,8 @@ reference_datetime: "2011-01-30 00:00:00"
 remotes: []
 files:
 - "qt-everywhere-opensource-src-4.8.5.tar.gz"
-- "bitcoin-deps-win32-gitian-r13.zip"
-- "bitcoin-deps-win64-gitian-r13.zip"
+- "cachecoin-deps-win32-gitian-r13.zip"
+- "cachecoin-deps-win64-gitian-r13.zip"
 script: |
   # Defines
   export TZ=UTC
@@ -37,9 +37,9 @@ script: |
     #
     mkdir -p $INSTALLPREFIX $INSTALLPREFIX/host/bin $DEPSDIR $BUILDDIR
     #
-    # Need mingw-compiled openssl from bitcoin-deps:
+    # Need mingw-compiled openssl from cachecoin-deps:
     cd $DEPSDIR
-    unzip $INDIR/bitcoin-deps-win${BITS}-gitian-r13.zip
+    unzip $INDIR/cachecoin-deps-win${BITS}-gitian-r13.zip
     #
     cd $BUILDDIR
     #
@@ -81,7 +81,7 @@ script: |
 
     cd $INSTALLPREFIX
     find . -name *.prl | xargs -l sed 's|/$||' -i
-  
+
     # as zip stores file timestamps, use faketime to intercept stat calls to set dates for all files to reference date
     export LD_PRELOAD=/usr/lib/faketime/libfaketime.so.1
     export FAKETIME=$REFERENCE_DATETIME

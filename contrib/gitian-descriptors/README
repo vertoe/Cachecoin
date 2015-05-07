@@ -39,8 +39,10 @@ Once you've got the right hardware and software:
     wget 'http://www.openssl.org/source/openssl-1.0.2a.tar.gz'
     wget 'http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz'
     wget 'https://downloads.sourceforge.net/project/libpng/zlib/1.2.8/zlib-1.2.8.tar.gz'
-    wget 'https://downloads.sourceforge.net/project/libpng/libpng15/older-releases/1.5.9/libpng-1.5.9.tar.gz'
+    wget 'https://downloads.sourceforge.net/project/libpng/libpng16/older-releases/1.6.8/libpng-1.6.8.tar.gz'
     wget 'https://download.qt.io/archive/qt/4.6/qt-everywhere-opensource-src-4.6.4.tar.gz'
+    wget 'https://download.qt.io/archive/qt/4.8/4.8.5/qt-everywhere-opensource-src-4.8.5.tar.gz'
+    wget 'http://mindstalk.net/host/boost-mingw-gas-cross-compile-2013-03-03.patch'
     cd ../..
 
     cd gitian-builder
@@ -70,7 +72,14 @@ Once you've got the right hardware and software:
     @TODO
 
     # Build Windows dependencies: (only needs to be done once, or when dependency versions change)
-    @TODO
+    ./bin/gbuild --commit cachecoin=HEAD ../cachecoin/contrib/gitian-descriptors/windows/gitian-win-boost.yml
+    mv ./build/out/boost-win* ./inputs/
+    ./bin/gbuild --commit cachecoin=HEAD ../cachecoin/contrib/gitian-descriptors/windows/gitian-win-protobuf.yml
+    mv ./build/out/protobuf-win* ./inputs/
+    ./bin/gbuild --commit cachecoin=HEAD ../cachecoin/contrib/gitian-descriptors/windows/gitian-win-deps.yml
+    mv ./build/out/cachecoin-deps-win* ./inputs/
+    ./bin/gbuild --commit cachecoin=HEAD ../cachecoin/contrib/gitian-descriptors/windows/gitian-win-qt4.yml
+    mv ./build/out/qt-win* ./inputs/
 
     # Build Windows release:
     @TODO

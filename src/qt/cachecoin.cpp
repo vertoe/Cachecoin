@@ -32,7 +32,7 @@ Q_IMPORT_PLUGIN(qtaccessiblewidgets)
 #endif
 
 // Need a global reference for the notifications to find the GUI
-static BitcoinGUI *guiref;
+static CachecoinGUI *guiref;
 static QSplashScreen *splashref;
 
 static void ThreadSafeMessageBox(const std::string& message, const std::string& caption, int style)
@@ -106,7 +106,7 @@ static std::string Translate(const char* psz)
 static void handleRunawayException(std::exception *e)
 {
     PrintExceptionContinue(e, "Runaway exception");
-    QMessageBox::critical(0, "Runaway exception", BitcoinGUI::tr("A fatal error occurred. Cachecoin can no longer continue safely and will quit.") + QString("\n\n") + QString::fromStdString(strMiscWarning));
+    QMessageBox::critical(0, "Runaway exception", CachecoinGUI::tr("A fatal error occurred. Cachecoin can no longer continue safely and will quit.") + QString("\n\n") + QString::fromStdString(strMiscWarning));
     exit(1);
 }
 
@@ -214,7 +214,7 @@ int main(int argc, char *argv[])
         if (GUIUtil::GetStartOnSystemStartup())
             GUIUtil::SetStartOnSystemStartup(true);
 
-        BitcoinGUI window;
+        CachecoinGUI window;
         guiref = &window;
         if(AppInit2())
         {

@@ -32,8 +32,8 @@ namespace GUIUtil
 
     // Parse "bitcoin:" URI into recipient object, return true on successful parsing
     // See Bitcoin URI definition discussion here: https://bitcointalk.org/index.php?topic=33490.0
-    bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out);
-    bool parseBitcoinURI(QString uri, SendCoinsRecipient *out);
+    bool parseCachecoinURI(const QUrl &uri, SendCoinsRecipient *out);
+    bool parseCachecoinURI(QString uri, SendCoinsRecipient *out);
 
     // HTML escaping for rich text controls
     QString HtmlEscape(const QString& str, bool fMultiLine=false);

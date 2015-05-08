@@ -79,7 +79,7 @@ Value dumpprivkey(const Array& params, bool fHelp)
             "Reveals the private key corresponding to <cachecoinaddress>.");
 
     string strAddress = params[0].get_str();
-    CBitcoinAddress address;
+    CCachecoinAddress address;
     if (!address.SetString(strAddress))
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cachecoin address");
     if (fWalletUnlockMintOnly) // ppcoin: no dumpprivkey in mint-only mode

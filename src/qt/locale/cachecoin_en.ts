@@ -298,7 +298,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
 </context>
 <context>
-    <name>BitcoinGUI</name>
+    <name>CachecoinGUI</name>
     <message>
         <location filename="../cachecoingui.cpp" line="+257"/>
         <source>Sign &amp;message...</source>

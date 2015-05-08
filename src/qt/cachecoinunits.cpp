@@ -2,22 +2,22 @@
 
 #include <QStringList>
 
-BitcoinUnits::BitcoinUnits(QObject *parent):
+CachecoinUnits::CachecoinUnits(QObject *parent):
         QAbstractListModel(parent),
         unitlist(availableUnits())
 {
 }
 
-QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
+QList<CachecoinUnits::Unit> CachecoinUnits::availableUnits()
 {
-    QList<BitcoinUnits::Unit> unitlist;
+    QList<CachecoinUnits::Unit> unitlist;
     unitlist.append(BTC);
     unitlist.append(mBTC);
     unitlist.append(uBTC);
     return unitlist;
 }
 
-bool BitcoinUnits::valid(int unit)
+bool CachecoinUnits::valid(int unit)
 {
     switch(unit)
     {
@@ -30,7 +30,7 @@ bool BitcoinUnits::valid(int unit)
     }
 }
 
-QString BitcoinUnits::name(int unit)
+QString CachecoinUnits::name(int unit)
 {
     switch(unit)
     {
@@ -41,7 +41,7 @@ QString BitcoinUnits::name(int unit)
     }
 }
 
-QString BitcoinUnits::description(int unit)
+QString CachecoinUnits::description(int unit)
 {
     switch(unit)
     {
@@ -52,7 +52,7 @@ QString BitcoinUnits::description(int unit)
     }
 }
 
-qint64 BitcoinUnits::factor(int unit)
+qint64 CachecoinUnits::factor(int unit)
 {
     switch(unit)
     {
@@ -63,7 +63,7 @@ qint64 BitcoinUnits::factor(int unit)
     }
 }
 
-int BitcoinUnits::amountDigits(int unit)
+int CachecoinUnits::amountDigits(int unit)
 {
     switch(unit)
     {
@@ -74,7 +74,7 @@ int BitcoinUnits::amountDigits(int unit)
     }
 }
 
-int BitcoinUnits::decimals(int unit)
+int CachecoinUnits::decimals(int unit)
 {
     switch(unit)
     {
@@ -85,7 +85,7 @@ int BitcoinUnits::decimals(int unit)
     }
 }
 
-QString BitcoinUnits::format(int unit, qint64 n, bool fPlus)
+QString CachecoinUnits::format(int unit, qint64 n, bool fPlus)
 {
     // Note: not using straight sprintf here because we do NOT want
     // localized number formatting.
@@ -112,12 +112,12 @@ QString BitcoinUnits::format(int unit, qint64 n, bool fPlus)
     return quotient_str + QString(".") + remainder_str;
 }
 
-QString BitcoinUnits::formatWithUnit(int unit, qint64 amount, bool plussign)
+QString CachecoinUnits::formatWithUnit(int unit, qint64 amount, bool plussign)
 {
     return format(unit, amount, plussign) + QString(" ") + name(unit);
 }
 
-bool BitcoinUnits::parse(int unit, const QString &value, qint64 *val_out)
+bool CachecoinUnits::parse(int unit, const QString &value, qint64 *val_out)
 {
     if(!valid(unit) || value.isEmpty())
         return false; // Refuse to parse invalid unit or empty string
@@ -154,13 +154,13 @@ bool BitcoinUnits::parse(int unit, const QString &value, qint64 *val_out)
     return ok;
 }
 
-int BitcoinUnits::rowCount(const QModelIndex &parent) const
+int CachecoinUnits::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
     return unitlist.size();
 }
 
-QVariant BitcoinUnits::data(const QModelIndex &index, int role) const
+QVariant CachecoinUnits::data(const QModelIndex &index, int role) const
 {
     int row = index.row();
     if(row >= 0 && row < unitlist.size())

@@ -140,7 +140,7 @@ void SendCoinsDialog::on_sendButton_clicked()
     QStringList formatted;
     foreach(const SendCoinsRecipient &rcp, recipients)
     {
-        formatted.append(tr("<b>%1</b> to %2 (%3)").arg(BitcoinUnits::formatWithUnit(BitcoinUnits::BTC, rcp.amount), Qt::escape(rcp.label), rcp.address));
+        formatted.append(tr("<b>%1</b> to %2 (%3)").arg(CachecoinUnits::formatWithUnit(CachecoinUnits::BTC, rcp.amount), Qt::escape(rcp.label), rcp.address));
     }
 
     fNewRecipientAllowed = false;
@@ -191,7 +191,7 @@ void SendCoinsDialog::on_sendButton_clicked()
     case WalletModel::AmountWithFeeExceedsBalance:
         QMessageBox::warning(this, tr("Send Coins"),
             tr("The total exceeds your balance when the %1 transaction fee is included.").
-            arg(BitcoinUnits::formatWithUnit(BitcoinUnits::BTC, sendstatus.fee)),
+            arg(CachecoinUnits::formatWithUnit(CachecoinUnits::BTC, sendstatus.fee)),
             QMessageBox::Ok, QMessageBox::Ok);
         break;
     case WalletModel::DuplicateAddress:
@@ -329,9 +329,9 @@ bool SendCoinsDialog::handleURI(const QString &uri)
 {
     SendCoinsRecipient rv;
     // URI has to be valid
-    if (GUIUtil::parseBitcoinURI(uri, &rv))
+    if (GUIUtil::parseCachecoinURI(uri, &rv))
     {
-        CBitcoinAddress address(rv.address.toStdString());
+        CCachecoinAddress address(rv.address.toStdString());
         if (!address.IsValid())
             return false;
         pasteEntry(rv);
@@ -350,7 +350,7 @@ void SendCoinsDialog::setBalance(qint64 balance, qint64 stake, qint64 unconfirme
         return;
 
     int unit = model->getOptionsModel()->getDisplayUnit();
-    ui->labelBalance->setText(BitcoinUnits::formatWithUnit(unit, balance));
+    ui->labelBalance->setText(CachecoinUnits::formatWithUnit(unit, balance));
 }
 
 void SendCoinsDialog::updateDisplayUnit()
@@ -358,7 +358,7 @@ void SendCoinsDialog::updateDisplayUnit()
     if(model && model->getOptionsModel())
     {
         // Update labelBalance with the current balance and the current unit
-        ui->labelBalance->setText(BitcoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), model->getBalance()));
+        ui->labelBalance->setText(CachecoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), model->getBalance()));
     }
 }
 
@@ -434,7 +434,7 @@ void SendCoinsDialog::updateDisplayUnit()
      if (model)
      {
          if (state == Qt::Checked)
-             CoinControlDialog::coinControl->destChange = CBitcoinAddress(ui->lineEditCoinControlChange->text().toStdString()).Get();
+             CoinControlDialog::coinControl->destChange = CCachecoinAddress(ui->lineEditCoinControlChange->text().toStdString()).Get();
          else
              CoinControlDialog::coinControl->destChange = CNoDestination();
      }
@@ -448,13 +448,13 @@ void SendCoinsDialog::updateDisplayUnit()
  {
      if (model)
      {
-         CoinControlDialog::coinControl->destChange = CBitcoinAddress(text.toStdString()).Get();
+         CoinControlDialog::coinControl->destChange = CCachecoinAddress(text.toStdString()).Get();
 
          // label for the change address
          ui->labelCoinControlChangeLabel->setStyleSheet("QLabel{color:black;}");
          if (text.isEmpty())
              ui->labelCoinControlChangeLabel->setText("");
-         else if (!CBitcoinAddress(text.toStdString()).IsValid())
+         else if (!CCachecoinAddress(text.toStdString()).IsValid())
          {
              ui->labelCoinControlChangeLabel->setStyleSheet("QLabel{color:red;}");
              ui->labelCoinControlChangeLabel->setText(tr("WARNING: Invalid Bitcoin address"));
@@ -468,7 +468,7 @@ void SendCoinsDialog::updateDisplayUnit()
              {
                  CPubKey pubkey;
                  CKeyID keyid;
-                 CBitcoinAddress(text.toStdString()).GetKeyID(keyid);
+                 CCachecoinAddress(text.toStdString()).GetKeyID(keyid);
                  if (model->getPubKey(keyid, pubkey))
                      ui->labelCoinControlChangeLabel->setText(tr("(no label)"));
                  else

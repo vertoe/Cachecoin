@@ -59,7 +59,7 @@
           </widget>
          </item>
          <item>
-          <widget class="BitcoinAmountField" name="transactionFee"/>
+          <widget class="CachecoinAmountField" name="transactionFee"/>
          </item>
          <item>
           <spacer name="horizontalSpacer_Main">
@@ -460,7 +460,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>BitcoinAmountField</class>
+   <class>CachecoinAmountField</class>
    <extends>QSpinBox</extends>
    <header>cachecoinamountfield.h</header>
   </customwidget>

@@ -125,7 +125,7 @@ void WalletModel::updateAddressBook(const QString &address, const QString &label
 
 bool WalletModel::validateAddress(const QString &address)
 {
-    CBitcoinAddress addressParsed(address.toStdString());
+    CCachecoinAddress addressParsed(address.toStdString());
     return addressParsed.IsValid();
 }
 
@@ -185,7 +185,7 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
         foreach(const SendCoinsRecipient &rcp, recipients)
         {
             CScript scriptPubKey;
-            scriptPubKey.SetDestination(CBitcoinAddress(rcp.address.toStdString()).Get());
+            scriptPubKey.SetDestination(CCachecoinAddress(rcp.address.toStdString()).Get());
             vecSend.push_back(make_pair(scriptPubKey, rcp.amount));
         }
 
@@ -217,7 +217,7 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
     foreach(const SendCoinsRecipient &rcp, recipients)
     {
         std::string strAddress = rcp.address.toStdString();
-        CTxDestination dest = CBitcoinAddress(strAddress).Get();
+        CTxDestination dest = CCachecoinAddress(strAddress).Get();
         std::string strLabel = rcp.label.toStdString();
         {
             LOCK(wallet->cs_wallet);
@@ -319,9 +319,9 @@ static void NotifyKeyStoreStatusChanged(WalletModel *walletmodel, CCryptoKeyStor
 
 static void NotifyAddressBookChanged(WalletModel *walletmodel, CWallet *wallet, const CTxDestination &address, const std::string &label, bool isMine, ChangeType status)
 {
-    OutputDebugStringF("NotifyAddressBookChanged %s %s isMine=%i status=%i\n", CBitcoinAddress(address).ToString().c_str(), label.c_str(), isMine, status);
+    OutputDebugStringF("NotifyAddressBookChanged %s %s isMine=%i status=%i\n", CCachecoinAddress(address).ToString().c_str(), label.c_str(), isMine, status);
     QMetaObject::invokeMethod(walletmodel, "updateAddressBook", Qt::QueuedConnection,
-                              Q_ARG(QString, QString::fromStdString(CBitcoinAddress(address).ToString())),
+                              Q_ARG(QString, QString::fromStdString(CCachecoinAddress(address).ToString())),
                               Q_ARG(QString, QString::fromStdString(label)),
                               Q_ARG(bool, isMine),
                               Q_ARG(int, status));
@@ -431,7 +431,7 @@ bool WalletModel::getPubKey(const CKeyID &address, CPubKey& vchPubKeyOut) const
  
          CTxDestination address;
          if(!ExtractDestination(cout.tx->vout[cout.i].scriptPubKey, address)) continue;
-         mapCoins[CBitcoinAddress(address).ToString().c_str()].push_back(out);
+         mapCoins[CCachecoinAddress(address).ToString().c_str()].push_back(out);
      }
  }
  

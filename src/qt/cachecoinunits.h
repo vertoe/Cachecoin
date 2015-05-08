@@ -7,10 +7,10 @@
 /** Bitcoin unit definitions. Encapsulates parsing and formatting
    and serves as list model for drop-down selection boxes.
 */
-class BitcoinUnits: public QAbstractListModel
+class CachecoinUnits: public QAbstractListModel
 {
 public:
-    explicit BitcoinUnits(QObject *parent);
+    explicit CachecoinUnits(QObject *parent);
 
     /** Bitcoin units.
       @note Source: https://en.bitcoin.it/wiki/Units . Please add only sensible ones
@@ -59,8 +59,8 @@ public:
     QVariant data(const QModelIndex &index, int role) const;
     ///@}
 private:
-    QList<BitcoinUnits::Unit> unitlist;
+    QList<CachecoinUnits::Unit> unitlist;
 };
-typedef BitcoinUnits::Unit BitcoinUnit;
+typedef CachecoinUnits::Unit CachecoinUnit;
 
 #endif // CACHECOINUNITS_H

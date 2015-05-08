@@ -61,8 +61,8 @@ QFont bitcoinAddressFont()
 
 void setupAddressWidget(QLineEdit *widget, QWidget *parent)
 {
-    widget->setMaxLength(BitcoinAddressValidator::MaxAddressLength);
-    widget->setValidator(new BitcoinAddressValidator(parent));
+    widget->setMaxLength(CachecoinAddressValidator::MaxAddressLength);
+    widget->setValidator(new CachecoinAddressValidator(parent));
     widget->setFont(bitcoinAddressFont());
 }
 
@@ -75,7 +75,7 @@ void setupAmountWidget(QLineEdit *widget, QWidget *parent)
     widget->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
 }
 
-bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
+bool parseCachecoinURI(const QUrl &uri, SendCoinsRecipient *out)
 {
     if(uri.scheme() != QString("cachecoin"))
         return false;
@@ -102,7 +102,7 @@ bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
         {
             if(!i->second.isEmpty())
             {
-                if(!BitcoinUnits::parse(BitcoinUnits::BTC, i->second, &rv.amount))
+                if(!CachecoinUnits::parse(CachecoinUnits::BTC, i->second, &rv.amount))
                 {
                     return false;
                 }
@@ -120,7 +120,7 @@ bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
     return true;
 }
 
-bool parseBitcoinURI(QString uri, SendCoinsRecipient *out)
+bool parseCachecoinURI(QString uri, SendCoinsRecipient *out)
 {
     // Convert cachecoin:// to cachecoin:
     //
@@ -131,7 +131,7 @@ bool parseBitcoinURI(QString uri, SendCoinsRecipient *out)
         uri.replace(0, 12, "cachecoin:");
     }
     QUrl uriInstance(uri);
-    return parseBitcoinURI(uriInstance, out);
+    return parseCachecoinURI(uriInstance, out);
 }
 
 QString HtmlEscape(const QString& str, bool fMultiLine)

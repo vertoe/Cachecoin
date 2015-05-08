@@ -19,7 +19,7 @@ class TxViewDelegate : public QAbstractItemDelegate
 {
     Q_OBJECT
 public:
-    TxViewDelegate(): QAbstractItemDelegate(), unit(BitcoinUnits::BTC)
+    TxViewDelegate(): QAbstractItemDelegate(), unit(CachecoinUnits::BTC)
     {
 
     }
@@ -66,7 +66,7 @@ public:
             foreground = option.palette.color(QPalette::Text);
         }
         painter->setPen(foreground);
-        QString amountText = BitcoinUnits::formatWithUnit(unit, amount, true);
+        QString amountText = CachecoinUnits::formatWithUnit(unit, amount, true);
         if(!confirmed)
         {
             amountText = QString("[") + amountText + QString("]");
@@ -136,11 +136,11 @@ void OverviewPage::setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBa
     currentUnconfirmedBalance = unconfirmedBalance;
     currentImmatureBalance = immatureBalance;
     qint64 totalBalance = balance + immatureBalance + unconfirmedBalance + stake;
-    ui->labelBalance->setText(BitcoinUnits::formatWithUnit(unit, balance));
-    ui->labelStake->setText(BitcoinUnits::formatWithUnit(unit, stake));
-    ui->labelUnconfirmed->setText(BitcoinUnits::formatWithUnit(unit, unconfirmedBalance));
-    ui->labelImmature->setText(BitcoinUnits::formatWithUnit(unit, immatureBalance));
-    ui->labelTotal->setText(BitcoinUnits::formatWithUnit(unit, totalBalance));
+    ui->labelBalance->setText(CachecoinUnits::formatWithUnit(unit, balance));
+    ui->labelStake->setText(CachecoinUnits::formatWithUnit(unit, stake));
+    ui->labelUnconfirmed->setText(CachecoinUnits::formatWithUnit(unit, unconfirmedBalance));
+    ui->labelImmature->setText(CachecoinUnits::formatWithUnit(unit, immatureBalance));
+    ui->labelTotal->setText(CachecoinUnits::formatWithUnit(unit, totalBalance));
 
     // only show immature (newly mined) balance if it's non-zero, so as not to complicate things
     // for the non-mining users

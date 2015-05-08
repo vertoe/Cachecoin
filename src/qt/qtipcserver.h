@@ -1,8 +1,8 @@
 #ifndef QTIPCSERVER_H
 #define QTIPCSERVER_H
 
-// Define yacoin-qt message queue name
-#define CACHECOINURI_QUEUE_NAME "BitcoinURI"
+// Define cachecoin-qt message queue name
+#define CACHECOINURI_QUEUE_NAME "CachecoinURI"
 
 void ipcScanRelay(int argc, char *argv[]);
 void ipcInit(int argc, char *argv[]);

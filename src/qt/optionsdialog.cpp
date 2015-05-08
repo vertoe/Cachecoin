@@ -80,7 +80,7 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
         }
     }
 
-    ui->unit->setModel(new BitcoinUnits(this));
+    ui->unit->setModel(new CachecoinUnits(this));
 
     /* Widget-to-option mapper */
     mapper = new MonitoredDataMapper(this);

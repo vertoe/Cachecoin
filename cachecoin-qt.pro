@@ -12,33 +12,6 @@ CONFIG += no_include_pwd
 QT += core gui network
 CONFIG += thread
 
-# for boost 1.37, add -mt to the boost libraries
-# use: qmake BOOST_LIB_SUFFIX=-mt
-# for boost thread win32 with _win32 sufix
-# use: BOOST_THREAD_LIB_SUFFIX=_win32-...
-# or when linking against a specific BerkelyDB version: BDB_LIB_SUFFIX=-4.8
-
-# Dependency library locations can be customized with:
-#    BOOST_INCLUDE_PATH, BOOST_LIB_PATH, BDB_INCLUDE_PATH,
-#    BDB_LIB_PATH, OPENSSL_INCLUDE_PATH and OPENSSL_LIB_PATH respectively
-### windows:LIBS += -lshlwapi
-### LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
-### LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX -L/c/deps/qrencode/.libs -lrt
-### windows:{LIBS += -lws2_32 -lole32 -loleaut32 -luuid -lgdi32
-###     LIBS += -lboost_system-mgw48-mt-s-1_55 -lboost_filesystem-mgw48-mt-s-1_55 -lboost_program_options-mgw48-mt-s-1_55 -lboost_thread-mgw48-mt-s-1_55
-###
-###     BOOST_LIB_SUFFIX=-mgw48-mt-s-1_55
-###     BOOST_INCLUDE_PATH=/c/deps/boost
-###     BOOST_LIB_PATH=/c/deps/boost/stage/lib
-###     BDB_INCLUDE_PATH=/c/deps/db/build_unix
-###     BDB_LIB_PATH=/c/deps/db/build_unix
-###     QRENCODE_INCLUDE_PATH=/c/deps/qrencode/
-###     QRENCODE_LIB_PATH=/c/deps/qrencode/.libs
-###     MINIUPNPC_INCLUDE_PATH=/c/deps/
-###     MINIUPNPC_LIB_PATH=/c/deps/miniupnpc
-###     OPENSSL_INCLUDE_PATH=/c/deps/openssl/include
-###     OPENSSL_LIB_PATH=/c/deps/openssl
-### }
 OBJECTS_DIR = build
 MOC_DIR = build
 UI_DIR = build
@@ -426,7 +399,7 @@ INCLUDEPATH += $$BOOST_INCLUDE_PATH $$BDB_INCLUDE_PATH $$OPENSSL_INCLUDE_PATH $$
 LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
 LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX
 # -lgdi32 has to happen after -lcrypto (see  #681)
-win32:LIBS += -lws2_32 -lshlwapi -lmswsock -lole32 -loleaut32 -luuid -lgdi32
+win32:LIBS += -lws2_32 -lshlwapi -lmswsock -lole32 -loleaut32 -luuid -lgdi32 -lcrypt32
 LIBS += -lboost_system$$BOOST_LIB_SUFFIX -lboost_filesystem$$BOOST_LIB_SUFFIX -lboost_program_options$$BOOST_LIB_SUFFIX -lboost_thread$$BOOST_THREAD_LIB_SUFFIX
 win32:LIBS += -lboost_chrono$$BOOST_LIB_SUFFIX
 macx:LIBS += -lboost_chrono$$BOOST_LIB_SUFFIX

@@ -102,7 +102,7 @@ bool parseCachecoinURI(const QUrl &uri, SendCoinsRecipient *out)
         {
             if(!i->second.isEmpty())
             {
-                if(!CachecoinUnits::parse(CachecoinUnits::BTC, i->second, &rv.amount))
+                if(!CachecoinUnits::parse(CachecoinUnits::CACH, i->second, &rv.amount))
                 {
                     return false;
                 }

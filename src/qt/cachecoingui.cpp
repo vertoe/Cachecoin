@@ -648,7 +648,7 @@ void CachecoinGUI::askFee(qint64 nFeeRequired, bool *payFee)
         tr("This transaction is over the size limit.  You can still send it for a fee of %1, "
           "which goes to the nodes that process your transaction and helps to support the network.  "
           "Do you want to pay the fee?").arg(
-                CachecoinUnits::formatWithUnit(CachecoinUnits::BTC, nFeeRequired));
+                CachecoinUnits::formatWithUnit(CachecoinUnits::CACH, nFeeRequired));
     QMessageBox::StandardButton retval = QMessageBox::question(
           this, tr("Confirm transaction fee"), strMessage,
           QMessageBox::Yes|QMessageBox::Cancel, QMessageBox::Yes);

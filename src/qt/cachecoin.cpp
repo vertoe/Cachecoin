@@ -197,11 +197,23 @@ int main(int argc, char *argv[])
     }
 
     QSplashScreen splash(QPixmap(":/images/splash"), 0);
+    QSplashScreen splash_testnet(QPixmap(":/images/splash_testnet"), 0);
+
+
     if (GetBoolArg("-splash", true) && !GetBoolArg("-min"))
     {
-        splash.show();
-        splash.setAutoFillBackground(true);
-        splashref = &splash;
+        if(GetBoolArg("-testnet"))
+        {
+            splash_testnet.show();
+            splash_testnet.setAutoFillBackground(true);
+            splashref = &splash_testnet;
+        }
+        else
+        {
+            splash.show();
+            splash.setAutoFillBackground(true);
+            splashref = &splash;
+        }
     }
 
     app.processEvents();

@@ -1307,8 +1307,8 @@ Address: %4
     </message>
     <message>
         <location line="+10"/>
-        <source>123.456 BTC</source>
-        <translation>123.456 BTC</translation>
+        <source>123.456 CACH</source>
+        <translation>123.456 CACH</translation>
     </message>
     <message>
         <location line="+31"/>
@@ -2192,8 +2192,8 @@ Address: %4
     </message>
     <message>
         <location line="-26"/>
-        <source>Listen for connections on &lt;port&gt; (default: 7777 or testnet: 17777)</source>
-        <translation>Принимать входящие подключения на &lt;port&gt; (по умолчанию: 7777 или 17777 в тестовой сети)</translation>
+        <source>Listen for connections on &lt;port&gt; (default: 2225 or testnet: 12225)</source>
+        <translation>Принимать входящие подключения на &lt;port&gt; (по умолчанию: 2225 или 12225 в тестовой сети)</translation>
     </message>
     <message>
         <location line="+4"/>

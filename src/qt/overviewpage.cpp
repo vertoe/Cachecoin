@@ -19,7 +19,7 @@ class TxViewDelegate : public QAbstractItemDelegate
 {
     Q_OBJECT
 public:
-    TxViewDelegate(): QAbstractItemDelegate(), unit(CachecoinUnits::BTC)
+    TxViewDelegate(): QAbstractItemDelegate(), unit(CachecoinUnits::CACH)
     {
 
     }
@@ -180,7 +180,7 @@ void OverviewPage::setModel(WalletModel *model)
         connect(model->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
     }
 
-    // update the display unit, to not use the default ("BTC")
+    // update the display unit, to not use the default ("CACH")
     updateDisplayUnit();
 }
 

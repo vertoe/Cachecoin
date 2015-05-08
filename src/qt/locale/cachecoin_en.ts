@@ -1301,8 +1301,8 @@ Address: %4
     </message>
     <message>
         <location line="+10"/>
-        <source>123.456 BTC</source>
-        <translation>123.456 BTC</translation>
+        <source>123.456 CACH</source>
+        <translation>123.456 CACH</translation>
     </message>
     <message>
         <location line="+31"/>
@@ -2180,8 +2180,8 @@ Address: %4
     </message>
     <message>
         <location line="-26"/>
-        <source>Listen for connections on &lt;port&gt; (default: 7777 or testnet: 17777)</source>
-        <translation>Listen for connections on &lt;port&gt; (default: 8333 or testnet: 18333)</translation>
+        <source>Listen for connections on &lt;port&gt; (default: 2225 or testnet: 12225)</source>
+        <translation>Listen for connections on &lt;port&gt; (default: 2225 or testnet: 12225)</translation>
     </message>
     <message>
         <location line="+4"/>

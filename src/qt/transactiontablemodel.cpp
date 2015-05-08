@@ -449,7 +449,7 @@ QVariant TransactionTableModel::txStatusDecoration(const TransactionRecord *wtx)
         {
         case TransactionStatus::Immature: {
             int total = wtx->status.depth + wtx->status.matures_in;
-            int part = (wtx->status.depth * 4 / total) + 1;
+            int part = (wtx->status.depth * 5 / total) + 1;
             return QIcon(QString(":/icons/transaction_%1").arg(part));
             }
         case TransactionStatus::Mature:
@@ -477,7 +477,8 @@ QVariant TransactionTableModel::txStatusDecoration(const TransactionRecord *wtx)
             case 2: return QIcon(":/icons/transaction_2");
             case 3: return QIcon(":/icons/transaction_3");
             case 4: return QIcon(":/icons/transaction_4");
-            default: return QIcon(":/icons/transaction_5");
+            case 5: return QIcon(":/icons/transaction_5");
+            default: return QIcon(":/icons/transaction_0");
             };
         case TransactionStatus::HaveConfirmations:
             return QIcon(":/icons/transaction_confirmed");

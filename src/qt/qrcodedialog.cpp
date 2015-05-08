@@ -44,7 +44,7 @@ void QRCodeDialog::setModel(OptionsModel *model)
     if (model)
         connect(model, SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
 
-    // update the display unit, to not use the default ("BTC")
+    // update the display unit, to not use the default ("CACH")
     updateDisplayUnit();
 }
 
@@ -92,8 +92,8 @@ QString QRCodeDialog::getURI()
     {
         if (ui->lnReqAmount->validate())
         {
-            // even if we allow a non BTC unit input in lnReqAmount, we generate the URI with BTC as unit (as defined in BIP21)
-            ret += QString("?amount=%1").arg(CachecoinUnits::format(CachecoinUnits::BTC, ui->lnReqAmount->value()));
+            // even if we allow a non CACH unit input in lnReqAmount, we generate the URI with CACH as unit (as defined in BIP21)
+            ret += QString("?amount=%1").arg(CachecoinUnits::format(CachecoinUnits::CACH, ui->lnReqAmount->value()));
             paramCount++;
         }
         else

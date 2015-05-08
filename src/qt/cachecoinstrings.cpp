@@ -116,7 +116,7 @@ QT_TRANSLATE_NOOP("cachecoin-core", "Invalid amount for -paytxfee=<amount>: '%s'
 QT_TRANSLATE_NOOP("cachecoin-core", "Invalid amount for -reservebalance=<amount>"),
 QT_TRANSLATE_NOOP("cachecoin-core", "Invalid amount"),
 QT_TRANSLATE_NOOP("cachecoin-core", "List commands"),
-QT_TRANSLATE_NOOP("cachecoin-core", "Listen for connections on <port> (default: 7777 or testnet: 17777)"),
+QT_TRANSLATE_NOOP("cachecoin-core", "Listen for connections on <port> (default: 2225 or testnet: 12225)"),
 QT_TRANSLATE_NOOP("cachecoin-core", "Loading addresses..."),
 QT_TRANSLATE_NOOP("cachecoin-core", "Loading block index..."),
 QT_TRANSLATE_NOOP("cachecoin-core", "Loading wallet..."),

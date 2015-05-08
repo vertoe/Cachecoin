@@ -11,9 +11,9 @@ CachecoinUnits::CachecoinUnits(QObject *parent):
 QList<CachecoinUnits::Unit> CachecoinUnits::availableUnits()
 {
     QList<CachecoinUnits::Unit> unitlist;
-    unitlist.append(BTC);
-    unitlist.append(mBTC);
-    unitlist.append(uBTC);
+    unitlist.append(CACH);
+    unitlist.append(mCACH);
+    unitlist.append(uCACH);
     return unitlist;
 }
 
@@ -21,9 +21,9 @@ bool CachecoinUnits::valid(int unit)
 {
     switch(unit)
     {
-    case BTC:
-    case mBTC:
-    case uBTC:
+    case CACH:
+    case mCACH:
+    case uCACH:
         return true;
     default:
         return false;
@@ -34,9 +34,9 @@ QString CachecoinUnits::name(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("CACH");
-    case mBTC: return QString("mCACH");
-    case uBTC: return QString::fromUtf8("μCACH");
+    case CACH: return QString("CACH");
+    case mCACH: return QString("mCACH");
+    case uCACH: return QString::fromUtf8("μCACH");
     default: return QString("???");
     }
 }
@@ -45,9 +45,9 @@ QString CachecoinUnits::description(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("Cachecoins");
-    case mBTC: return QString("Milli-Cachecoins (1 / 1,000)");
-    case uBTC: return QString("Micro-Cachecoins (1 / 1,000,000)");
+    case CACH: return QString("Cachecoins");
+    case mCACH: return QString("Milli-Cachecoins (1 / 1,000)");
+    case uCACH: return QString("Micro-Cachecoins (1 / 1,000,000)");
     default: return QString("???");
     }
 }
@@ -56,9 +56,9 @@ qint64 CachecoinUnits::factor(int unit)
 {
     switch(unit)
     {
-    case BTC:  return 1000000;
-    case mBTC: return 1000;
-    case uBTC: return 1;
+    case CACH:  return 1000000;
+    case mCACH: return 1000;
+    case uCACH: return 1;
     default:   return 1000000;
     }
 }
@@ -67,9 +67,9 @@ int CachecoinUnits::amountDigits(int unit)
 {
     switch(unit)
     {
-    case BTC: return 8; // 21,000,000 (# digits, without commas)
-    case mBTC: return 11; // 21,000,000,000
-    case uBTC: return 14; // 21,000,000,000,000
+    case CACH: return 8; // 21,000,000 (# digits, without commas)
+    case mCACH: return 11; // 21,000,000,000
+    case uCACH: return 14; // 21,000,000,000,000
     default: return 0;
     }
 }
@@ -78,9 +78,9 @@ int CachecoinUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case BTC: return 6;
-    case mBTC: return 3;
-    case uBTC: return 0;
+    case CACH: return 6;
+    case mCACH: return 3;
+    case uCACH: return 0;
     default: return 0;
     }
 }

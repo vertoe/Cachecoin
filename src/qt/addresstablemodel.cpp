@@ -190,7 +190,7 @@ QVariant AddressTableModel::data(const QModelIndex &index, int role) const
         QFont font;
         if(index.column() == Address)
         {
-            font = GUIUtil::bitcoinAddressFont();
+            font = GUIUtil::cachecoinAddressFont();
         }
         return font;
     }
@@ -295,7 +295,7 @@ QModelIndex AddressTableModel::index(int row, int column, const QModelIndex & pa
 
 void AddressTableModel::updateEntry(const QString &address, const QString &label, bool isMine, int status)
 {
-    // Update address book model from Bitcoin core
+    // Update address book model from Cachecoin core
     priv->updateEntry(address, label, isMine, status);
 }
 

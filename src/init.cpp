@@ -57,7 +57,7 @@ void Shutdown(void* parg)
     static bool fTaken;
 
     // Make this thread recognisable as the shutdown thread
-    RenameThread("bitcoin-shutoff");
+    RenameThread("cachecoin-shutoff");
 
     bool fFirstThread = false;
     {
@@ -445,7 +445,7 @@ bool AppInit2()
 
     std::string strDataDir = GetDataDir().string();
 
-    // Make sure only a single Bitcoin process is using the data directory.
+    // Make sure only a single Cachecoin process is using the data directory.
     boost::filesystem::path pathLockFile = GetDataDir() / ".lock";
     FILE* file = fopen(pathLockFile.string().c_str(), "a"); // empty lock file; created if it doesn't exist.
     if (file) fclose(file);

@@ -2,8 +2,8 @@ Building Cachecoin
 
 See doc/readme-qt.rst for instructions on building Cachecoin-QT,
 the intended-for-end-users, nice-graphical-interface, reference
-implementation of Bitcoin.
+implementation of Cachecoin.
 
 See doc/build-*.txt for instructions on building cachecoind,
 the intended-for-services, no-graphical-interface, reference
-implementation of Bitcoin.
+implementation of Cachecoin.

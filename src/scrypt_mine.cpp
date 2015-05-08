@@ -42,7 +42,7 @@ extern "C" {
 #include "net.h"
 
 extern bool fShutdown;
-extern bool fGenerateBitcoins;
+extern bool fGenerateCachecoins;
 
 extern CBlockIndex* pindexBest;
 extern uint32_t nTransactionsUpdated;

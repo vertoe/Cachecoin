@@ -41,7 +41,7 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
     connect(ui->addButton, SIGNAL(clicked()), this, SLOT(addEntry()));
     connect(ui->clearButton, SIGNAL(clicked()), this, SLOT(clear()));
     // Coin Control
-    ui->lineEditCoinControlChange->setFont(GUIUtil::bitcoinAddressFont());
+    ui->lineEditCoinControlChange->setFont(GUIUtil::cachecoinAddressFont());
     connect(ui->pushButtonCoinControl, SIGNAL(clicked()), this, SLOT(coinControlButtonClicked()));
     connect(ui->checkBoxCoinControlChange, SIGNAL(stateChanged(int)), this, SLOT(coinControlChangeChecked(int)));
     connect(ui->lineEditCoinControlChange, SIGNAL(textEdited(const QString &)), this, SLOT(coinControlChangeEdited(const QString &)));
@@ -457,7 +457,7 @@ void SendCoinsDialog::updateDisplayUnit()
          else if (!CCachecoinAddress(text.toStdString()).IsValid())
          {
              ui->labelCoinControlChangeLabel->setStyleSheet("QLabel{color:red;}");
-             ui->labelCoinControlChangeLabel->setText(tr("WARNING: Invalid Bitcoin address"));
+             ui->labelCoinControlChangeLabel->setText(tr("WARNING: Invalid Cachecoin address"));
          }
          else
          {

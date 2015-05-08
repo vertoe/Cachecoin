@@ -49,7 +49,7 @@ void OptionsModel::Init()
     nTransactionFee = settings.value("nTransactionFee").toLongLong();
     language = settings.value("language", "").toString();
 
-    // These are shared with core Bitcoin; we want
+    // These are shared with core Cachecoin; we want
     // command-line options to override the GUI settings:
     if (settings.contains("fUseUPnP"))
         SoftSetBoolArg("-upnp", settings.value("fUseUPnP").toBool());
@@ -263,7 +263,7 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
             break;
         case CPUMining: {
             bool fCPUMining = value.toBool();
-            GenerateBitcoins(fCPUMining, pwalletMain);
+            GenerateCachecoins(fCPUMining, pwalletMain);
             mapArgs["-gen"] = (fCPUMining ? "1" : "0");
             }
             break;

@@ -1,5 +1,5 @@
 /*
- * Qt4 bitcoin GUI.
+ * Qt4 cachecoin GUI.
  *
  * W.J. van der Laan 2011-2012
  * The Bitcoin Developers 2011-2012
@@ -71,8 +71,8 @@ CachecoinGUI::CachecoinGUI(QWidget *parent):
     resize(850, 550);
     setWindowTitle(tr("Cachecoin") + " - " + tr("Wallet"));
 #ifndef Q_OS_MAC
-    qApp->setWindowIcon(QIcon(":icons/bitcoin"));
-    setWindowIcon(QIcon(":icons/bitcoin"));
+    qApp->setWindowIcon(QIcon(":icons/cachecoin"));
+    setWindowIcon(QIcon(":icons/cachecoin"));
 #else
     setUnifiedTitleAndToolBarOnMac(true);
     QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
@@ -256,7 +256,7 @@ void CachecoinGUI::createActions()
     quitAction->setToolTip(tr("Quit application"));
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
-    aboutAction = new QAction(QIcon(":/icons/bitcoin"), tr("&About Cachecoin"), this);
+    aboutAction = new QAction(QIcon(":/icons/cachecoin"), tr("&About Cachecoin"), this);
     aboutAction->setToolTip(tr("Show information about Cachecoin"));
     aboutAction->setMenuRole(QAction::AboutRole);
     aboutQtAction = new QAction(QIcon(":/trolltech/qmessagebox/images/qtlogo-64.png"), tr("About &Qt"), this);
@@ -265,7 +265,7 @@ void CachecoinGUI::createActions()
     optionsAction = new QAction(QIcon(":/icons/options"), tr("&Options..."), this);
     optionsAction->setToolTip(tr("Modify configuration options for Cachecoin"));
     optionsAction->setMenuRole(QAction::PreferencesRole);
-    toggleHideAction = new QAction(QIcon(":/icons/bitcoin"), tr("&Show / Hide"), this);
+    toggleHideAction = new QAction(QIcon(":/icons/cachecoin"), tr("&Show / Hide"), this);
     encryptWalletAction = new QAction(QIcon(":/icons/lock_closed"), tr("&Encrypt Wallet..."), this);
     encryptWalletAction->setToolTip(tr("Encrypt or decrypt wallet"));
     encryptWalletAction->setCheckable(true);
@@ -352,10 +352,10 @@ void CachecoinGUI::setClientModel(ClientModel *clientModel)
         {
             setWindowTitle(windowTitle() + QString(" ") + tr("[testnet]"));
 #ifndef Q_OS_MAC
-            qApp->setWindowIcon(QIcon(":icons/bitcoin_testnet"));
-            setWindowIcon(QIcon(":icons/bitcoin_testnet"));
+            qApp->setWindowIcon(QIcon(":icons/cachecoin_testnet"));
+            setWindowIcon(QIcon(":icons/cachecoin_testnet"));
 #else
-            MacDockIconHandler::instance()->setIcon(QIcon(":icons/bitcoin_testnet"));
+            MacDockIconHandler::instance()->setIcon(QIcon(":icons/cachecoin_testnet"));
 #endif
             if(trayIcon)
             {

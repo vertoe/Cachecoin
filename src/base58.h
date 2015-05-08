@@ -253,7 +253,7 @@ public:
     bool operator> (const CBase58Data& b58) const { return CompareTo(b58) >  0; }
 };
 
-/** base58-encoded Bitcoin addresses.
+/** base58-encoded Cachecoin addresses.
  * Public-key-hash-addresses have version 0 (or 111 testnet).
  * The data vector contains RIPEMD160(SHA256(pubkey)), where pubkey is the serialized public key.
  * Script-hash-addresses have version 5 (or 196 testnet).
@@ -399,7 +399,7 @@ bool inline CCachecoinAddressVisitor::operator()(const CScriptID &id) const     
 bool inline CCachecoinAddressVisitor::operator()(const CNoDestination &id) const { return false; }
 
 /** A base58-encoded secret key */
-class CBitcoinSecret : public CBase58Data
+class CCachecoinSecret : public CBase58Data
 {
 public:
     void SetSecret(const CSecret& vchSecret, bool fCompressed)
@@ -447,12 +447,12 @@ public:
         return SetString(strSecret.c_str());
     }
 
-    CBitcoinSecret(const CSecret& vchSecret, bool fCompressed)
+    CCachecoinSecret(const CSecret& vchSecret, bool fCompressed)
     {
         SetSecret(vchSecret, fCompressed);
     }
 
-    CBitcoinSecret()
+    CCachecoinSecret()
     {
     }
 };

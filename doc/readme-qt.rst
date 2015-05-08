@@ -1,4 +1,4 @@
-cachecoin-qt: Qt4 GUI for Bitcoin
+cachecoin-qt: Qt4 GUI for Cachecoin
 ===============================
 
 Build instructions
@@ -73,7 +73,7 @@ Build configuration options
 UPNnP port forwarding
 ---------------------
 
-To use UPnP for port forwarding behind a NAT router (recommended, as more connections overall allow for a faster and more stable bitcoin experience), pass the following argument to qmake:
+To use UPnP for port forwarding behind a NAT router (recommended, as more connections overall allow for a faster and more stable cachecoin experience), pass the following argument to qmake:
 
 ::
 
@@ -107,8 +107,8 @@ FreeDesktop notification interface through DBUS using the following qmake option
 Generation of QR codes
 -----------------------
 
-libqrencode may be used to generate QRCode images for payment requests. 
-It can be downloaded from http://fukuchi.org/works/qrencode/index.html.en, or installed via your package manager. Pass the USE_QRCODE 
+libqrencode may be used to generate QRCode images for payment requests.
+It can be downloaded from http://fukuchi.org/works/qrencode/index.html.en, or installed via your package manager. Pass the USE_QRCODE
 flag to qmake to control this:
 
 +--------------+--------------------------------------------------------------------------+
@@ -121,9 +121,9 @@ flag to qmake to control this:
 Berkely DB version warning
 ==========================
 
-A warning for people using the *static binary* version of Bitcoin on a Linux/UNIX-ish system (tl;dr: **Berkely DB databases are not forward compatible**).
+A warning for people using the *static binary* version of Cachecoin on a Linux/UNIX-ish system (tl;dr: **Berkely DB databases are not forward compatible**).
 
-The static binary version of Bitcoin is linked against libdb4.8 (see also `this Debian issue`_).
+The static binary version of Cachecoin is linked against libdb4.8 (see also `this Debian issue`_).
 
 Now the nasty thing is that databases from 5.X are not compatible with 4.X.
 

@@ -1285,10 +1285,10 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64> >& vecSend, CW
 
                 if (nChange > 0)
                 {
-                    
+
                     // Fill a vout to ourself
                     // TODO: pass in scriptChange instead of reservekey so
-                    // change transaction isn't always pay-to-bitcoin-address
+                    // change transaction isn't always pay-to-cachecoin-address
                     CScript scriptChange;
                     // coin control: send change to custom address
                     if (coinControl && !boost::get<CNoDestination>(&coinControl->destChange))
@@ -1368,10 +1368,10 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
     // Should not be adjusted if you don't understand the consequences
     static unsigned int nStakeSplitAge = (60 * 60 * 24 * 90);
     int64 nCombineThreshold = GetProofOfWorkReward(GetLastBlockIndex(pindexBest, false)->nBits) / 3;
- 
+
     // Keep a table of stuff to speed up POS mining
     static map<uint256, PosMiningStuff *> mapMiningStuff;
-    
+
     CBigNum bnTargetPerCoinDay;
     bnTargetPerCoinDay.SetCompact(nBits);
 
@@ -1405,7 +1405,7 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
         uint256 txHash = pcoin.first->GetHash();
         if (!txdb.ReadTxIndex(txHash, txindex))
             continue;
-        
+
         // Read block header
         CBlock block;
         if (!block.ReadFromDisk(txindex.pos.nFile, txindex.pos.nBlockPos, false))
@@ -1413,7 +1413,7 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
         static int nMaxStakeSearchInterval = 60;
         if (block.GetBlockTime() + nStakeMinAge > txNew.nTime - nMaxStakeSearchInterval)
             continue; // only count coins meeting min age requirement
-        
+
         // Groko's POS miner performance fix:
         PosMiningStuff *miningStuff = NULL;
         if (mapMiningStuff.count(txHash)) {
@@ -1432,17 +1432,17 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
             // Calculate the kernel stake modifiers
             if (GetKernelStakeModifier(hashBlockFrom, nStakeModifier, nStakeModifierHeight, nStakeModifierTime)) {
                 miningStuff = (PosMiningStuff *)malloc(sizeof(PosMiningStuff));
-    
+
                 miningStuff->hashBlockFrom = hashBlockFrom;
                 miningStuff->nStakeModifier = nStakeModifier;
                 miningStuff->nStakeModifierHeight = nStakeModifierHeight;
                 miningStuff->nStakeModifierTime = nStakeModifierTime;
-    
+
                 // Save it all for faster POS mining.
                 mapMiningStuff.insert(make_pair(txHash, miningStuff));
             }
         }
-          
+
         bool fKernelFound = false;
         for (unsigned int n=0; n<min(nSearchInterval,(int64)nMaxStakeSearchInterval) && !fKernelFound && !fShutdown; n++)
         {
@@ -1685,7 +1685,7 @@ string CWallet::SendMoneyToDestination(const CTxDestination& address, int64 nVal
     if (nValue + nTransactionFee > GetBalance())
         return _("Insufficient funds");
 
-    // Parse Bitcoin address
+    // Parse Cachecoin address
     CScript scriptPubKey;
     scriptPubKey.SetDestination(address);
 

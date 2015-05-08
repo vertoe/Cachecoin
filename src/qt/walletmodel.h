@@ -16,7 +16,7 @@ class COutput;
 class COutPoint;
 class uint256;
 class CCoinControl;
- 
+
 QT_BEGIN_NAMESPACE
 class QTimer;
 QT_END_NAMESPACE
@@ -29,7 +29,7 @@ public:
     qint64 amount;
 };
 
-/** Interface to Bitcoin wallet from Qt view code. */
+/** Interface to Cachecoin wallet from Qt view code. */
 class WalletModel : public QObject
 {
     Q_OBJECT
@@ -116,7 +116,7 @@ public:
     };
 
     UnlockContext requestUnlock();
-    
+
     bool getPubKey(const CKeyID &address, CPubKey& vchPubKeyOut) const;
     void getOutputs(const std::vector<COutPoint>& vOutpoints, std::vector<COutput>& vOutputs);
     void listCoins(std::map<QString, std::vector<COutput> >& mapCoins) const;
@@ -124,7 +124,7 @@ public:
     void lockCoin(COutPoint& output);
     void unlockCoin(COutPoint& output);
     void listLockedCoins(std::vector<COutPoint>& vOutpts);
-    
+
 private:
     CWallet *wallet;
 

@@ -8,7 +8,7 @@ class QDoubleSpinBox;
 class QValueComboBox;
 QT_END_NAMESPACE
 
-/** Widget for entering bitcoin amounts.
+/** Widget for entering cachecoin amounts.
   */
 class CachecoinAmountField: public QWidget
 {

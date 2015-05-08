@@ -4,7 +4,7 @@
 #include <QString>
 #include <QAbstractListModel>
 
-/** Bitcoin unit definitions. Encapsulates parsing and formatting
+/** Cachecoin unit definitions. Encapsulates parsing and formatting
    and serves as list model for drop-down selection boxes.
 */
 class CachecoinUnits: public QAbstractListModel
@@ -12,7 +12,7 @@ class CachecoinUnits: public QAbstractListModel
 public:
     explicit CachecoinUnits(QObject *parent);
 
-    /** Bitcoin units.
+    /** Cachecoin units.
       @note Source: https://en.bitcoin.it/wiki/Units . Please add only sensible ones
      */
     enum Unit

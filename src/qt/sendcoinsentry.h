@@ -9,7 +9,7 @@ namespace Ui {
 class WalletModel;
 class SendCoinsRecipient;
 
-/** A single entry in the dialog for sending bitcoins. */
+/** A single entry in the dialog for sending cachecoins. */
 class SendCoinsEntry : public QFrame
 {
     Q_OBJECT
@@ -40,7 +40,7 @@ public slots:
 signals:
     void removeEntry(SendCoinsEntry *entry);
     void payAmountChanged();
-    
+
 private slots:
     void on_deleteButton_clicked();
     void on_payTo_textChanged(const QString &address);

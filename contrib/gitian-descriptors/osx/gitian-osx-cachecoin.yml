@@ -40,7 +40,7 @@ script: |
   tar -C osx-cross-depends -xf osx-native-depends-r3.tar.gz
   tar -C osx-cross-depends -xf osx-depends-r4.tar.gz
   tar -C osx-cross-depends -xf osx-depends-qt-5.2.1-r4.tar.gz
-  
+
   export PATH=`pwd`/osx-cross-depends/native-prefix/bin:$PATH
 
   if [ "$NEEDDIST" == "1" ]; then
@@ -50,20 +50,20 @@ script: |
     DISTNAME=`echo darkcoin.tar.gz`
     NEEDDIST=0
   fi
- 
+
   export ZERO_AR_DATE=1
   export QT_RCC_TEST=1
-  
+
   mkdir -p distsrc
   cd distsrc
   tar -xvf $HOME/build/darkcoin/darkcoin.tar.gz
-  
-  sed 's/mmacosx-version-min\=10.5/mmacosx-version-min=10.6/' -i bitcoin-qt.pro
-  sed 's/10.5/10.7/' -i bitcoin-qt.pro
-  sed 's/\/Developer\//\/home\/ubuntu\/build\/osx-cross-depends\//' -i bitcoin-qt.pro
-  sed 's/10.5/10.7/' -i bitcoin-qt.pro
-  sed 's/arch i386/arch x86_64/' -i bitcoin-qt.pro
-  sed 's/CXX $(MAKE)/CXX AR=x86_64-apple-darwin11-ar $(MAKE)/' -i bitcoin-qt.pro
+
+  sed 's/mmacosx-version-min\=10.5/mmacosx-version-min=10.6/' -i cachecoin-qt.pro
+  sed 's/10.5/10.7/' -i cachecoin-qt.pro
+  sed 's/\/Developer\//\/home\/ubuntu\/build\/osx-cross-depends\//' -i cachecoin-qt.pro
+  sed 's/10.5/10.7/' -i cachecoin-qt.pro
+  sed 's/arch i386/arch x86_64/' -i cachecoin-qt.pro
+  sed 's/CXX $(MAKE)/CXX AR=x86_64-apple-darwin11-ar $(MAKE)/' -i cachecoin-qt.pro
 
   qmake -spec macx-clang-linux MINIUPNPC_LIB_PATH=$PREFIX/lib MINIUPNPC_INCLUDE_PATH=$PREFIX/include BDB_LIB_PATH=$PREFIX/lib BDB_INCLUDE_PATH=$PREFIX/include BOOST_LIB_PATH=$PREFIX/lib BOOST_INCLUDE_PATH=$PREFIX/include BOOST_LIB_SUFFIX=-mt-s OPENSSL_LIB_PATH=$PREFIX/lib OPENSSL_INCLUDE_PATH=$PREFIX/include QRENCODE_LIB_PATH=$PREFIX/lib QRENCODE_INCLUDE_PATH=$PREFIX/include USE_QRCODE=1 INCLUDEPATH=$PREFIX/include DEFINES=BOOST_THREAD_USE_LIB QMAKE_LRELEASE=lrelease USE_BUILD_INFO=1 USE_SSE2=1 USE_UPNP=1 RELEASE=1
   make TARGET_OS=Darwin

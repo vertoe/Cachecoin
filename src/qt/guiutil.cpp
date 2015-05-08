@@ -52,7 +52,7 @@ QString dateTimeStr(qint64 nTime)
     return dateTimeStr(QDateTime::fromTime_t((qint32)nTime));
 }
 
-QFont bitcoinAddressFont()
+QFont cachecoinAddressFont()
 {
     QFont font("Monospace");
     font.setStyleHint(QFont::TypeWriter);
@@ -63,7 +63,7 @@ void setupAddressWidget(QLineEdit *widget, QWidget *parent)
 {
     widget->setMaxLength(CachecoinAddressValidator::MaxAddressLength);
     widget->setValidator(new CachecoinAddressValidator(parent));
-    widget->setFont(bitcoinAddressFont());
+    widget->setFont(cachecoinAddressFont());
 }
 
 void setupAmountWidget(QLineEdit *widget, QWidget *parent)

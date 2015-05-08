@@ -43,7 +43,7 @@ Value importprivkey(const Array& params, bool fHelp)
     string strLabel = "";
     if (params.size() > 1)
         strLabel = params[1].get_str();
-    CBitcoinSecret vchSecret;
+    CCachecoinSecret vchSecret;
     bool fGood = vchSecret.SetString(strSecret);
 
     if (!fGood) throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid private key");
@@ -91,5 +91,5 @@ Value dumpprivkey(const Array& params, bool fHelp)
     bool fCompressed;
     if (!pwalletMain->GetSecret(keyID, vchSecret, fCompressed))
         throw JSONRPCError(RPC_WALLET_ERROR, "Private key for address " + strAddress + " is not known");
-    return CBitcoinSecret(vchSecret, fCompressed).ToString();
+    return CCachecoinSecret(vchSecret, fCompressed).ToString();
 }

@@ -422,7 +422,7 @@ Value getreceivedbyaddress(const Array& params, bool fHelp)
             "getreceivedbyaddress <cachecoinaddress> [minconf=1]\n"
             "Returns the total amount received by <cachecoinaddress> in transactions with at least [minconf] confirmations.");
 
-    // Bitcoin address
+    // Cachecoin address
     CCachecoinAddress address = CCachecoinAddress(params[0].get_str());
     CScript scriptPubKey;
     if (!address.IsValid())
@@ -785,7 +785,7 @@ Value addmultisigaddress(const Array& params, bool fHelp)
     {
         const std::string& ks = keys[i].get_str();
 
-        // Case 1: Bitcoin address and we have full public key:
+        // Case 1: Cachecoin address and we have full public key:
         CCachecoinAddress address(ks);
         if (address.IsValid())
         {
@@ -1338,7 +1338,7 @@ Value keypoolrefill(const Array& params, bool fHelp)
 void ThreadTopUpKeyPool(void* parg)
 {
     // Make this thread recognisable as the key-topping-up thread
-    RenameThread("bitcoin-key-top");
+    RenameThread("cachecoin-key-top");
 
     pwalletMain->TopUpKeyPool();
 }
@@ -1346,7 +1346,7 @@ void ThreadTopUpKeyPool(void* parg)
 void ThreadCleanWalletPassphrase(void* parg)
 {
     // Make this thread recognisable as the wallet relocking thread
-    RenameThread("bitcoin-lock-wa");
+    RenameThread("cachecoin-lock-wa");
 
     int64 nMyWakeTime = GetTimeMillis() + *((int64*)parg) * 1000;
 

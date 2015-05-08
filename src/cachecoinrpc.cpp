@@ -497,7 +497,7 @@ bool HTTPAuthorized(map<string, string>& mapHeaders)
 }
 
 //
-// JSON-RPC protocol.  Bitcoin speaks version 1.0 for maximum compatibility,
+// JSON-RPC protocol.  Cachecoin speaks version 1.0 for maximum compatibility,
 // but uses JSON-RPC 1.1/2.0 standards for parts of the 1.0 standard that were
 // unspecified (HTTP errors and contents of 'error').
 //
@@ -670,7 +670,7 @@ private:
 void ThreadRPCServer(void* parg)
 {
     // Make this thread recognisable as the RPC listener
-    RenameThread("bitcoin-rpclist");
+    RenameThread("cachecoin-rpclist");
 
     try
     {
@@ -970,7 +970,7 @@ static CCriticalSection cs_THREAD_RPCHANDLER;
 void ThreadRPCServer3(void* parg)
 {
     // Make this thread recognisable as the RPC handler
-    RenameThread("bitcoin-rpchand");
+    RenameThread("cachecoin-rpchand");
 
     {
         LOCK(cs_THREAD_RPCHANDLER);

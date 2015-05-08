@@ -1,5 +1,5 @@
 #include "optionsmodel.h"
-#include "bitcoinunits.h"
+#include "cachecoinunits.h"
 #include <QSettings>
 
 #include "init.h"
@@ -294,7 +294,7 @@ bool OptionsModel::getCoinControlFeatures()
 {
      return fCoinControlFeatures;
 }
- 
+
 
 bool OptionsModel::getMinimizeToTray()
 {

@@ -1,7 +1,7 @@
 #include "qrcodedialog.h"
 #include "ui_qrcodedialog.h"
 
-#include "bitcoinunits.h"
+#include "cachecoinunits.h"
 #include "guiconstants.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
@@ -83,7 +83,7 @@ void QRCodeDialog::genCode()
 
 QString QRCodeDialog::getURI()
 {
-    QString ret = QString("bitcoin:%1").arg(address);
+    QString ret = QString("cachecoin:%1").arg(address);
     int paramCount = 0;
 
     ui->outUri->clear();

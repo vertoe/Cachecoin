@@ -300,7 +300,7 @@ This product includes software developed by the OpenSSL Project for use in the O
 <context>
     <name>BitcoinGUI</name>
     <message>
-        <location filename="../bitcoingui.cpp" line="+257"/>
+        <location filename="../cachecoingui.cpp" line="+257"/>
         <source>Sign &amp;message...</source>
         <translation>Sign &amp;message...</translation>
     </message>
@@ -2112,9 +2112,9 @@ Address: %4
     </message>
 </context>
 <context>
-    <name>bitcoin-core</name>
+    <name>cachecoin-core</name>
     <message>
-        <location filename="../bitcoinstrings.cpp" line="+82"/>
+        <location filename="../cachecoinstrings.cpp" line="+82"/>
         <source>Cachecoin version</source>
         <translation>Cachecoin version</translation>
     </message>
@@ -2125,8 +2125,8 @@ Address: %4
     </message>
     <message>
         <location line="-25"/>
-        <source>Send command to -server or bitcoind</source>
-        <translation>Send command to -server or bitcoind</translation>
+        <source>Send command to -server or cachecoind</source>
+        <translation>Send command to -server or cachecoind</translation>
     </message>
     <message>
         <location line="-19"/>

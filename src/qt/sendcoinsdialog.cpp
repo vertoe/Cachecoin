@@ -4,7 +4,7 @@
 #include "walletmodel.h"
 #include "addresstablemodel.h"
 #include "addressbookpage.h"
-#include "bitcoinunits.h"
+#include "cachecoinunits.h"
 #include "addressbookpage.h"
 #include "optionsmodel.h"
 #include "sendcoinsentry.h"

@@ -1,6 +1,6 @@
-#include "bitcoinamountfield.h"
+#include "cachecoinamountfield.h"
 #include "qvaluecombobox.h"
-#include "bitcoinunits.h"
+#include "cachecoinunits.h"
 
 #include "guiconstants.h"
 

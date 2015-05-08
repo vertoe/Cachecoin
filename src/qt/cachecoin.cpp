@@ -1,7 +1,7 @@
 /*
  * W.J. van der Laan 2011-2012
  */
-#include "bitcoingui.h"
+#include "cachecoingui.h"
 #include "clientmodel.h"
 #include "walletmodel.h"
 #include "optionsmodel.h"
@@ -98,7 +98,7 @@ static void QueueShutdown()
  */
 static std::string Translate(const char* psz)
 {
-    return QCoreApplication::translate("bitcoin-core", psz).toStdString();
+    return QCoreApplication::translate("cachecoin-core", psz).toStdString();
 }
 
 /* Handle runaway exceptions. Shows a message box with the problem and quits the program.
@@ -129,11 +129,11 @@ int main(int argc, char *argv[])
     // Command-line options take precedence:
     ParseParameters(argc, argv);
 
-    // ... then bitcoin.conf:
+    // ... then cachecoin.conf:
     if (!boost::filesystem::is_directory(GetDataDir(false)))
     {
         // This message can not be translated, as translation is not initialized yet
-        // (which not yet possible because lang=XX can be overridden in bitcoin.conf in the data directory)
+        // (which not yet possible because lang=XX can be overridden in cachecoin.conf in the data directory)
         QMessageBox::critical(0, "Cachecoin",
                               QString("Error: Specified data directory \"%1\" does not exist.").arg(QString::fromStdString(mapArgs["-datadir"])));
         return 1;
@@ -171,11 +171,11 @@ int main(int argc, char *argv[])
     if (qtTranslator.load("qt_" + lang_territory, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
         app.installTranslator(&qtTranslator);
 
-    // Load e.g. bitcoin_de.qm (shortcut "de" needs to be defined in cachecoin.qrc)
+    // Load e.g. cachecoin_de.qm (shortcut "de" needs to be defined in cachecoin.qrc)
     if (translatorBase.load(lang, ":/translations/"))
         app.installTranslator(&translatorBase);
 
-    // Load e.g. bitcoin_de_DE.qm (shortcut "de_DE" needs to be defined in cachecoin.qrc)
+    // Load e.g. cachecoin_de_DE.qm (shortcut "de_DE" needs to be defined in cachecoin.qrc)
     if (translator.load(lang_territory, ":/translations/"))
         app.installTranslator(&translator);
 

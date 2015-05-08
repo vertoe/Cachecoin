@@ -462,7 +462,7 @@
   <customwidget>
    <class>BitcoinAmountField</class>
    <extends>QSpinBox</extends>
-   <header>bitcoinamountfield.h</header>
+   <header>cachecoinamountfield.h</header>
   </customwidget>
   <customwidget>
    <class>QValueComboBox</class>

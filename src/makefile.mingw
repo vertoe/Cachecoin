@@ -14,7 +14,7 @@ INCLUDEPATHS= \
  -I"$(CURDIR)/scrypt-jane" \
  -I"c:/deps/boost" \
  -I"c:/deps/db/build_unix" \
- -I"c:/deps/openssl"	
+ -I"c:/deps/openssl"
 
 LIBPATHS= \
  -L"c:/deps/boost/stage/lib" \
@@ -98,7 +98,7 @@ HEADERS = $(wildcard *.h)
 OBJS= \
     obj/addrman.o \
     obj/alert.o \
-    obj/bitcoinrpc.o \
+    obj/cachecoinrpc.o \
     obj/checkpoints.o \
     obj/crypter.o \
     obj/db.o \
@@ -127,7 +127,7 @@ OBJS= \
     obj/util.o \
     obj/version.o \
     obj/wallet.o \
-    obj/walletdb.o 
+    obj/walletdb.o
 
 all: cachecoind.exe
 
@@ -136,7 +136,7 @@ test check: test_cachecoin.exe FORCE
 
 DEFS += $(addprefix -I,c:/deps/openssl/include)
 
-obj/scrypt-jane.o: scrypt-jane/scrypt-jane.c 
+obj/scrypt-jane.o: scrypt-jane/scrypt-jane.c
 	g++ -c -frandom-seed=$@ $(CFLAGS) -MMD -o $@ $<
 
 obj/%.o: %.cpp $(HEADERS)

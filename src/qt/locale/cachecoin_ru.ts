@@ -6,18 +6,18 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About CACHeCoin</source>
-        <translation>О CACHeCoin</translation>
+        <source>About Cachecoin</source>
+        <translation>О Cachecoin</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;CACHeCoin&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;CACHeCoin&lt;/b&gt; версия</translation>
+        <source>&lt;b&gt;Cachecoin&lt;/b&gt; version</source>
+        <translation>&lt;b&gt;Cachecoin&lt;/b&gt; версия</translation>
     </message>
     <message>
         <location line="+41"/>
-        <source>Copyright © 2009-2012 The CACHeCoin developers</source>
-        <translation>Все права защищены © 2009-2012 Разработчики CACHeCoin</translation>
+        <source>Copyright © 2009-2012 The Cachecoin developers</source>
+        <translation>Все права защищены © 2009-2012 Разработчики Cachecoin</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -64,7 +64,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-46"/>
-        <source>These are your CACHeCoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <source>These are your Cachecoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
         <translation>Это Ваши адреса для получения платежей. Вы можете дать разные адреса отправителям, чтобы отслеживать, кто именно вам платит.</translation>
     </message>
     <message>
@@ -79,8 +79,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+11"/>
-        <source>Sign a message to prove you own a CACHeCoin address</source>
-        <translation>Подписать сообщение, чтобы доказать владение адресом CACHeCoin</translation>
+        <source>Sign a message to prove you own a Cachecoin address</source>
+        <translation>Подписать сообщение, чтобы доказать владение адресом Cachecoin</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -94,8 +94,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-14"/>
-        <source>Verify a message to ensure it was signed with a specified CACHeCoin address</source>
-        <translation>Проверить сообщение, чтобы убедиться, что оно было подписано указанным адресом CACHeCoin</translation>
+        <source>Verify a message to ensure it was signed with a specified Cachecoin address</source>
+        <translation>Проверить сообщение, чтобы убедиться, что оно было подписано указанным адресом Cachecoin</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -252,7 +252,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-56"/>
-        <source>CACHeCoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
+        <source>Cachecoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
         <translation>Сейчас программа закроется для завершения процесса шифрования. Помните, что шифрование вашего бумажника не может полностью защитить ваши монеты от кражи с помощью инфицирования вашего компьютера вредоносным ПО.</translation>
     </message>
     <message>
@@ -366,8 +366,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+4"/>
-        <source>Show information about CACHeCoin</source>
-        <translation>Показать информацию о CACHeCoin&apos;е</translation>
+        <source>Show information about Cachecoin</source>
+        <translation>Показать информацию о Cachecoin&apos;е</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -420,13 +420,13 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-58"/>
-        <source>Send coins to a CACHeCoin address</source>
-        <translation>Отправить монеты на указанный адрес CACHeCoin</translation>
+        <source>Send coins to a Cachecoin address</source>
+        <translation>Отправить монеты на указанный адрес Cachecoin</translation>
     </message>
     <message>
         <location line="+45"/>
-        <source>Modify configuration options for CACHeCoin</source>
-        <translation>Изменить параметры конфигурации CACHeCoin</translation>
+        <source>Modify configuration options for Cachecoin</source>
+        <translation>Изменить параметры конфигурации Cachecoin</translation>
     </message>
     <message>
         <location line="+14"/>
@@ -465,8 +465,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-186"/>
-        <source>CACHeCoin</source>
-        <translation>CACHeCoin</translation>
+        <source>Cachecoin</source>
+        <translation>Cachecoin</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -475,8 +475,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+168"/>
-        <source>&amp;About CACHeCoin</source>
-        <translation>&amp;О CACHeCoin</translation>
+        <source>&amp;About Cachecoin</source>
+        <translation>&amp;О Cachecoin</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -517,12 +517,12 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+0"/>
         <location line="+60"/>
-        <source>CACHeCoin client</source>
-        <translation>CACHeCoin клиент</translation>
+        <source>Cachecoin client</source>
+        <translation>Cachecoin клиент</translation>
     </message>
     <message numerus="yes">
         <location line="+69"/>
-        <source>%n active connection(s) to CACHeCoin network</source>
+        <source>%n active connection(s) to Cachecoin network</source>
         <translation>
             <numerusform>%n активное соединение с сетью</numerusform>
             <numerusform>%n активных соединений с сетью</numerusform>
@@ -627,8 +627,8 @@ Address: %4
     <message>
         <location line="-15"/>
         <location line="+15"/>
-        <source>URI can not be parsed! This can be caused by an invalid CACHeCoin address or malformed URI parameters.</source>
-        <translation>Не удалось обработать URI! Это может быть связано с неверным адресом CACHeCoin или неправильными параметрами URI.</translation>
+        <source>URI can not be parsed! This can be caused by an invalid Cachecoin address or malformed URI parameters.</source>
+        <translation>Не удалось обработать URI! Это может быть связано с неверным адресом Cachecoin или неправильными параметрами URI.</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -661,9 +661,9 @@ Address: %4
         <translation>При попытке сохранения данных бумажника в новое место произошла ошибка.</translation>
     </message>
     <message>
-        <location filename="../bitcoin.cpp" line="+109"/>
-        <source>A fatal error occurred. CACHeCoin can no longer continue safely and will quit.</source>
-        <translation>Произошла неисправимая ошибка. CACHeCoin не может безопасно продолжать работу и будет закрыт.</translation>
+        <location filename="../cachecoin.cpp" line="+109"/>
+        <source>A fatal error occurred. Cachecoin can no longer continue safely and will quit.</source>
+        <translation>Произошла неисправимая ошибка. Cachecoin не может безопасно продолжать работу и будет закрыт.</translation>
     </message>
 </context>
 <context>
@@ -728,8 +728,8 @@ Address: %4
     </message>
     <message>
         <location line="+5"/>
-        <source>The entered address &quot;%1&quot; is not a valid CACHeCoin address.</source>
-        <translation>Введённый адрес &quot;%1&quot; не является правильным CACHeCoin-адресом.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Cachecoin address.</source>
+        <translation>Введённый адрес &quot;%1&quot; не является правильным Cachecoin-адресом.</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -747,8 +747,8 @@ Address: %4
     <message>
         <location filename="../guiutil.cpp" line="+419"/>
         <location line="+12"/>
-        <source>CACHeCoin-Qt</source>
-        <translation>CACHeCoin-Qt</translation>
+        <source>Cachecoin-Qt</source>
+        <translation>Cachecoin-Qt</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -810,13 +810,13 @@ Address: %4
     </message>
     <message>
         <location line="+31"/>
-        <source>Automatically start CACHeCoin after logging in to the system.</source>
-        <translation>Автоматически запускать CACHeCoin после входа в систему</translation>
+        <source>Automatically start Cachecoin after logging in to the system.</source>
+        <translation>Автоматически запускать Cachecoin после входа в систему</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start CACHeCoin on system login</source>
-        <translation>&amp;Запускать CACHeCoin при входе в систему</translation>
+        <source>&amp;Start Cachecoin on system login</source>
+        <translation>&amp;Запускать Cachecoin при входе в систему</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -835,8 +835,8 @@ Address: %4
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically open the CACHeCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Автоматически открыть порт для CACHeCoin-клиента на роутере. Работает только если Ваш роутер поддерживает UPnP, и данная функция включена.</translation>
+        <source>Automatically open the Cachecoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Автоматически открыть порт для Cachecoin-клиента на роутере. Работает только если Ваш роутер поддерживает UPnP, и данная функция включена.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -845,8 +845,8 @@ Address: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Connect to the CACHeCoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
-        <translation>Подключаться к сети CACHeCoin через прокси SOCKS (например, при подключении через Tor).</translation>
+        <source>Connect to the Cachecoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
+        <translation>Подключаться к сети Cachecoin через прокси SOCKS (например, при подключении через Tor).</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -920,8 +920,8 @@ Address: %4
     </message>
     <message>
         <location line="+13"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting CACHeCoin.</source>
-        <translation>Здесь можно выбрать язык интерфейса. Настройки вступят в силу после перезапуска CACHeCoin.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting Cachecoin.</source>
+        <translation>Здесь можно выбрать язык интерфейса. Настройки вступят в силу после перезапуска Cachecoin.</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -935,8 +935,8 @@ Address: %4
     </message>
     <message>
         <location line="+9"/>
-        <source>Whether to show CACHeCoin addresses in the transaction list or not.</source>
-        <translation>Показывать ли адреса CACHeCoin в списке транзакций.</translation>
+        <source>Whether to show Cachecoin addresses in the transaction list or not.</source>
+        <translation>Показывать ли адреса Cachecoin в списке транзакций.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -972,8 +972,8 @@ Address: %4
     <message>
         <location line="-9"/>
         <location line="+9"/>
-        <source>This setting will take effect after restarting CACHeCoin.</source>
-        <translation>Эта настройка вступит в силу после перезапуска CACHeCoin</translation>
+        <source>This setting will take effect after restarting Cachecoin.</source>
+        <translation>Эта настройка вступит в силу после перезапуска Cachecoin</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -991,8 +991,8 @@ Address: %4
     <message>
         <location line="+33"/>
         <location line="+183"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the CACHeCoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>Отображаемая информация может быть устаревшей. Ваш бумажник автоматически синхронизируется с сетью CACHeCoin после подключения, но этот процесс пока не завершён.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Cachecoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>Отображаемая информация может быть устаревшей. Ваш бумажник автоматически синхронизируется с сетью Cachecoin после подключения, но этот процесс пока не завершён.</translation>
     </message>
     <message>
         <location line="-141"/>
@@ -1207,8 +1207,8 @@ Address: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the CACHeCoin-Qt help message to get a list with possible CACHeCoin command-line options.</source>
-        <translation>Показать помощь по CACHeCoin-Qt, чтобы получить список доступных параметров командной строки.</translation>
+        <source>Show the Cachecoin-Qt help message to get a list with possible Cachecoin command-line options.</source>
+        <translation>Показать помощь по Cachecoin-Qt, чтобы получить список доступных параметров командной строки.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1227,13 +1227,13 @@ Address: %4
     </message>
     <message>
         <location line="-104"/>
-        <source>CACHeCoin - Debug window</source>
-        <translation>CACHeCoin - Окно отладки</translation>
+        <source>Cachecoin - Debug window</source>
+        <translation>Cachecoin - Окно отладки</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>CACHeCoin Core</source>
-        <translation>Ядро CACHeCoin</translation>
+        <source>Cachecoin Core</source>
+        <translation>Ядро Cachecoin</translation>
     </message>
     <message>
         <location line="+279"/>
@@ -1242,8 +1242,8 @@ Address: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Open the CACHeCoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Открыть отладочный лог-файл CACHeCoin из текущего каталога данных. Это может занять несколько секунд для больших лог-файлов.</translation>
+        <source>Open the Cachecoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Открыть отладочный лог-файл Cachecoin из текущего каталога данных. Это может занять несколько секунд для больших лог-файлов.</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -1252,8 +1252,8 @@ Address: %4
     </message>
     <message>
         <location filename="../rpcconsole.cpp" line="-33"/>
-        <source>Welcome to the CACHeCoin RPC console.</source>
-        <translation>Добро пожаловать в RPC-консоль CACHeCoin.</translation>
+        <source>Welcome to the Cachecoin RPC console.</source>
+        <translation>Добро пожаловать в RPC-консоль Cachecoin.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1436,8 +1436,8 @@ Address: %4
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a CACHeCoin address (e.g. C9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</source>
-        <translation>Введите CACHeCoin-адрес (например C9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</translation>
+        <source>Enter a Cachecoin address (e.g. C9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</source>
+        <translation>Введите Cachecoin-адрес (например C9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</translation>
     </message>
 </context>
 <context>
@@ -1497,8 +1497,8 @@ Address: %4
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this CACHeCoin address</source>
-        <translation>Подписать сообщение, чтобы доказать владение адресом CACHeCoin</translation>
+        <source>Sign the message to prove you own this Cachecoin address</source>
+        <translation>Подписать сообщение, чтобы доказать владение адресом Cachecoin</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -1529,8 +1529,8 @@ Address: %4
     </message>
     <message>
         <location line="+40"/>
-        <source>Verify the message to ensure it was signed with the specified CACHeCoin address</source>
-        <translation>Проверить сообщение, чтобы убедиться, что оно было подписано указанным адресом CACHeCoin</translation>
+        <source>Verify the message to ensure it was signed with the specified Cachecoin address</source>
+        <translation>Проверить сообщение, чтобы убедиться, что оно было подписано указанным адресом Cachecoin</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -1540,8 +1540,8 @@ Address: %4
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a CACHeCoin address (e.g. C9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</source>
-        <translation>Введите адрес CACHeCoin (напр. C9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</translation>
+        <source>Enter a Cachecoin address (e.g. C9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</source>
+        <translation>Введите адрес Cachecoin (напр. C9H3tANhMroxU4rCre4bkoeDRhHKRSGwsi)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -1550,8 +1550,8 @@ Address: %4
     </message>
     <message>
         <location line="+3"/>
-        <source>Enter CACHeCoin signature</source>
-        <translation>Введите подпись CACHeCoin</translation>
+        <source>Enter Cachecoin signature</source>
+        <translation>Введите подпись Cachecoin</translation>
     </message>
     <message>
         <location line="+82"/>
@@ -2126,7 +2126,7 @@ Address: %4
     <name>bitcoin-core</name>
     <message>
         <location filename="../bitcoinstrings.cpp" line="+82"/>
-        <source>CACHeCoin version</source>
+        <source>Cachecoin version</source>
         <translation>Версия</translation>
     </message>
     <message>
@@ -2322,8 +2322,8 @@ Address: %4
     </message>
     <message>
         <location line="+3"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong CACHeCoin will not work properly.</source>
-        <translation>Внимание: убедитесь, что дата и время на Вашем компьютере выставлены верно. Если Ваши часы идут неправильно, CACHeCoin будет работать некорректно.</translation>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Cachecoin will not work properly.</source>
+        <translation>Внимание: убедитесь, что дата и время на Вашем компьютере выставлены верно. Если Ваши часы идут неправильно, Cachecoin будет работать некорректно.</translation>
     </message>
     <message>
         <location line="+24"/>
@@ -2553,13 +2553,13 @@ Address: %4
     </message>
     <message>
         <location line="-131"/>
-        <source>Cannot obtain a lock on data directory %s.  CACHeCoin is probably already running.</source>
+        <source>Cannot obtain a lock on data directory %s.  Cachecoin is probably already running.</source>
         <translation>Невозможно установить блокировку на рабочую директорию %s.  Возможно, бумажник уже запущен.</translation>
     </message>
     <message>
         <location line="+57"/>
-        <source>CACHeCoin</source>
-        <translation>CACHeCoin</translation>
+        <source>Cachecoin</source>
+        <translation>Cachecoin</translation>
     </message>
     <message>
         <location line="+77"/>
@@ -2593,13 +2593,13 @@ Address: %4
     </message>
     <message>
         <location line="+1"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of CACHeCoin</source>
-        <translation>Ошибка загрузки wallet.dat: бумажник требует более новую версию CACHeCoin</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Cachecoin</source>
+        <translation>Ошибка загрузки wallet.dat: бумажник требует более новую версию Cachecoin</translation>
     </message>
     <message>
         <location line="+73"/>
-        <source>Wallet needed to be rewritten: restart CACHeCoin to complete</source>
-        <translation>Необходимо перезаписать бумажник, перезапустите CACHeCoin для завершения операции.</translation>
+        <source>Wallet needed to be rewritten: restart Cachecoin to complete</source>
+        <translation>Необходимо перезаписать бумажник, перезапустите Cachecoin для завершения операции.</translation>
     </message>
     <message>
         <location line="-75"/>
@@ -2668,8 +2668,8 @@ Address: %4
     </message>
     <message>
         <location line="-25"/>
-        <source>Unable to bind to %s on this computer. CACHeCoin is probably already running.</source>
-        <translation>Невозможно привязаться к %s на этом компьютере.  Возможно, CACHeCoin уже работает.</translation>
+        <source>Unable to bind to %s on this computer. Cachecoin is probably already running.</source>
+        <translation>Невозможно привязаться к %s на этом компьютере.  Возможно, Cachecoin уже работает.</translation>
     </message>
     <message>
         <location line="+55"/>
@@ -2721,7 +2721,7 @@ Address: %4
         <source>%s, you must set a rpcpassword in the configuration file:
  %s
 It is recommended you use the following random password:
-rpcuser=bitcoinrpc
+rpcuser=cachecoinrpc
 rpcpassword=%s
 (you do not need to remember this password)
 If the file does not exist, create it with owner-readable-only file permissions.
@@ -2729,7 +2729,7 @@ If the file does not exist, create it with owner-readable-only file permissions.
         <translation>%s, вы должны установить опцию rpcpassword в конфигурационном файле:
  %s
 Рекомендуется использовать следующий случайный пароль:
-rpcuser=bitcoinrpc
+rpcuser=cachecoinrpc
 rpcpassword=%s
 (вам не нужно запоминать этот пароль)
 Если файл не существует, создайте его и установите права доступа только для владельца.

@@ -7,7 +7,7 @@
 #include "main.h"
 #include "db.h"
 #include "init.h"
-#include "bitcoinrpc.h"
+#include "cachecoinrpc.h"
 
 using namespace json_spirit;
 using namespace std;
@@ -16,10 +16,10 @@ using namespace std;
 // uint64_t GetNetworkHashPS( int lookup )
 //
 //    WM - Function to estimate network hash rate.  Mostly lifted from
-//    Litecoin and modified for CACHeCoin.
+//    Litecoin and modified for Cachecoin.
 //
 //    Parameters: lookup (int) - How many blocks to look into the past.
-//    Returns: Estimated CACHeCoin network hash rate (uint64_t)
+//    Returns: Estimated Cachecoin network hash rate (uint64_t)
 //
 
 uint64_t GetNetworkHashPS( int lookup )
@@ -137,13 +137,13 @@ Value getmininginfo(const Array& params, bool fHelp)
 }
 
 
-// WM - Implementation of getnetworkhashps for CACHeCoin
+// WM - Implementation of getnetworkhashps for Cachecoin
 Value getnetworkhashps(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 0)
         throw runtime_error(
             "getnetworkhashps\n"
-            "Returns an estimate of the CACHeCoin network hash rate.");
+            "Returns an estimate of the Cachecoin network hash rate.");
 
     return GetNetworkHashPS(params.size() > 0 ? params[0].get_int() : 10);
 }
@@ -158,10 +158,10 @@ Value getworkex(const Array& params, bool fHelp)
         );
 
     if (vNodes.empty())
-        throw JSONRPCError(-9, "CACHeCoin is not connected!");
+        throw JSONRPCError(-9, "Cachecoin is not connected!");
 
     if (IsInitialBlockDownload())
-        throw JSONRPCError(-10, "CACHeCoin is downloading blocks...");
+        throw JSONRPCError(-10, "Cachecoin is downloading blocks...");
 
     typedef map<uint256, pair<CBlock*, CScript> > mapNewBlock_t;
     static mapNewBlock_t mapNewBlock;
@@ -292,10 +292,10 @@ Value getwork(const Array& params, bool fHelp)
             "If [data] is specified, tries to solve the block and returns true if it was successful.");
 
     if (vNodes.empty())
-        throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "CACHeCoin is not connected!");
+        throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "Cachecoin is not connected!");
 
     if (IsInitialBlockDownload())
-        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "CACHeCoin is downloading blocks...");
+        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Cachecoin is downloading blocks...");
 
     typedef map<uint256, pair<CBlock*, CScript> > mapNewBlock_t;
     static mapNewBlock_t mapNewBlock;    // FIXME: thread safety
@@ -436,10 +436,10 @@ Value getblocktemplate(const Array& params, bool fHelp)
         throw JSONRPCError(RPC_INVALID_PARAMETER, "Invalid mode");
 
     if (vNodes.empty())
-        throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "CACHeCoin is not connected!");
+        throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "Cachecoin is not connected!");
 
     if (IsInitialBlockDownload())
-        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "CACHeCoin is downloading blocks...");
+        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Cachecoin is downloading blocks...");
 
     static CReserveKey reservekey(pwalletMain);
 

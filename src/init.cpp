@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #include "db.h"
 #include "walletdb.h"
-#include "bitcoinrpc.h"
+#include "cachecoinrpc.h"
 #include "net.h"
 #include "init.h"
 #include "util.h"
@@ -43,7 +43,7 @@ void ExitTimeout(void* parg)
 void StartShutdown()
 {
 #ifdef QT_GUI
-    // ensure we leave the Qt main loop for a clean GUI exit (Shutdown() is called in bitcoin.cpp afterwards)
+    // ensure we leave the Qt main loop for a clean GUI exit (Shutdown() is called in cachecoin.cpp afterwards)
     uiInterface.QueueShutdown();
 #else
     // Without UI, Shutdown() can simply be started in a new thread
@@ -84,7 +84,7 @@ void Shutdown(void* parg)
         printf("Cachecoin exited\n\n");
         fExit = true;
 #ifndef QT_GUI
-        // ensure non-UI client gets exited here, but let cachecoin-qt reach 'return 0;' in bitcoin.cpp
+        // ensure non-UI client gets exited here, but let cachecoin-qt reach 'return 0;' in cachecoin.cpp
         exit(0);
 #endif
     }
@@ -124,7 +124,7 @@ bool AppInit(int argc, char* argv[])
         //
         // Parameters
         //
-        // If Qt is used, parameters/bitcoin.conf are parsed in qt/bitcoin.cpp's main()
+        // If Qt is used, parameters/cachecoin.conf are parsed in qt/cachecoin.cpp's main()
         ParseParameters(argc, argv);
         if (!boost::filesystem::is_directory(GetDataDir(false)))
         {
@@ -301,7 +301,7 @@ std::string HelpMessage()
     return strUsage;
 }
 
-/** Initialize bitcoin.
+/** Initialize cachecoin.
  *  @pre Parameters should be parsed and config file should be read.
  */
 bool AppInit2()

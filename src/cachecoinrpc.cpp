@@ -8,7 +8,7 @@
 #include "sync.h"
 #include "ui_interface.h"
 #include "base58.h"
-#include "bitcoinrpc.h"
+#include "cachecoinrpc.h"
 #include "db.h"
 
 #undef printf
@@ -184,12 +184,12 @@ Value stop(const Array& params, bool fHelp)
         throw runtime_error(
             "stop <detach>\n"
             "<detach> is true or false to detach the database or not for this stop only\n"
-            "Stop CACHeCoin server (and possibly override the detachdb config value).");
+            "Stop Cachecoin server (and possibly override the detachdb config value).");
     // Shutdown will take long enough that the response should get back
     if (params.size() > 0)
         bitdb.SetDetach(params[0].get_bool());
     StartShutdown();
-    return "CACHeCoin server stopping";
+    return "Cachecoin server stopping";
 }
 Value getprofitestimate(const Array& params, bool fHelp)
  {
@@ -217,7 +217,7 @@ Value getprofitestimate(const Array& params, bool fHelp)
      obj.push_back(Pair("coins per min", timeperblock ? ((60)/timeperblock)*coinsperblock : 0));
      return obj;
  }
- 
+
  Value addnode(const Array& params, bool fHelp){
      if(fHelp || params.size() < 1 || params.size() > 2)
          throw runtime_error(
@@ -226,7 +226,7 @@ Value getprofitestimate(const Array& params, bool fHelp)
      int port = (params.size() == 2) ? params[1].get_int() : GetDefaultPort();
      CService cServ(params[0].get_str(),port);
      CAddress cAddr(cServ);
- 
+
      return OpenNetworkConnection(cAddr);
  }
 
@@ -781,7 +781,7 @@ void ThreadRPCServer2(void* parg)
         uiInterface.ThreadSafeMessageBox(strprintf(
             _("%s, you must set a rpcpassword in the configuration file:\n %s\n"
               "It is recommended you use the following random password:\n"
-              "rpcuser=bitcoinrpc\n"
+              "rpcuser=cachecoinrpc\n"
               "rpcpassword=%s\n"
               "(you do not need to remember this password)\n"
               "If the file does not exist, create it with owner-readable-only file permissions.\n"),

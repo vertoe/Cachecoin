@@ -2,12 +2,12 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="CACHeCoin" />
+		<Option title="Cachecoin" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/CACHeCoin" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/Cachecoin" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -16,7 +16,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/CACHeCoin" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/Cachecoin" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -38,8 +38,8 @@
 		<Unit filename="allocators.h" />
 		<Unit filename="base58.h" />
 		<Unit filename="bignum.h" />
-		<Unit filename="bitcoinrpc.cpp" />
-		<Unit filename="bitcoinrpc.h" />
+		<Unit filename="cachecoinrpc.cpp" />
+		<Unit filename="cachecoinrpc.h" />
 		<Unit filename="checkpoints.cpp" />
 		<Unit filename="checkpoints.h" />
 		<Unit filename="clientversion.h" />
@@ -91,7 +91,7 @@
 		<Unit filename="qt/addresstablemodel.h" />
 		<Unit filename="qt/askpassphrasedialog.cpp" />
 		<Unit filename="qt/askpassphrasedialog.h" />
-		<Unit filename="qt/bitcoin.cpp" />
+		<Unit filename="qt/cachecoin.cpp" />
 		<Unit filename="qt/bitcoinaddressvalidator.cpp" />
 		<Unit filename="qt/bitcoinaddressvalidator.h" />
 		<Unit filename="qt/bitcoinamountfield.cpp" />
@@ -231,7 +231,7 @@
 		<Unit filename="test/script_P2SH_tests.cpp" />
 		<Unit filename="test/script_tests.cpp" />
 		<Unit filename="test/sigopcount_tests.cpp" />
-		<Unit filename="test/test_bitcoin.cpp" />
+		<Unit filename="test/test_cachecoin.cpp" />
 		<Unit filename="test/transaction_tests.cpp" />
 		<Unit filename="test/uint160_tests.cpp" />
 		<Unit filename="test/uint256_tests.cpp" />

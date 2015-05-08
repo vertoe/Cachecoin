@@ -1,4 +1,4 @@
-IDI_ICON1 ICON DISCARDABLE "icons/novacoin.ico"
+IDI_ICON1 ICON DISCARDABLE "icons/cachecoin.ico"
 
 #include <windows.h>             // needed for VERSIONINFO
 #include "../../clientversion.h" // holds the needed client version information
@@ -18,14 +18,14 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "CACHeCoin"
-            VALUE "FileDescription",    "CACHeCoin-Qt (OSS GUI client for CACHeCoin)"
+            VALUE "CompanyName",        "Cachecoin"
+            VALUE "FileDescription",    "Cachecoin-Qt (OSS GUI client for Cachecoin)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "cachecoin-qt"
-            VALUE "LegalCopyright",     "2009-2012 The Bitcoin developers, 2012-2013 The NovaCoin & PPCoin developers, 2013 The CACHeCoin developers."
+            VALUE "LegalCopyright",     "2009-2012 The Bitcoin developers, 2012-2013 The NovaCoin & PPCoin developers, 2013-2015 The Cachecoin developers."
             VALUE "LegalTrademarks1",   "Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
             VALUE "OriginalFilename",   "cachecoin-qt.exe"
-            VALUE "ProductName",        "CACHeCoin-Qt"
+            VALUE "ProductName",        "Cachecoin-Qt"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END

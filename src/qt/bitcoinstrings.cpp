@@ -10,7 +10,7 @@ QT_TRANSLATE_NOOP("bitcoin-core", ""
 "%s, you must set a rpcpassword in the configuration file:\n"
 " %s\n"
 "It is recommended you use the following random password:\n"
-"rpcuser=bitcoinrpc\n"
+"rpcuser=cachecoinrpc\n"
 "rpcpassword=%s\n"
 "(you do not need to remember this password)\n"
 "If the file does not exist, create it with owner-readable-only file "
@@ -24,7 +24,7 @@ QT_TRANSLATE_NOOP("bitcoin-core", ""
 "An error occurred while setting up the RPC port %u for listening on IPv6, "
 "falling back to IPv4: %s"),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
-"Cannot obtain a lock on data directory %s.  CACHeCoin is probably already "
+"Cannot obtain a lock on data directory %s.  Cachecoin is probably already "
 "running."),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
 "Detach block and address databases. Increases shutdown time (default: 0)"),
@@ -52,13 +52,13 @@ QT_TRANSLATE_NOOP("bitcoin-core", ""
 "Set maximum size of high-priority/low-fee transactions in bytes (default: "
 "27000)"),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
-"Unable to bind to %s on this computer. CACHeCoin is probably already running."),
+"Unable to bind to %s on this computer. Cachecoin is probably already running."),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
 "Warning: -paytxfee is set very high! This is the transaction fee you will "
 "pay if you send a transaction."),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
 "Warning: Please check that your computer's date and time are correct! If "
-"your clock is wrong CACHeCoin will not work properly."),
+"your clock is wrong Cachecoin will not work properly."),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
 "Warning: error reading wallet.dat! All keys read correctly, but transaction "
 "data or address book entries might be missing or incorrect."),
@@ -93,7 +93,7 @@ QT_TRANSLATE_NOOP("bitcoin-core", "Done loading"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Error loading blkindex.dat"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Error loading wallet.dat"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Error loading wallet.dat: Wallet corrupted"),
-QT_TRANSLATE_NOOP("bitcoin-core", "Error loading wallet.dat: Wallet requires newer version of CACHeCoin"),
+QT_TRANSLATE_NOOP("bitcoin-core", "Error loading wallet.dat: Wallet requires newer version of Cachecoin"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Error"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Error: Transaction creation failed  "),
 QT_TRANSLATE_NOOP("bitcoin-core", "Error: Wallet locked, unable to create transaction  "),
@@ -123,8 +123,8 @@ QT_TRANSLATE_NOOP("bitcoin-core", "Loading wallet..."),
 QT_TRANSLATE_NOOP("bitcoin-core", "Maintain at most <n> connections to peers (default: 125)"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Maximum per-connection receive buffer, <n>*1000 bytes (default: 5000)"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Maximum per-connection send buffer, <n>*1000 bytes (default: 1000)"),
-QT_TRANSLATE_NOOP("bitcoin-core", "CACHeCoin version"),
-QT_TRANSLATE_NOOP("bitcoin-core", "CACHeCoin"),
+QT_TRANSLATE_NOOP("bitcoin-core", "Cachecoin version"),
+QT_TRANSLATE_NOOP("bitcoin-core", "Cachecoin"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Only connect to nodes in network <net> (IPv4, IPv6 or Tor)"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Options:"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Output extra debugging information. Implies all other -debug* options"),
@@ -170,7 +170,7 @@ QT_TRANSLATE_NOOP("bitcoin-core", "Use proxy to reach tor hidden services (defau
 QT_TRANSLATE_NOOP("bitcoin-core", "Use the test network"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Username for JSON-RPC connections"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Verifying database integrity..."),
-QT_TRANSLATE_NOOP("bitcoin-core", "Wallet needed to be rewritten: restart CACHeCoin to complete"),
+QT_TRANSLATE_NOOP("bitcoin-core", "Wallet needed to be rewritten: restart Cachecoin to complete"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Warning: Disk space is low!"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Warning: This version is obsolete, upgrade required!"),
 QT_TRANSLATE_NOOP("bitcoin-core", "wallet.dat corrupt, salvage failed"),

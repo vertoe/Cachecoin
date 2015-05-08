@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "init.h" // for pwalletMain
-#include "bitcoinrpc.h"
+#include "cachecoinrpc.h"
 #include "ui_interface.h"
 #include "base58.h"
 
@@ -81,7 +81,7 @@ Value dumpprivkey(const Array& params, bool fHelp)
     string strAddress = params[0].get_str();
     CBitcoinAddress address;
     if (!address.SetString(strAddress))
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid CACHeCoin address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Cachecoin address");
     if (fWalletUnlockMintOnly) // ppcoin: no dumpprivkey in mint-only mode
         throw JSONRPCError(RPC_WALLET_UNLOCK_NEEDED, "Wallet is unlocked for minting only.");
     CKeyID keyID;

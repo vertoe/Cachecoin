@@ -403,7 +403,7 @@ namespace Checkpoints
     bool IsSyncCheckpointTooOld(unsigned int nSeconds)
     {
 
-// WM - Defeat the "checkpoint too old" check, not needed now that CACHeCoin is launched and stable.
+// WM - Defeat the "checkpoint too old" check, not needed now that Cachecoin is launched and stable.
 /*
         LOCK(cs_hashSyncCheckpoint);
         // sync-checkpoint should always be accepted block

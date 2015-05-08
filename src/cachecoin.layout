@@ -21,7 +21,7 @@
 			<Cursor1 position="1577" topLine="10" />
 		</Cursor>
 	</File>
-	<File name="bitcoinrpc.cpp" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="cachecoinrpc.cpp" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="11296" topLine="267" />
 		</Cursor>

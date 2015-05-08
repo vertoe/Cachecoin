@@ -1,8 +1,8 @@
-// Copyright (c) 2012-2013 The PPCoin developers
+// Copyright (c) 2012-2013 The Peercoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef PPCOIN_KERNEL_H
-#define PPCOIN_KERNEL_H
+#ifndef CACHECOIN_KERNEL_H
+#define CACHECOIN_KERNEL_H
 
 #include "main.h"
 
@@ -16,7 +16,7 @@ struct PosMiningStuff {
     int nStakeModifierHeight;
     int64 nStakeModifierTime;
 };
- 
+
 // MODIFIER_INTERVAL_RATIO:
 // ratio of group interval length between the last group and the first group
 static const int MODIFIER_INTERVAL_RATIO = 3;
@@ -31,7 +31,7 @@ bool CheckStakeKernelHash(unsigned int nBits, const CBlock& blockFrom, unsigned 
 // The stake modifier used to hash for a stake kernel is chosen as the stake
 // modifier about a selection interval later than the coin generating the kernel
 bool GetKernelStakeModifier(uint256 hashBlockFrom, uint64& nStakeModifier, int& nStakeModifierHeight, int64& nStakeModifierTime, bool fPrintProofOfStake=false);
-  
+
 // Check kernel hash target and coinstake signature
 // Sets hashProofOfStake on success return
 bool CheckProofOfStake(const CTransaction& tx, unsigned int nBits, uint256& hashProofOfStake);
@@ -45,4 +45,4 @@ unsigned int GetStakeModifierChecksum(const CBlockIndex* pindex);
 // Check stake modifier hard checkpoints
 bool CheckStakeModifierCheckpoints(int nHeight, unsigned int nStakeModifierChecksum);
 
-#endif // PPCOIN_KERNEL_H
+#endif // CACHECOIN_KERNEL_H

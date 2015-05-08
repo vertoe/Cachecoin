@@ -1586,8 +1586,8 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
     // Now that the whole chain is irreversibly beyond that time it is applied to all blocks except the
     // two in the chain that violate it. This prevents exploiting the issue against nodes in their
     // initial block download.
-    bool fEnforceBIP30 = true; // Always active in NovaCoin
-    bool fStrictPayToScriptHash = true; // Always active in NovaCoin
+    bool fEnforceBIP30 = true; // Always active in Novacoin
+    bool fStrictPayToScriptHash = true; // Always active in Novacoin
 
     //// issue here: it doesn't know the version
     unsigned int nTxPos;

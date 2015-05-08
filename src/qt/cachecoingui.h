@@ -1,5 +1,5 @@
-#ifndef BITCOINGUI_H
-#define BITCOINGUI_H
+#ifndef CACHECOINGUI_H
+#define CACHECOINGUI_H
 
 #include <QMainWindow>
 #include <QSystemTrayIcon>

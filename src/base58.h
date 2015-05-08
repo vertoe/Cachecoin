@@ -12,8 +12,8 @@
 // - E-mail usually won't line-break if there's no punctuation to break at.
 // - Double-clicking selects the whole number as one word if it's all alphanumeric.
 //
-#ifndef BITCOIN_BASE58_H
-#define BITCOIN_BASE58_H
+#ifndef CACHECOIN_BASE58_H
+#define CACHECOIN_BASE58_H
 
 #include <string>
 #include <vector>

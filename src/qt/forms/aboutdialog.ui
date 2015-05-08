@@ -91,7 +91,7 @@
         <cursorShape>IBeamCursor</cursorShape>
        </property>
        <property name="text">
-        <string>Copyright © 2009-2012 The NovaCoin developers, 2013 The Cachecoin developers</string>
+        <string>Copyright © 2009-2012 The Novacoin developers, 2013 The Cachecoin developers</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>

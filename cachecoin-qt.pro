@@ -116,8 +116,8 @@ contains(USE_IPV6, -) {
     DEFINES += USE_IPV6=$$USE_IPV6
 }
 
-contains(BITCOIN_NEED_QT_PLUGINS, 1) {
-    DEFINES += BITCOIN_NEED_QT_PLUGINS
+contains(CACHECOIN_NEED_QT_PLUGINS, 1) {
+    DEFINES += CACHECOIN_NEED_QT_PLUGINS
     QTPLUGIN += qcncodecs qjpcodecs qtwcodecs qkrcodecs qtaccessiblewidgets
 }
 
@@ -311,7 +311,7 @@ SOURCES += src/qt/qrcodedialog.cpp
 FORMS += src/qt/forms/qrcodedialog.ui
 }
 
-contains(BITCOIN_QT_TEST, 1) {
+contains(CACHECOIN_QT_TEST, 1) {
 SOURCES += src/qt/test/test_main.cpp \
     src/qt/test/uritests.cpp
 HEADERS += src/qt/test/uritests.h
@@ -320,7 +320,7 @@ QT += testlib
 DEFINES += USE_QRCODE
 LIBS += -lqrencode
 TARGET = cachecoin-qt_test
-DEFINES += BITCOIN_QT_TEST
+DEFINES += CACHECOIN_QT_TEST
   macx: CONFIG -= app_bundle
 }
 

@@ -239,6 +239,9 @@ int main(int argc, char *argv[])
                 if (splashref)
                     splash.finish(&window);
 
+                if (splashref && GetBoolArg("-testnet"))
+                    splash_testnet.finish(&window);
+
                 ClientModel clientModel(&optionsModel);
                 WalletModel walletModel(pwalletMain, &optionsModel);
 

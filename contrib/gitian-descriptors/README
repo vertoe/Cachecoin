@@ -23,7 +23,7 @@ Here's a description of Gavin's setup on OSX 10.6:
 
 Once you've got the right hardware and software:
 
-    export VERSION=0.7.5.8
+    export VERSION=0.7.6
     export USE_LXC=1
 
     git clone git://github.com/vertoe/cachecoin.git
@@ -32,18 +32,23 @@ Once you've got the right hardware and software:
     cd gitian-builder/inputs
 
     # Download inputs:
+    wget -O miniupnpc-1.6.tar.gz 'http://miniupnp.tuxfamily.org/files/download.php?file=miniupnpc-1.6.tar.gz'
     wget -O miniupnpc-1.9.tar.gz 'http://miniupnp.tuxfamily.org/files/download.php?file=miniupnpc-1.9.tar.gz'
+    wget 'http://fukuchi.org/works/qrencode/qrencode-3.2.0.tar.bz2'
     wget 'http://fukuchi.org/works/qrencode/qrencode-3.4.3.tar.bz2'
     wget 'https://github.com/google/protobuf/releases/download/v2.5.0/protobuf-2.5.0.tar.bz2'
+    wget 'https://downloads.sourceforge.net/project/boost/boost/1.50.0/boost_1_50_0.tar.bz2'
     wget 'https://downloads.sourceforge.net/project/boost/boost/1.55.0/boost_1_55_0.tar.bz2'
+    wget 'http://www.openssl.org/source/openssl-1.0.1m.tar.gz'
     wget 'http://www.openssl.org/source/openssl-1.0.2a.tar.gz'
     wget 'http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz'
+    wget 'https://downloads.sourceforge.net/project/libpng/zlib/1.2.6/zlib-1.2.6.tar.gz'
     wget 'https://downloads.sourceforge.net/project/libpng/zlib/1.2.8/zlib-1.2.8.tar.gz'
     wget 'https://downloads.sourceforge.net/project/libpng/libpng16/older-releases/1.6.8/libpng-1.6.8.tar.gz'
     wget 'https://download.qt.io/archive/qt/4.6/qt-everywhere-opensource-src-4.6.4.tar.gz'
+    wget 'https://download.qt.io/archive/qt/4.8/4.8.3/qt-everywhere-opensource-src-4.8.3.tar.gz'
     wget 'https://download.qt.io/archive/qt/4.8/4.8.5/qt-everywhere-opensource-src-4.8.5.tar.gz'
     wget 'http://mindstalk.net/host/boost-mingw-gas-cross-compile-2013-03-03.patch'
-    wget 'https://github.com/mingwandroid/toolchain4/archive/10cc648683617cca8bcbeae507888099b41b530c.tar.gz'
     wget 'https://github.com/mingwandroid/toolchain4/archive/10cc648683617cca8bcbeae507888099b41b530c.tar.gz'
     wget 'http://www.opensource.apple.com/tarballs/cctools/cctools-809.tar.gz'
     wget 'http://www.opensource.apple.com/tarballs/dyld/dyld-195.5.tar.gz'
@@ -76,24 +81,22 @@ Once you've got the right hardware and software:
     # Build Linux release:
     ./bin/gbuild --commit cachecoin=${VERSION} ../cachecoin/contrib/gitian-descriptors/linux/gitian-linux-cachecoin.yml
 
+    # Build Windows dependencies: (only needs to be done once, or when dependency versions change)
+    ./bin/gbuild --commit cachecoin=HEAD ../cachecoin/contrib/gitian-descriptors/win32-old/boost-win32-old.yml
+    mv ./build/out/boost-win* ./inputs/
+    ./bin/gbuild --commit cachecoin=HEAD ../cachecoin/contrib/gitian-descriptors/win32-old/qt-win32-old.yml
+    mv ./build/out/qt-win* ./inputs/
+    ./bin/gbuild --commit cachecoin=HEAD ../cachecoin/contrib/gitian-descriptors/win32-old/deps-win32-old.yml
+    mv ./build/out/cachecoin-deps-* ./inputs/
+
+    # Build Windows release:
+    ./bin/gbuild --commit cachecoin=${VERSION} ../cachecoin/contrib/gitian-descriptors/win32-old/gitian-win32-old.yml
+
     # Build MacOS dependencies: (only needs to be done once, or when dependency versions change)
-    ./bin/gbuild --commit cachecoin=HEAD ../cachecoin/contrib/gitian-descriptors/osx/gitian-osx-native.yml
+    @TODO
 
     # Build MacOS release:
     @TODO
-
-    # Build Windows dependencies: (only needs to be done once, or when dependency versions change)
-    ./bin/gbuild --commit cachecoin=HEAD ../cachecoin/contrib/gitian-descriptors/windows/gitian-win-boost.yml
-    mv ./build/out/boost-win* ./inputs/
-    ./bin/gbuild --commit cachecoin=HEAD ../cachecoin/contrib/gitian-descriptors/windows/gitian-win-protobuf.yml
-    mv ./build/out/protobuf-win* ./inputs/
-    ./bin/gbuild --commit cachecoin=HEAD ../cachecoin/contrib/gitian-descriptors/windows/gitian-win-deps.yml
-    mv ./build/out/cachecoin-deps-win* ./inputs/
-    ./bin/gbuild --commit cachecoin=HEAD ../cachecoin/contrib/gitian-descriptors/windows/gitian-win-qt4.yml
-    mv ./build/out/qt-win* ./inputs/
-
-    # Build Windows release:
-    ./bin/gbuild --commit cachecoin=${VERSION} ../cachecoin/contrib/gitian-descriptors/windows/gitian-win-cachecoin.yml
 
 gitian-builder now also supports building using LXC. See
   https://help.ubuntu.com/12.04/serverguide/lxc.html

@@ -5,7 +5,7 @@ SetCompressor /SOLID lzma
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 0.7.5.8
+!define VERSION 0.7.6
 !define COMPANY "Cachecoin project"
 !define URL "http://cach.co/"
 
@@ -45,13 +45,13 @@ Var StartMenuGroup
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-OutFile cachecoin-0.7.5.8-win32-setup.exe
+OutFile cachecoin-0.7.6-win32-setup.exe
 InstallDir $PROGRAMFILES\Cachecoin
 CRCCheck on
 XPStyle on
 BrandingText " "
 ShowInstDetails show
-VIProductVersion 0.7.5.8
+VIProductVersion 0.7.6
 VIAddVersionKey ProductName Cachecoin
 VIAddVersionKey ProductVersion "${VERSION}"
 VIAddVersionKey CompanyName "${COMPANY}"

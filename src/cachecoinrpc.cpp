@@ -197,7 +197,7 @@ Value getprofitestimate(const Array& params, bool fHelp)
      throw runtime_error(
      "getprofitestimate [speed]\n"
      "Returns and estimate of coins generated a day with the given speed");
-     double constant = 4294967296;
+     double constant = 4294967296.0;
      double speed = 0;
      if(params.size() == 1)
          speed = atof(params[0].get_str().c_str());

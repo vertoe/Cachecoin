@@ -10,9 +10,12 @@
 #include "main.h"
 #include "kernel.h"
 #include "ui_interface.h"
-#include <boost/version.hpp>
-#include <boost/filesystem.hpp>
-#include <boost/filesystem/fstream.hpp>
+
+#ifndef Q_MOC_RUN
+    #include <boost/version.hpp>
+    #include <boost/filesystem.hpp>
+    #include <boost/filesystem/fstream.hpp>
+#endif
 
 #ifndef WIN32
 #include "sys/stat.h"

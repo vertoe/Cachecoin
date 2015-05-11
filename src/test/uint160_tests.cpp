@@ -1,4 +1,6 @@
+#ifndef Q_MOC_RUN
 #include <boost/test/unit_test.hpp>
+#endif
 
 #include "uint256.h"
 

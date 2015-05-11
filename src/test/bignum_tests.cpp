@@ -1,4 +1,7 @@
+#ifndef Q_MOC_RUN
 #include <boost/test/unit_test.hpp>
+#endif
+
 #include <limits>
 
 #include "bignum.h"

@@ -1,6 +1,9 @@
 #include <vector>
+
+#ifndef Q_MOC_RUN
 #include <boost/test/unit_test.hpp>
 #include <boost/foreach.hpp>
+#endif
 
 #include "main.h"
 #include "wallet.h"

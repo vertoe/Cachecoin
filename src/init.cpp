@@ -10,11 +10,15 @@
 #include "util.h"
 #include "ui_interface.h"
 #include "checkpoints.h"
+
+#ifndef Q_MOC_RUN
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 #include <boost/filesystem/convenience.hpp>
 #include <boost/interprocess/sync/file_lock.hpp>
 #include <boost/algorithm/string/predicate.hpp>
+#endif
+
 #include <openssl/crypto.h>
 
 #ifndef WIN32

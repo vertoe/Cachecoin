@@ -1,6 +1,10 @@
 #include <map>
 #include <string>
+
+#ifndef Q_MOC_RUN
 #include <boost/test/unit_test.hpp>
+#endif
+
 #include "json/json_spirit_writer_template.h"
 
 #include "main.h"

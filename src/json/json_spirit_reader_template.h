@@ -11,24 +11,30 @@
 
 //#define BOOST_SPIRIT_THREADSAFE  // uncomment for multithreaded use, requires linking to boost.thread
 
+#ifndef Q_MOC_RUN
 #include <boost/bind.hpp>
 #include <boost/function.hpp>
 #include <boost/version.hpp>
+#endif
 
 #if BOOST_VERSION >= 103800
+    #ifndef Q_MOC_RUN
     #include <boost/spirit/include/classic_core.hpp>
     #include <boost/spirit/include/classic_confix.hpp>
     #include <boost/spirit/include/classic_escape_char.hpp>
     #include <boost/spirit/include/classic_multi_pass.hpp>
     #include <boost/spirit/include/classic_position_iterator.hpp>
     #define spirit_namespace boost::spirit::classic
+    #endif
 #else
+    #ifndef Q_MOC_RUN
     #include <boost/spirit/core.hpp>
     #include <boost/spirit/utility/confix.hpp>
     #include <boost/spirit/utility/escape_char.hpp>
     #include <boost/spirit/iterator/multi_pass.hpp>
     #include <boost/spirit/iterator/position_iterator.hpp>
     #define spirit_namespace boost::spirit
+    #endif
 #endif
 
 namespace json_spirit
@@ -65,7 +71,7 @@ namespace json_spirit
         const Char_type c2( *( ++begin ) );
 
         return ( hex_to_num( c1 ) << 4 ) + hex_to_num( c2 );
-    }       
+    }
 
     template< class Char_type, class Iter_type >
     Char_type unicode_str_to_char( Iter_type& begin )
@@ -75,19 +81,19 @@ namespace json_spirit
         const Char_type c3( *( ++begin ) );
         const Char_type c4( *( ++begin ) );
 
-        return ( hex_to_num( c1 ) << 12 ) + 
-               ( hex_to_num( c2 ) <<  8 ) + 
-               ( hex_to_num( c3 ) <<  4 ) + 
+        return ( hex_to_num( c1 ) << 12 ) +
+               ( hex_to_num( c2 ) <<  8 ) +
+               ( hex_to_num( c3 ) <<  4 ) +
                hex_to_num( c4 );
     }
 
     template< class String_type >
-    void append_esc_char_and_incr_iter( String_type& s, 
-                                        typename String_type::const_iterator& begin, 
+    void append_esc_char_and_incr_iter( String_type& s,
+                                        typename String_type::const_iterator& begin,
                                         typename String_type::const_iterator end )
     {
         typedef typename String_type::value_type Char_type;
-             
+
         const Char_type c2( *begin );
 
         switch( c2 )
@@ -100,19 +106,19 @@ namespace json_spirit
             case '\\': s += '\\'; break;
             case '/':  s += '/';  break;
             case '"':  s += '"';  break;
-            case 'x':  
+            case 'x':
             {
                 if( end - begin >= 3 )  //  expecting "xHH..."
                 {
-                    s += hex_str_to_char< Char_type >( begin );  
+                    s += hex_str_to_char< Char_type >( begin );
                 }
                 break;
             }
-            case 'u':  
+            case 'u':
             {
                 if( end - begin >= 5 )  //  expecting "uHHHH..."
                 {
-                    s += unicode_str_to_char< Char_type >( begin );  
+                    s += unicode_str_to_char< Char_type >( begin );
                 }
                 break;
             }
@@ -120,7 +126,7 @@ namespace json_spirit
     }
 
     template< class String_type >
-    String_type substitute_esc_chars( typename String_type::const_iterator begin, 
+    String_type substitute_esc_chars( typename String_type::const_iterator begin,
                                    typename String_type::const_iterator end )
     {
         typedef typename String_type::const_iterator Iter_type;
@@ -128,7 +134,7 @@ namespace json_spirit
         if( end - begin < 2 ) return String_type( begin, end );
 
         String_type result;
-        
+
         result.reserve( end - begin );
 
         const Iter_type end_minus_1( end - 1 );
@@ -143,7 +149,7 @@ namespace json_spirit
                 result.append( substr_start, i );
 
                 ++i;  // skip the '\'
-             
+
                 append_esc_char_and_incr_iter( result, i, end );
 
                 substr_start = i + 1;
@@ -156,7 +162,7 @@ namespace json_spirit
     }
 
     template< class String_type >
-    String_type get_str_( typename String_type::const_iterator begin, 
+    String_type get_str_( typename String_type::const_iterator begin,
                        typename String_type::const_iterator end )
     {
         assert( end - begin >= 2 );
@@ -178,7 +184,7 @@ namespace json_spirit
     {
         return get_str_< std::wstring >( begin, end );
     }
-    
+
     template< class String_type, class Iter_type >
     String_type get_str( Iter_type begin, Iter_type end )
     {
@@ -193,7 +199,7 @@ namespace json_spirit
     // NB Iter_type could be a std::string iterator, wstring iterator, a position iterator or a multipass iterator
     //
     template< class Value_type, class Iter_type >
-    class Semantic_actions 
+    class Semantic_actions
     {
     public:
 
@@ -226,7 +232,7 @@ namespace json_spirit
         void begin_array( Char_type c )
         {
             assert( c == '[' );
-     
+
             begin_compound< Array_type >();
         }
 
@@ -287,7 +293,7 @@ namespace json_spirit
 
     private:
 
-        Semantic_actions& operator=( const Semantic_actions& ); 
+        Semantic_actions& operator=( const Semantic_actions& );
                                     // to prevent "assignment operator could not be generated" warning
 
         Value_type* add_first( const Value_type& value )
@@ -321,9 +327,9 @@ namespace json_spirit
             if( current_p_ != &value_ )
             {
                 current_p_ = stack_.back();
-                
+
                 stack_.pop_back();
-            }    
+            }
         }
 
         Value_type* add_to_current( const Value_type& value )
@@ -336,9 +342,9 @@ namespace json_spirit
             {
                 current_p_->get_array().push_back( value );
 
-                return &current_p_->get_array().back(); 
+                return &current_p_->get_array().back();
             }
-            
+
             assert( current_p_->type() == obj_type );
 
             return &Config_type::add( current_p_->get_obj(), name_, value );
@@ -364,7 +370,7 @@ namespace json_spirit
        throw reason;
     }
 
-    // the spirit grammer 
+    // the spirit grammer
     //
     template< class Value_type, class Iter_type >
     class Json_grammer : public spirit_namespace::grammar< Json_grammer< Value_type, Iter_type > >
@@ -419,7 +425,7 @@ namespace json_spirit
 
                 typedef typename Value_type::String_type::value_type Char_type;
 
-                // first we convert the semantic action class methods to functors with the 
+                // first we convert the semantic action class methods to functors with the
                 // parameter signature expected by spirit
 
                 typedef boost::function< void( Char_type )            > Char_action;
@@ -448,16 +454,16 @@ namespace json_spirit
                     ;
 
                 value_
-                    = string_[ new_str ] 
-                    | number_ 
-                    | object_ 
-                    | array_ 
-                    | str_p( "true" ) [ new_true  ] 
-                    | str_p( "false" )[ new_false ] 
+                    = string_[ new_str ]
+                    | number_
+                    | object_
+                    | array_
+                    | str_p( "true" ) [ new_true  ]
+                    | str_p( "false" )[ new_false ]
                     | str_p( "null" ) [ new_null  ]
                     ;
 
-                object_ 
+                object_
                     = ch_p('{')[ begin_obj ]
                     >> !members_
                     >> ( ch_p('}')[ end_obj ] | eps_p[ &throw_not_object ] )
@@ -483,20 +489,20 @@ namespace json_spirit
                     = value_ >> *( ',' >> value_ )
                     ;
 
-                string_ 
+                string_
                     = lexeme_d // this causes white space inside a string to be retained
                       [
                           confix_p
-                          ( 
-                              '"', 
+                          (
+                              '"',
                               *lex_escape_ch_p,
                               '"'
-                          ) 
+                          )
                       ]
                     ;
 
                 number_
-                    = strict_real_p[ new_real   ] 
+                    = strict_real_p[ new_real   ]
                     | int64_p      [ new_int    ]
                     | uint64_p     [ new_uint64 ]
                     ;
@@ -518,10 +524,10 @@ namespace json_spirit
     Iter_type read_range_or_throw( Iter_type begin, Iter_type end, Value_type& value )
     {
         Semantic_actions< Value_type, Iter_type > semantic_actions( value );
-     
-        const spirit_namespace::parse_info< Iter_type > info = 
-                            spirit_namespace::parse( begin, end, 
-                                                    Json_grammer< Value_type, Iter_type >( semantic_actions ), 
+
+        const spirit_namespace::parse_info< Iter_type > info =
+                            spirit_namespace::parse( begin, end,
+                                                    Json_grammer< Value_type, Iter_type >( semantic_actions ),
                                                     spirit_namespace::space_p );
 
         if( !info.hit )
@@ -540,7 +546,7 @@ namespace json_spirit
 
         const Posn_iter_t posn_begin( begin, end );
         const Posn_iter_t posn_end( end, end );
-     
+
         read_range_or_throw( posn_begin, posn_end, value );
     }
 

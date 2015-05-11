@@ -1,7 +1,9 @@
+#ifndef Q_MOC_RUN
 #include <boost/test/unit_test.hpp>
 #include "json/json_spirit_reader_template.h"
 #include "json/json_spirit_writer_template.h"
 #include "json/json_spirit_utils.h"
+#endif
 
 #include "base58.h"
 #include "util.h"

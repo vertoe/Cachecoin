@@ -2,7 +2,9 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#ifndef Q_MOC_RUN
 #include <boost/assign/list_of.hpp>
+#endif
 
 #include "kernel.h"
 #include "db.h"
@@ -285,7 +287,7 @@ bool CheckStakeKernelHash(unsigned int nBits, const CBlock& blockFrom, unsigned 
     uint64 nStakeModifier = 0;
     int nStakeModifierHeight = 0;
     int64 nStakeModifierTime = 0;
-    
+
     if (miningStuff) {
          nStakeModifier = miningStuff->nStakeModifier;
          nStakeModifierHeight = miningStuff->nStakeModifierHeight;
@@ -295,8 +297,8 @@ bool CheckStakeKernelHash(unsigned int nBits, const CBlock& blockFrom, unsigned 
          if (!GetKernelStakeModifier(blockFrom.GetHash(), nStakeModifier, nStakeModifierHeight, nStakeModifierTime, fPrintProofOfStake))
              return false;
      }
-        
-    
+
+
     ss << nStakeModifier;
 
     ss << nTimeBlockFrom << nTxPrevOffset << txPrev.nTime << prevout.n << nTimeTx;

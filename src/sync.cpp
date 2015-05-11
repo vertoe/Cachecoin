@@ -5,7 +5,9 @@
 #include "sync.h"
 #include "util.h"
 
-#include <boost/foreach.hpp>
+#ifndef Q_MOC_RUN
+    #include <boost/foreach.hpp>
+#endif
 
 #ifdef DEBUG_LOCKCONTENTION
 void PrintLockContention(const char* pszName, const char* pszFile, int nLine)

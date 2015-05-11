@@ -12,7 +12,10 @@
 #endif
 
 #include "strlcpy.h"
-#include <boost/algorithm/string/case_conv.hpp> // for to_lower()
+
+#ifndef Q_MOC_RUN
+    #include <boost/algorithm/string/case_conv.hpp> // for to_lower()
+#endif
 
 using namespace std;
 

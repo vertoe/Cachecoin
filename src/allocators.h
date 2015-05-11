@@ -7,7 +7,11 @@
 
 #include <string.h>
 #include <string>
-#include <boost/thread/mutex.hpp>
+
+#ifndef Q_MOC_RUN
+    #include <boost/thread/mutex.hpp>
+#endif
+
 #include <map>
 
 #ifdef WIN32

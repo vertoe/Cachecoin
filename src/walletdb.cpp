@@ -5,7 +5,10 @@
 
 #include "walletdb.h"
 #include "wallet.h"
+
+#ifndef Q_MOC_RUN
 #include <boost/filesystem.hpp>
+#endif
 
 using namespace std;
 using namespace boost;

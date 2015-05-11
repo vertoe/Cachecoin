@@ -7,8 +7,11 @@
 
 #include <string>
 #include "util.h" // for int64
+
+#ifndef Q_MOC_RUN
 #include <boost/signals2/signal.hpp>
 #include <boost/signals2/last_value.hpp>
+#endif
 
 class CBasicKeyStore;
 class CWallet;

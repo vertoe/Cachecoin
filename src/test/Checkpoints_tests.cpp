@@ -1,9 +1,11 @@
 //
 // Unit tests for block-chain checkpoints
 //
+#ifndef Q_MOC_RUN
 #include <boost/assign/list_of.hpp> // for 'map_list_of()'
 #include <boost/test/unit_test.hpp>
 #include <boost/foreach.hpp>
+#endif
 
 #include "../checkpoints.h"
 #include "../util.h"
@@ -19,7 +21,7 @@ BOOST_AUTO_TEST_CASE(sanity)
     BOOST_CHECK(Checkpoints::CheckBlock(11111, p11111));
     BOOST_CHECK(Checkpoints::CheckBlock(134444, p134444));
 
-    
+
     // Wrong hashes at checkpoints should fail:
     BOOST_CHECK(!Checkpoints::CheckBlock(11111, p134444));
     BOOST_CHECK(!Checkpoints::CheckBlock(134444, p11111));
@@ -29,6 +31,6 @@ BOOST_AUTO_TEST_CASE(sanity)
     BOOST_CHECK(Checkpoints::CheckBlock(134444+1, p11111));
 
     BOOST_CHECK(Checkpoints::GetTotalBlocksEstimate() >= 134444);
-}    
+}
 
 BOOST_AUTO_TEST_SUITE_END()

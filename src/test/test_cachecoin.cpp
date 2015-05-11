@@ -1,5 +1,7 @@
 #define BOOST_TEST_MODULE Cachecoin Test Suite
+#ifndef Q_MOC_RUN
 #include <boost/test/unit_test.hpp>
+#endif
 
 #include "db.h"
 #include "main.h"

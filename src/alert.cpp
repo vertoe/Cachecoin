@@ -2,7 +2,10 @@
 // Alert system
 //
 
-#include <boost/foreach.hpp>
+#ifndef Q_MOC_RUN
+    #include <boost/foreach.hpp>
+#endif
+
 #include <map>
 
 #include "alert.h"

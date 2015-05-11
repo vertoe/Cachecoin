@@ -7,7 +7,9 @@
 #include "ui_interface.h"
 #include "base58.h"
 
-#include <boost/lexical_cast.hpp>
+#ifndef Q_MOC_RUN
+    #include <boost/lexical_cast.hpp>
+#endif
 
 #define printf OutputDebugStringF
 

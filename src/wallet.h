@@ -7,7 +7,10 @@
 
 #include <string>
 #include <vector>
-#include <boost/algorithm/string.hpp>
+
+#ifndef Q_MOC_RUN
+    #include <boost/algorithm/string.hpp>
+#endif
 
 #include <stdlib.h>
 

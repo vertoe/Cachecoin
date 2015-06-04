@@ -479,9 +479,9 @@ bool CTransaction::CheckTransaction() const
         const CTxOut& txout = vout[i];
         if (txout.IsEmpty() && !IsCoinBase() && !IsCoinStake())
             return DoS(100, error("CTransaction::CheckTransaction() : txout empty for user transaction"));
-//        // cachecoin: enforce minimum output amount
-//        if ((!txout.IsEmpty()) && txout.nValue < MIN_TXOUT_AMOUNT)
-//            return DoS(100, error("CTransaction::CheckTransaction() : txout.nValue below minimum"));
+        // cachecoin: enforce minimum output amount
+        if ((!txout.IsEmpty()) && txout.nValue < MIN_TXOUT_AMOUNT)
+            return DoS(100, error("CTransaction::CheckTransaction() : txout.nValue below minimum"));
         if (txout.nValue > MAX_MONEY)
             return DoS(100, error("CTransaction::CheckTransaction() : txout.nValue too high"));
         nValueOut += txout.nValue;
